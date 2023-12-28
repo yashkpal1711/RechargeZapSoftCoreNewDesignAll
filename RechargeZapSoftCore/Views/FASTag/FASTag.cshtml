@@ -1,0 +1,409 @@
+﻿
+@{
+    ViewData["Title"] = "FASTag";
+    Layout = "~/Views/Shared/ShareLayoutNew.cshtml";
+}
+
+
+@section header
+    {
+<style>
+
+
+        .newnumbertype {
+            border: none;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+        }
+
+        newnumbertype::-webkit-inner-spin-button,
+        newnumbertype::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .btnsubmit {
+            background: #172c64;
+            /*background: linear-gradient(90deg, #10182b 0%, #172c65 100%);*/
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 400;
+            padding: 10px 30px;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            height: 45px;
+            width: 100%;
+        }
+
+        .agreeterms {
+            font-size: 13px;
+            color: #757272;
+        }
+
+    @@media (max-width: 414px) {
+        .main-banner-landing {
+            padding: 150px 0px 150px;
+        }
+    }
+</style>
+}
+
+<div class="loader" id="AjaxLoader" style="display:none;">
+    <div class="strip-holder">
+        @*<div class="strip-1"></div>
+            <div class="strip-2"></div>
+            <div class="strip-3"></div>*@
+        <img src="~/images/preloader.svg" />
+    </div>
+</div>
+
+<section class="main-banner-landing" id="recharge" >
+    <div class="container-fluid">
+        <div class="landing-page">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-4 col-md-7 col-sm-12">
+
+                    <div class="form-area-box landing-page-form">
+                        <div class="landing-title text-center">
+                            <h1>FASTag Recharge</h1>
+                        </div>
+                        <form>
+                            <div class="form-dth">
+                                <p>Select Operator</p>
+                                @*<select class="form-control" onchange="getval(this);" id="ddoperatordth"></select>*@
+                                <select class="form-control" id="ddoperatorfastag"></select>
+                            </div>
+                            <div class="form-dth">
+                                <p id="dthtext">Vehicle Number</p>
+                                <input type="text" id="vehicleNumber" style="text-transform:uppercase" autocomplete="off" class="form-control">
+
+                            </div>
+                            <div id="divAmount" style="display:none">
+                                <p style="  margin-bottom: 8px;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  color: #5b5b5b;
+  line-height: 1.1;
+">Enter Amount</p>
+                                <div class="form-area">
+                                    <!-- <label class="label-title">Mobile Number*</label> -->
+                                    <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                    <input type="number" name="" class="newnumbertype" id="fastagAmount" placeholder="Amount" />
+
+                                    @*<a href="check-plan.html" class="check-plan">Check Plan</a>*@
+                                </div>
+                            </div>
+                            <div id="divminmaxvalue" style="display:none">
+                                <i class="fa fa-indian-rupee-sign" style="font-size:11px;color:green"></i>     <label id="lblminvalue" style="font-size:11px;color:green">  0</label>-<i class="fa fa-indian-rupee-sign" style="font-size:11px;color:green"></i>     <label id="lblmaxvalue" style="font-size:11px;color:green">  0</label>
+                            </div>
+                            <div id="diverrormessage" style="display:none">
+                                <label id="lblerror" style="color:darkred"> </label>
+                            </div>
+                            <div class="form-area-btn">
+                                <input type="button"  id="btnrechargefetch" class="btnsubmit"  value="Proceed to Recharge" onclick="return  validateFastagRechargeFetch();" />
+
+                                <input type="button" value="Proceed to Recharge" style="display:none;" id="btnrecharge" class="btnsubmit" onclick="return  validateFastagRecharge();" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="main-banner-landing" id="userdetail" style="display:none;">
+    <div class="container-fluid">
+        <div class="landing-page">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-4 col-md-7 col-sm-12">
+
+                    <div class="form-area-box landing-page-form">
+                        <!-- <div class="landing-login">
+                            <h1>0000000000</h1>
+                            <span><i class="fa-solid fa-indian-rupee-sign"></i> 2000</span>
+                        </div> -->
+
+                        <div class="head-change-area landing-login">
+                            <ul>
+                                <li>
+                                    <a onclick="backuserdetail();" style="color:white" class="back-plan"><i class="fa-solid fa-chevron-left"></i></a>
+                                </li>
+                                <li><span class="plan-num" id="headeruserdetail" style="text-transform:uppercase"></span></li>
+                                <li>
+                                    <span class="landing-price">
+                                        @* <i class="fa-solid fa-indian-rupee-sign"></i>*@
+                                        <span id="headeruserdetailamount"></span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <form action="/Home/PayUMoneyPayment" method="post">
+
+                            <div class="form-area">
+                                <input type="text" name="UserName" placeholder="Name" id="nameuserdetail" class="w-100" />
+                            </div>
+                            <div class="form-area">
+                                <input type="email" name="Email" placeholder="Email" id="emailuserdetail" />
+                                @* <input type="hidden" class="form-control mb-3" id="mobileuserdetail" placeholder="Name" name="UserMobile">*@
+                                <input type="hidden" class="form-control  border-2 bg-color-none text-grey-700" id="operatoridConfirmuserdetail" value="Amount" name="OperatorCode">
+
+                                <input type="hidden" class="form-control  inputconfirm" id="amountConfirmuserdetail" name="RechargeAmount">
+                                <input type="hidden" class="form-control  inputconfirm" id="mobileConfirmuserdetail" name="RechargeMobile">
+                            </div>
+                            <div class="form-area">
+                                <input type="number" placeholder="Mobile" class="newnumbertype" id="mobileuserdetail" name="UserMobile" />
+                                @*  <input type="hidden" class="form-control mb-3" id="mobileuserdetail" placeholder="Name" name="UserMobile">*@
+                            </div>
+                            <div class="form-agree">
+                                @*<input type="checkbox" id="agreement">
+                                    <label for="agreement">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Optio,
+                                        rerum?
+                                    </label>*@
+                                <input type="checkbox" checked id="agreecheck" />
+                                @Html.ActionLink("I Agree all Terms & Conditions and processing fees applicable on recharge.", "Terms", "Home", null, new { @class = "agreeterms" })
+                            </div>
+                            <div class="form-area-btn landing-btn-login">
+                                @*<button>Pay Now</button>*@
+                                <input type="submit" class="btnsubmit" name="btnPay" style="color:white !important; background-color:#081844;border-color:#081844 ;   padding: 8px 20px;" onclick="return  validateRechargeconfirm2();" value="Pay Now" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts
+    {
+
+    <script>
+        $(document).ready(function () {
+            loadDTHOperator();
+
+        });
+            function validateFastagRechargeFetch() {
+          if (document.getElementById("vehicleNumber").value == "") {
+              toastr.warning('Warning', 'Enter Vehicle Registration Number');
+              document.getElementById("vehicleNumber").focus();
+              return false;
+          }
+          else if ($('#ddoperatorfastag').find(":selected").val() == "0") {
+              toastr.warning('Warning', 'Select Operator');
+              document.getElementById("ddoperatorfastag").focus();
+              return false;
+          }
+          else {
+              var vehicleNumber = document.getElementById("vehicleNumber").value;
+              var operatorId = $('#ddoperatorfastag').find(":selected").val();
+               FetchDetails(vehicleNumber, operatorId);
+          }
+        }
+        function FetchDetails(vehicleNumber, operatorId) {
+
+            //alert(vehicleNumber);
+            //alert(operatorId);
+            var jsondata = { 'vehicleNumber': vehicleNumber, 'operatorId': operatorId };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/fetchDetailsFastag',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[0]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    //document.getElementById('userbalancetop').innerHTML = result[0];
+                    if (result[0] == '2') {
+                        //alert(result[0]);
+                        document.getElementById('divAmount').style.display = 'block';
+                        document.getElementById('divminmaxvalue').style.display = 'block';
+                        document.getElementById('btnrechargefetch').style.display = 'none';
+                        document.getElementById('btnrecharge').style.display = 'block';
+                        document.getElementById('diverrormessage').style.display = 'none';
+
+
+
+                        document.getElementById('lblminvalue').innerHTML = result[2];
+                        document.getElementById('lblmaxvalue').innerHTML = result[3];
+                    }
+                    else {
+
+                        //alert(result[0]);
+                        //alert('error');
+                        document.getElementById('divAmount').style.display = 'none';
+                        document.getElementById('divminmaxvalue').style.display = 'none';
+                        document.getElementById('diverrormessage').style.display = 'block';
+
+
+                        document.getElementById('btnrechargefetch').style.display = 'block';
+                        document.getElementById('btnrecharge').style.display = 'none';
+
+                        document.getElementById('lblerror').innerHTML = '*Invalid Vehicle Number';
+                    }
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+
+        function validateFastagRecharge() {
+            if (document.getElementById("vehicleNumber").value == "") {
+                toastr.warning('Warning', 'Enter Vehicle Registration Number');
+                document.getElementById("vehicleNumber").focus();
+                return false;
+            }
+            else if ($('#ddoperatorfastag').find(":selected").val() == "0") {
+                toastr.warning('Warning', 'Select Operator');
+                document.getElementById("ddoperatorfastag").focus();
+                return false;
+            }
+            else if (document.getElementById("fastagAmount").value == "") {
+                toastr.warning('Warning', 'Enter Amount');
+                document.getElementById("fastagAmount").focus();
+                return false;
+            }
+            if (parseFloat(document.getElementById("fastagAmount").value) <= 0) {
+                toastr.warning('Warning', 'Amount Must Be Greater Than 0');
+                document.getElementById("fastagAmount").focus();
+                return false;
+            }
+            else if (parseFloat(document.getElementById("fastagAmount").value) > 30000) {
+                toastr.warning('Warning', 'Amount Must Be Less Than Or Equal To 30000');
+                document.getElementById("fastagAmount").focus();
+                return false;
+            }
+            else {
+
+                //document.getElementById("amountConfirm").value = document.getElementById("amountdth").value;
+                //document.getElementById("operatorConfirm").value = $('#ddoperatordth').find(":selected").text();
+                //document.getElementById("mobileConfirm").value = document.getElementById("numberdth").value;
+                //document.getElementById("customermobileConfirm").value = document.getElementById("mobileNumber").value;
+
+
+                document.getElementById("amountConfirmuserdetail").value = document.getElementById("fastagAmount").value;
+                document.getElementById("operatoridConfirmuserdetail").value = $('#ddoperatorfastag').find(":selected").val();
+                document.getElementById("mobileConfirmuserdetail").value = document.getElementById("vehicleNumber").value;
+
+                //document.getElementById("mobileuserdetail").value = document.getElementById("mobileNumber").value;
+                document.getElementById("headeruserdetail").innerHTML = document.getElementById("vehicleNumber").value + ' - <i class="fa fa-inr"></i>' + document.getElementById("fastagAmount").value
+
+                document.getElementById('recharge').style.display = 'none';
+                document.getElementById('userdetail').style.display = 'block';
+            }
+        }
+        function validateRechargeconfirm2() {
+            if (document.getElementById("emailuserdetail").value == "") {
+                toastr.warning('Warning', 'Enter Email');
+                document.getElementById("emailuserdetail").focus();
+                return false;
+            }
+            else if (document.getElementById("nameuserdetail").value == "") {
+                toastr.warning('Warning', 'Enter Name');
+                document.getElementById("nameuserdetail").focus();
+                return false;
+            }
+            else if (document.getElementById("mobileuserdetail").value == "") {
+                toastr.warning('Warning', 'Enter Mobile');
+                document.getElementById("mobileuserdetail").focus();
+                return false;
+            }
+            if (document.getElementById('agreecheck').checked) {
+                //alert("checked");
+            } else {
+                toastr.warning('Warning', 'Please Accept Terms and Conditions');
+                return false;
+                //document.getElementById("nameuserdetail").focus();
+            }
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (document.getElementById("emailuserdetail").value.match(validRegex)) {
+                //alert("Valid email address!");
+                //document.form1.text1.focus();
+                //document.getElementById("emailuserdetail").focus();
+                //return true;
+            } else {
+                //alert("Invalid email address!");
+                //document.form1.text1.focus();
+                toastr.warning('Warning', 'Enter Valid Email');
+                document.getElementById("emailuserdetail").focus();
+                return false;
+            }
+        }
+    
+        function backuserdetail() {
+            document.getElementById('recharge').style.display = 'block';
+            document.getElementById('userdetail').style.display = 'none';
+            document.getElementById('plan').style.display = 'none';
+        }
+        function loadDTHOperator() {
+            $.ajax({
+
+                url: '/api/Recharge/GetOperatorFastag',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result.d);
+                    $('#ddoperatorfastag').empty();
+                    $('#ddoperatorfastag').append('<option value="0">Select Operator</option>');
+                    $.each(result, function (result, value) {
+
+                        $("#ddoperatorfastag").append($("<option></option>").val(value.id).html(value.operator));
+                    })
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddoperatorfastag').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+    </script>
+}

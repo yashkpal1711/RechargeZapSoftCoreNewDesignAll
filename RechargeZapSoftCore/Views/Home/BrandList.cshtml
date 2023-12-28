@@ -1,0 +1,92 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Gift Card | Get Gift Cards on on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+<div class="Banner_Section">
+    <div class="TopBanner">
+        <img src="~/new2/img/small-banner/intro_banner1.png" alt="Banner" />
+    </div>
+</div>
+
+<!-- <div class="container-fluid">
+    <div class="serachbar">
+         <i class="fa-regular fa-magnifying-glass serachbaricon"></i>
+        <input class="form-control searchinput" type="search" placeholder="Search for your Favouite Brand" aria-label="Search">
+        <button class="btn submitbtn" type="submit">Search</button>
+    </div>
+</div> -->
+
+<section>
+    <div class="container-fluid">
+        <div class="giftcardpro">
+            <div class="brands_heading">
+                <h1>@ViewBag.CategoryName</h1>
+                <div class="baseline"></div>
+            </div>
+            <div class="row">
+               
+                <div class="col-md-12">
+                    <div class="brand_row">
+                        <div class="row">
+                            @foreach (var dr in ViewBag.BrandList.Rows)
+                            {
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <a href="/Home/GiftCardDetail?bid=@dr["BrandProductCode"]">
+                                        <div class="brands_card">
+                                            <div class="cardimg">
+                                                <img src="@dr["BrandImage"]" alt="card Image" />
+                                                <div class="brand_Rating">
+                                                    <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                                </div>
+                                            </div>
+                                            <div class="cardBox">
+                                                <div class="carddetails">
+                                                    <p class="cardname">@dr["brandname"]</p>
+                                                    <p class="carddes">@dr["brandtype"]</p>
+                                                </div>
+                                                <div class="cardrewad">
+                                                    <div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div>
+                                                    <div class="offpercent">20% OFF</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                  
+                                </div>
+                            }
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+
+
+    <script>
+        $(document).ready(function () {
+          
+            //getGiftCardCategory();
+            //loadGiftCardBrand();
+        });
+
+
+      
+    </script>
+
+
+
+}
+
+@section MobileHeader{
+    Brand List
+}

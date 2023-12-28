@@ -1,0 +1,201 @@
+@media all and (max-width: 1199px){
+	.services-image {
+		width: 335px;
+		height: 335px;
+	}
+	.icon-image img {
+		max-width: 90%;
+		width: auto;
+	}
+	.all-service-area .row.service-single-item :nth-child(2n+1) .services-content p {
+		padding-right: 10px;
+	}
+	.all-service-area .row.service-single-item :nth-child(2n) .services-content {
+		padding-left: 10px;
+	}
+	.all-service-area {
+		padding: 0 0;
+	}
+	.row.about-image-content {
+		padding: 0 0;
+	}
+}
+@media all and (max-width: 991px) {
+	.services-content h2 {
+		font-size: 38px;
+	}
+	.services-content p {
+		font-size: 16px;
+	}
+	.services-image {
+		width: 235px;
+		height: 235px;
+	}
+	.about-content h2 {
+		font-size: 38px;
+	}
+	.about-content p {
+		font-size: 16px;
+	}
+	.use-content h2 {
+		font-size: 38px;
+	}
+	.use-content {
+		max-width: 660px;
+	}
+	.use-content p {
+		font-size: 16px;
+	}
+	.rechagezap-content h2 {
+		font-size: 38px;
+	}
+	.rechagezap-content p {
+		font-size: 16px;
+	}
+	.footer-menu ul li a {
+		font-size: 16px;
+	}
+	.row.service-single-item:first-child .services-image img {
+		max-width: 90%;
+	}
+	.icon-image img {
+		max-width: 65%;
+	}
+	.step-heading h2 {
+		font-size: 38px;
+	}
+	.step-single-item img {
+		height: 115px;
+	}
+	.step-single-item h3 {
+		font-size: 19px;
+	}
+    /*Start munna code*/
+    .recharge_details {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .recharge_details_left, .recharge_details_right {
+        max-width: 100%;
+    }
+
+    .recharge_details_right {
+        margin-top: 25px;
+    }
+}
+@media all and (max-width: 767px) {
+	.service-area {
+		padding: 40px 0 0 0;
+	}
+	.services-content {
+		text-align: center;
+	}
+	.services-image {
+		margin: auto;
+		margin-top: 30px;
+	}
+	.all-service-area .row.service-single-item:nth-child(2n) .col-md-7 {
+		-webkit-box-ordinal-group: 0;
+		    -ms-flex-order: -1;
+		        order: -1;
+	}
+	.about-image {
+		text-align: center;
+		margin-top:30px;
+	}
+	.about-content {
+		text-align: center;
+	}
+	.about-us-area .col-md-7 {
+		-webkit-box-ordinal-group: 0;
+		    -ms-flex-order: -1;
+		        order: -1;
+	}
+	.use-content {
+		max-width: 100%;
+		padding: 18px;
+	}
+	.rechagezap-content {
+		text-align: center;
+	}
+	.desktop-image {
+		display: none;
+	}
+	.mobile-image {
+		display: block !important;
+	}
+}
+@media all and (max-width: 575px) {
+	.services-content h2 {
+		font-size: 28px;
+	}
+	.services-content p {
+		font-size: 14px;
+	}
+	.services-image {
+		width: 274px;
+		height: 274px;
+	}
+	.about-us-area {
+		padding: 0 0 55px 0;
+	}
+	.about-content h2 {
+		font-size: 28px;
+	}
+	.about-content p {
+		font-size: 14px;
+	}
+	.use-all-content {
+		padding: 40px 0;
+	}
+	.use-content h2 {
+		font-size: 28px;
+	}
+	.use-content p {
+		font-size: 14px;
+	}
+	.rechargezap-area {
+		padding: 50px 0;
+	}
+	.rechagezap-content h2 {
+		font-size: 28px;
+	}
+	.rechagezap-content p {
+		font-size: 14px;
+	}
+	.steps-area {
+		padding: 125px 0 43px 0;
+	}
+	.step-heading h2 {
+		font-size: 28px;
+		padding-bottom: 0;
+	}
+	.step-single-item img {
+		height: auto;
+	}
+	.step-single-item h3 {
+		font-size: 28px;
+	}
+	.footer-menu ul {
+		display: block;
+		padding-bottom: 10px;
+	}
+	.footer-menu ul li {
+		border-right: 0;
+		margin-bottom: 10px;
+	}
+	.footer-menu ul li a {
+		font-size: 14px;
+	}
+	.footer-content p {
+		font-size: 12px;
+		max-width: 290px;
+		margin: auto;
+	}
+}
+@media all and (max-width: 450px) {
+	
+}

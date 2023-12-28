@@ -1,0 +1,79 @@
+﻿@model RechargeZapSoftCore.Models.PaytmResponse
+@{
+    ViewData["Title"] = "Online Mobile Recharge - Bill Payments & Prepaid Recharge on RechargeZap";
+    Layout = "~/Views/Shared/Sharedlayuout2.cshtml";
+}
+
+@*<h2>paytmResponse</h2>*@
+<div class="row">
+    <div class="col-md-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center"><h1 class="text-grey-800 fw-700 display3-size">Payment Status <span class="font-xsss text-grey-600 fw-600 d-block mt-2">Home / Payment Status </span></h1></div>
+            </div>
+            <div align="center">
+                <table border="1" width="50%">
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.MID)</td>
+                        <td>@Html.DisplayFor(m => m.MID)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.ORDERID)</td>
+                        <td>@Html.DisplayFor(m => m.ORDERID)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.TXNAMOUNT)</td>
+                        <td>@Html.DisplayFor(m => m.TXNAMOUNT)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.CURRENCY)</td>
+                        <td>@Html.DisplayFor(m => m.CURRENCY)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.TXNID)</td>
+                        <td>@Html.DisplayFor(m => m.TXNID)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.BANKTXNID)</td>
+                        <td>@Html.DisplayFor(m => m.BANKTXNID)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.STATUS)</td>
+                        <td>@Html.DisplayFor(m => m.STATUS)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.RESPCODE)</td>
+                        <td>@Html.DisplayFor(m => m.RESPCODE)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.RESPMSG)</td>
+                        <td>@Html.DisplayFor(m => m.RESPMSG)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.TXNDATE)</td>
+                        <td>@Html.DisplayFor(m => m.TXNDATE)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.GATEWAYNAME)</td>
+                        <td>@Html.DisplayFor(m => m.GATEWAYNAME)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.BANKNAME)</td>
+                        <td>@Html.DisplayFor(m => m.BANKNAME)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.PAYMENTMODE)</td>
+                        <td>@Html.DisplayFor(m => m.PAYMENTMODE)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.CHECKSUMHASH)</td>
+                        <td>@Html.DisplayFor(m => m.CHECKSUMHASH)</td>
+                    </tr>
+
+                </table>
+                error : @ViewBag.errortext
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,653 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Gift Card | Get Gift Cards on on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+
+@*<link href="~/new2/css/responsive.css" rel="stylesheet" />*@
+<div class="giftbodydclr">
+
+    <div class="Banner_Section">
+        <div class="TopBanner">
+            <img src="~/new2/img/small-banner/intro_banner1.png" alt="Banner" />
+        </div>
+    </div>
+
+    @*<div class="container-fluid">
+        <div class="serachbar">
+         
+            <input class="form-control searchinput" type="search" placeholder="Search for your Favouite Brand" aria-label="Search">
+            <button class="btn submitbtn" type="submit">Search</button>
+        </div>
+    </div>*@
+
+    <section>
+        <div class="container-fluid">
+            <div class="brands_heading">
+                <h1>Shop Your Favourite Category</h1>
+                <div class="baseline"></div>
+            </div>
+            <div class="catgry_row">
+                <div class="row" id="divgiftcardcategory">
+                    @*<div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="catgry_card">
+                                <div class="catimg">
+                                    <img src="~/new2/img/small-banner/Dining.png" alt="Category Image" />
+                                </div>
+                                <div class="catbox">
+                                    <p class="cardname">Dinning</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="catgry_card">
+                                <div class="catimg">
+                                    <img src="~/new2/img/small-banner/Electronics.png" alt="Category Image" />
+                                </div>
+                                <div class="catbox">
+                                    <p class="cardname">Electronics</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="catgry_card">
+                                <div class="catimg">
+                                    <img src="~/new2/img/small-banner/Fashion.jpg" alt="Category Image" />
+                                </div>
+                                <div class="catbox">
+                                    <p class="cardname">Fashion</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="catgry_card">
+                                <div class="catimg">
+                                    <img src="~/new2/img/small-banner/Wellness.png" alt="Category Image" />
+                                </div>
+                                <div class="catbox">
+                                    <p class="cardname">Wellness</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="catgry_card">
+                                <div class="catimg">
+                                    <img src="~/new2/img/small-banner/gifting.png" alt="Category Image" />
+                                </div>
+                                <div class="catbox">
+                                    <p class="cardname">Gifting</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="catgry_card">
+                                <div class="catimg">
+                                    <img src="~/new2/img/small-banner/Home_Needs.png" alt="Category Image" />
+                                </div>
+                                <div class="catbox">
+                                    <p class="cardname">Home Needs</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="catgry_card">
+                                <div class="catimg">
+                                    <img src="~/new2/img/small-banner/Ecommerce.png" alt="Category Image" />
+                                </div>
+                                <div class="catbox">
+                                    <p class="cardname">E-Commerce</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="catgry_card">
+                                <div class="catimg">
+                                    <img src="~/new2/img/small-banner/Entertainment.png" alt="Category Image" />
+                                </div>
+                                <div class="catbox">
+                                    <p class="cardname">Entertainment</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="catgry_card">
+                                <div class="catimg">
+                                    <img src="~/new2/img/small-banner/Travel.png" alt="Category Image" />
+                                </div>
+                                <div class="catbox">
+                                    <p class="cardname">Travel</p>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid">
+            <div class="brands_heading">
+                <h1>Top Brands</h1>
+                <div class="baseline"></div>
+            </div>
+            <div class="brand_row">
+                <div class="row" id="divgiftcardbrand">
+                    @*<div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="brands_card">
+                                <div class="cardimg">
+                                    <img src="~/new2/img/small-banner/bata.webp" alt="card Image" />
+                                    <div class="brand_Rating">
+                                        <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                    </div>
+                                </div>
+                                <div class="cardBox">
+                                    <div class="carddetails">
+                                        <p class="cardname">Bata</p>
+                                        <p class="carddes">Bata E-Gift Cards (Instant Vouchers)</p>
+                                    </div>
+                                    <div class="cardrewad">
+                                        <div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div>
+                                        <div class="offpercent">20% OFF</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="brands_card">
+                                <div class="cardimg">
+                                    <img src="~/new2/img/small-banner/pizzahut.webp" alt="card Image" />
+                                    <div class="brand_Rating">
+                                        <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                    </div>
+                                </div>
+                                <div class="cardBox">
+                                    <div class="carddetails">
+                                        <p class="cardname">Pizza Hut</p>
+                                        <p class="carddes">Pizza Hut E-Gift Cards (Instant Vouchers)</p>
+                                    </div>
+                                    <div class="cardrewad">
+                                        <div class="disprice"><span class="descountprice">₹ 150/-</span><span class="originprice"><del>₹ 190/-</del></span></div>
+                                        <div class="offpercent">12% OFF</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="brands_card">
+                                <div class="cardimg">
+                                    <img src="~/new2/img/small-banner/tanishq.webp" alt="card Image" />
+                                    <div class="brand_Rating">
+                                        <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                    </div>
+                                </div>
+                                <div class="cardBox">
+                                    <div class="carddetails">
+                                        <p class="cardname">Tanishq</p>
+                                        <p class="carddes">Tanishq E-Gift Cards (Instant Vouchers)</p>
+                                    </div>
+                                    <div class="cardrewad">
+                                        <div class="disprice"><span class="descountprice">₹ 300000/-</span><span class="originprice"><del>₹ 330000/-</del></span></div>
+                                        <div class="offpercent">10% OFF</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="brands_card">
+                                <div class="cardimg">
+                                    <img src="~/new2/img/small-banner/prestige.webp" alt="card Image" />
+                                    <div class="brand_Rating">
+                                        <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                    </div>
+                                </div>
+                                <div class="cardBox">
+                                    <div class="carddetails">
+                                        <p class="cardname">Prestige</p>
+                                        <p class="carddes">Prestige E-Gift Cards (Instant Vouchers)</p>
+                                    </div>
+                                    <div class="cardrewad">
+                                        <div class="disprice"><span class="descountprice">₹ 7000/-</span><span class="originprice"><del>₹ 7800/-</del></span></div>
+                                        <div class="offpercent">15% OFF</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="brands_card">
+                                <div class="cardimg">
+                                    <img src="~/new2/img/small-banner/flipkart.webp" alt="card Image" />
+                                    <div class="brand_Rating">
+                                        <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                    </div>
+                                </div>
+                                <div class="cardBox">
+                                    <div class="carddetails">
+                                        <p class="cardname">Flipkart</p>
+                                        <p class="carddes">Flipkart E-Gift Cards (Instant Vouchers)</p>
+                                    </div>
+                                    <div class="cardrewad">
+                                        <div class="disprice"><span class="descountprice">₹ 999/-</span><span class="originprice"><del>₹ 1299/-</del></span></div>
+                                        <div class="offpercent">15% OFF</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="brands_card">
+                                <div class="cardimg">
+                                    <img src="~/new2/img/small-banner/dominos.webp" alt="card Image" />
+                                    <div class="brand_Rating">
+                                        <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                    </div>
+                                </div>
+                                <div class="cardBox">
+                                    <div class="carddetails">
+                                        <p class="cardname">Domino's Pizza</p>
+                                        <p class="carddes">Domino's Pizza  E-Gift Cards (Instant Vouchers)</p>
+                                    </div>
+                                    <div class="cardrewad">
+                                        <div class="disprice"><span class="descountprice">₹ 99/-</span><span class="originprice"><del>₹ 159/-</del></span></div>
+                                        <div class="offpercent">50% OFF</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid">
+            <div class="brands_heading">
+                <h1>Hot Deals</h1>
+                <div class="baseline"></div>
+            </div>
+            <div class="brand_row">
+                <div id="owlshop" class="owl-carousel">
+                    @foreach (var dr in ViewBag.Carousel1.Rows)
+                    {
+                    <div class="comp_shop" style="background-color:white;">
+                        <div class="shopimg">
+                            <a href="/Home/GiftCardDetail?bid=@dr["brandproductcode"]"><img src="@dr["brandimage"]" alt="Shop Image" /></a>
+                        </div>
+                        <div class="ShopBox" style="display:block;">
+                            <div class="shoppercent"><span>Get @dr["discount"]% </span><span class="shoptext"> Discount</span></div>
+                        </div>
+                    </div>
+                    }
+
+                    @*<div class="comp_shop">
+            <div class="shopimg">
+                <a href="#"><img src="~/new2/img/small-banner/bite.webp" alt="Shop Image" /></a>
+            </div>
+            <div class="ShopBox">
+                <div class="shoppercent"><span>Get 7% </span><span class="shoptext">Instant Discount</span></div>
+            </div>
+        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid">
+            <div class="brands_heading">
+                <h1>New Year & Christmas Gift Cards</h1>
+                <div class="baseline"></div>
+            </div>
+            <div class="brand_row">
+                <div id="owlFamily" class="owl-carousel">
+
+
+                    @foreach (var dr in ViewBag.Carousel2.Rows)
+                    {
+                    <div class="brands_card">
+                        <a href="/Home/GiftCardDetail?bid=@dr["brandproductcode"]">
+                            <div class="cardimg cardowlimg">
+                                <img src="@dr["brandimage"]" alt="card Image" />
+                                <div class="brand_Rating">
+                                    <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                </div>
+                            </div>
+                            <div class="cardBox">
+                                <div class="carddetails">
+                                    <p class="cardname">@dr["brandname"]</p>
+                                    <p class="carddes">@dr["brandtype"]</p>
+                                </div>
+                                <div class="cardrewad">
+                                    <div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div>
+                                    <div class="offpercent">@dr["discount"]% OFF</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    }
+
+                    @*<div class="brands_card">
+            <div class="cardimg cardowlimg">
+                <img src="~/new2/img/small-banner/bata.webp" alt="card Image" />
+                <div class="brand_Rating">
+                    <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                </div>
+            </div>
+            <div class="cardBox">
+                <div class="carddetails">
+                    <p class="cardname">Bata</p>
+                    <p class="carddes">Bata E-Gift Cards (Instant Vouchers)</p>
+                </div>
+                <div class="cardrewad">
+                    <div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div>
+                    <div class="offpercent">20% OFF</div>
+                </div>
+            </div>
+        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid">
+            <div class="brands_heading">
+                <h1>Limited Time Gift Cards</h1>
+                <div class="baseline"></div>
+            </div>
+            <div class="brand_row">
+                <div id="owlFamily1" class="owl-carousel">
+                    @foreach (var dr in ViewBag.Carousel3.Rows)
+                    {
+                    <div class="brands_card">
+                        <a href="/Home/GiftCardDetail?bid=@dr["brandproductcode"]">
+                            <div class="cardimg cardowlimg">
+                                <img src="@dr["brandimage"]" alt="card Image" />
+                                <div class="brand_Rating">
+                                    <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                </div>
+                            </div>
+                            <div class="cardBox">
+                                <div class="carddetails">
+                                    <p class="cardname">@dr["brandname"]</p>
+                                    <p class="carddes">@dr["brandtype"]</p>
+                                </div>
+                                <div class="cardrewad">
+                                    <div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div>
+                                    <div class="offpercent">@dr["discount"]% OFF</div>
+                                </div>
+                            </div>
+                            </a>
+                    </div>
+                    }
+                    @*<div class="brands_card">
+            <div class="cardimg cardowlimg">
+                <img src="~/new2/img/small-banner/bata.webp" alt="card Image" />
+                <div class="brand_Rating">
+                    <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                </div>
+            </div>
+            <div class="cardBox">
+                <div class="carddetails">
+                    <p class="cardname">Bata</p>
+                    <p class="carddes">Bata E-Gift Cards (Instant Vouchers)</p>
+                </div>
+                <div class="cardrewad">
+                    <div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div>
+                    <div class="offpercent">20% OFF</div>
+                </div>
+            </div>
+        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid">
+            <div class="brands_heading">
+                <h1>Gift Cards For Friends & Family</h1>
+                <div class="baseline"></div>
+            </div>
+            <div class="brand_row">
+                <div id="owlFamily2" class="owl-carousel">
+                    @foreach (var dr in ViewBag.Carousel4.Rows)
+                    {
+                    <div class="brands_card">
+                        <a href="/Home/GiftCardDetail?bid=@dr["brandproductcode"]">
+                            <div class="cardimg cardowlimg">
+                                <img src="@dr["brandimage"]" alt="card Image" />
+                                <div class="brand_Rating">
+                                    <span class="ratings"></span><span class="ratingsnum">4.6</span>
+                                </div>
+                            </div>
+                            <div class="cardBox">
+                                <div class="carddetails">
+                                    <p class="cardname">@dr["brandname"]</p>
+                                    <p class="carddes">@dr["brandtype"]</p>
+                                </div>
+                                <div class="cardrewad">
+                                    <div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div>
+                                    <div class="offpercent">@dr["discount"]% OFF</div>
+                                </div>
+                            </div>
+                            </a>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+@section Scripts{
+
+
+
+
+    @*<link href="~/new2/css/sanstyle.css" rel="stylesheet" />*@
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />*@
+
+    <link href="~/new2/css/cdnjs.cloudflare.com_ajax_libs_OwlCarousel2_2.3.4_assets_owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/new2/css/cdnjs.cloudflare.com_ajax_libs_OwlCarousel2_2.3.4_assets_owl.theme.default.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script src="~/new2/js/sanjs.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            getGiftCardCategory();
+            loadGiftCardBrand();
+            //loadCarousel1();
+            //loadCarousel2();
+
+
+     
+        });
+
+
+        function getGiftCardCategory() {
+            $.ajax({
+
+                url: '/api/Recharge/getGiftCardCategory',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result);
+
+
+                    var giftdata = '';
+                    var items = "";
+                    $.each(result, function (result, value) {
+                        //alert(value);
+                        //console.log(value.circlecode);
+                        //$("#ddcircle").append($("<option></option>").val(value.circleCode).html(value.circleName));
+
+                        giftdata += '<div class="col-lg-2 col-md-4 col-sm-6 col-6"><a href="/Home/BrandList?cid=' + value.categoryId + '&cname=' + value.categoryName + '"><div class="catgry_card"><div class="catimg"><img src="https://admin.rechargezap.com/admin/SliderImage/' + value.imageName + '" alt="Image" />                        </div>                        <div class="catbox">                            <p class="cardname">' + value.categoryName + '</p>                        </div>                    </div>            </a>    </div>';
+
+
+                    });
+                    //console.log(giftdata);
+                    divgiftcardcategory.innerHTML = giftdata;
+                    //$("#ddcircle").append(items);
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                                /*$("#ddoperatormobile").html('Loading...')*/;
+                    //$('#ddcircle').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+
+        function loadGiftCardBrand() {
+            $.ajax({
+
+                url: '/api/Recharge/getGiftCardBrand',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result);
+
+
+                    var giftdata = '';
+                    var items = "";
+                    $.each(result, function (result, value) {
+                        //alert(value);
+                        //console.log(value.circlecode);
+                        //$("#ddcircle").append($("<option></option>").val(value.circleCode).html(value.circleName));
+
+                        giftdata += ' <div class="col-lg-3 col-md-4 col-sm-6"><a href="/Home/GiftCardDetail?bid=' + value.brandProductCode + '"><div class="brands_card"><div class="cardimg"><img src="' + value.brandImage + '" alt="card Image" /><div class="brand_Rating"><span class="ratings"></span><span class="ratingsnum">4.6</span></div></div><div class="cardBox"><div class="carddetails"><p class="cardname">' + value.brandName + '</p><p class="carddes">' + value.brandName + '</p></div><div class="cardrewad"><div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div><div class="offpercent">20% OFF</div></div></div></div></a></div>';
+
+                    });
+                    //console.log(giftdata);
+                    divgiftcardbrand.innerHTML = giftdata;
+                    //$("#ddcircle").append(items);
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                                /*$("#ddoperatormobile").html('Loading...')*/;
+                    //$('#ddcircle').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+
+        function loadCarousel1() {
+            $.ajax({
+
+                url: '/api/Recharge/getGiftCardCarousel1',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result);
+
+
+                    var giftdata = '';
+                    var items = "";
+                    $.each(result, function (result, value) {
+                        //alert(value);
+                        //console.log(value.circlecode);
+                        //$("#ddcircle").append($("<option></option>").val(value.circleCode).html(value.circleName));
+
+                        //giftdata += ' <div class="col-lg-3 col-md-4 col-sm-6"><a href="/Home/GiftCardDetail?bid=' + value.brandProductCode + '" class="brands_card"><div class="brands_card"><div class="cardimg"><img src="' + value.brandImage + '" alt="card Image" /><div class="brand_Rating"><span class="ratings"></span><span class="ratingsnum">4.6</span></div></div><div class="cardBox"><div class="carddetails"><p class="cardname">' + value.brandName + '</p><p class="carddes">' + value.brandName + '</p></div><div class="cardrewad"><div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div><div class="offpercent">20% OFF</div></div></div></div></a></div>';
+
+
+                        giftdata += '<div class="comp_shop"><div class="shopimg"><a href="/Home/GiftCardDetail?bid=' + value.brandProductCode + '"><img src="' + value.brandImage + '" alt="card Image" /></a></div><div class="ShopBox"><div class="shoppercent"><span>Get ' + value.discount + '% </span><span class="shoptext">Instant Discount</span></div></div></div>';
+                    });
+                    //console.log(giftdata);
+                    owlshop.innerHTML = giftdata;
+                    //$("#ddcircle").append(items);
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                                /*$("#ddoperatormobile").html('Loading...')*/;
+                    //$('#ddcircle').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+
+        function loadCarousel2() {
+            $.ajax({
+
+                url: '/api/Recharge/getGiftCardCarousel2',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result);
+
+
+                    var giftdata = '';
+                    var items = "";
+                    $.each(result, function (result, value) {
+                    
+
+                        giftdata += '  <a href="/Home/GiftCardDetail?bid=' + value.brandProductCode + '" class="brands_card"> <div class="brands_card"><div class="cardimg cardowlimg"><img src="' + value.brandImage + '" alt="card Image" /><div class="brand_Rating"><span class="ratings"></span><span class="ratingsnum">4.6</span></div></div><div class="cardBox"><div class="carddetails"><p class="cardname">' + value.brandName + '</p><p class="carddes">' + value.brandType + '</p></div><div class="cardrewad"><div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div><div class="offpercent">' + value.discount + '% OFF</div></div></div></div></a>';
+                    });
+                    //console.log(giftdata);
+                    //owlFamily.innerHTML = giftdata;
+
+                    owlFamily.innerHTML=' <div class="brands_card"><div class="cardimg cardowlimg">   <img src="~/new2/img/small-banner/bata.webp" alt="card Image" /><div class="brand_Rating"><span class="ratings"></span><span class="ratingsnum">4.6</span></div></div><div class="cardBox"><div class="carddetails"><p class="cardname">Bata</p><p class="carddes">Bata E-Gift Cards (Instant Vouchers)</p></div><div class="cardrewad"><div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div><div class="offpercent">20% OFF</div></div></div></div>';
+
+                    //$("#ddcircle").append(items);
+                    //toastr.success('Success', result.d);
+                 
+                },
+                beforeSend: function () {
+                                                                                                                /*$("#ddoperatormobile").html('Loading...')*/;
+                    //$('#ddcircle').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+
+
+
+    </script>
+
+
+
+}
+
+@section MobileHeader{
+    Gift Cards
+}

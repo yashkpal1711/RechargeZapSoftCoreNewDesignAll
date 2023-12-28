@@ -1,0 +1,869 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Book LPG Cylinder Online | Get Offers & Deals on Cylinder Booking on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+<section class="main-banner">
+    <div class="container-fluid">
+        <div class="main-recharge-row">
+            <div class="recharge-options">
+                <div class="recharge-items">
+                    <ul>
+                        <li>
+                            <a href="/home/recharge">
+                                <img src="~/new2/img/icon/mobile-phone.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/1.png" alt="Recharge" class="icon-active" />
+                                <span> Recharge</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/home/dth">
+                                <img src="~/new2/img/icon/television.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/2.png" alt="Recharge" class="icon-active" />
+                                <span> DTH</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/home/Broadband">
+                                <img src="~/new2/img/icon/sim-card.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/3.png" alt="Recharge" class="icon-active" />
+                                <span> Data Card</span>
+                            </a>
+                        </li>
+                        <li>
+
+                            <a href="/Home/Landline">
+                                <img src="~/new2/img/icon/landlinee.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/4.png" alt="Recharge" class="icon-active" />
+                                <span> Landline</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/Broadband">
+                                <img src="~/new2/img/icon/internet.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/5.png" alt="Recharge" class="icon-active" />
+                                <span> Broadband</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="/Home/Cylinder">
+                                <img src="~/new2/img/icon/gas-tank.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/6.png" alt="Recharge" class="icon-active" />
+                                <span> Cylinder</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/gas">
+                                <img src="~/new2/img/icon/stove.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/7.png" alt="Recharge" class="icon-active" />
+                                <span> Piped Gas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Electricity">
+                                <img src="~/new2/img/icon/light-bulb.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/8.png" alt="Recharge" class="icon-active" />
+                                <span> Electricity</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/water">
+                                <img src="~/new2/img/icon/water-tap.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/9.png" alt="Recharge" class="icon-active" />
+                                <span> Water</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Fastag">
+                                <img src="~/new2/img/icon/toll.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" />
+                                <span> FASTag</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!" class="d-more-serv">
+                                <img src="~/new2/img/icon/menu.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/11.png" alt="Recharge" class="icon-active" />
+                                <span> More+</span>
+                            </a>
+
+                            <div class="d-more-service">
+                                <div class="d-inner">
+                                    <div class="d-service-col">
+                                        <a href="/Home/Insurance">
+                                            <img src="~/new2/img/icon/insurance.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Insurance</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/credit-card.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Credit Card</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/cable.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Cable</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/loan.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Loan</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/education.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Education Fees</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/housing.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Housing Society</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/hospital.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Hospital</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/muncipal.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Municipal Services</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/challan.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Challan</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/metro.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Metro</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-field-area">
+                <div class="container-fluid" style="padding:0px 30px;">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="form-area-box home-bg-grey">
+                                <form>
+                                    <div class="main-banner-title">
+                                        <h1>Book LPG Cylinder</h1>
+                                        <img src="~/new2/img/bharat-bill.png">
+                                    </div>
+
+
+                                    <div class="form-area home-frm" id="divoperator" style="display:block">
+                                        <!-- <label class="label-title">Operator</label> -->
+                                        <select id="ddoperatorelectricity"></select>
+                                    </div>
+                                    <div class="form-area home-frm" id="divconsumerno" style="display:none;margin-bottom:3px;">
+                                        <!-- <label class="label-title">Circle</label> -->
+                                        <input type="text" id="consumerno" style="text-transform:uppercase" autocomplete="off" placeholder="Consumer No">
+
+                                        @*<input type="text" name="" placeholder="Vehicle Registration Number" required />*@
+                                    </div>
+                                    <div>
+                                        <label id="lbldisplaynote" style="font-size:11px;color:#086b3b;margin-bottom:10px;">  </label>
+                                    </div>
+                                    <input type="hidden" id="optional1Type" value="">
+
+                                    <div class="form-area home-frm" id="divoptional1" style="display:none">
+                                        <!-- <label class="label-title">Circle</label> -->
+                                        <input type="text" id="optional1" style="text-transform:uppercase;display:none" autocomplete="off" placeholder="">
+                                        <select id="ddoptional1"></select>
+                                    </div>
+
+                                    <div class="form-area home-frm" id="divAmount" style="display:none">
+                                        <!-- <label class="label-title">Mobile Number*</label> -->
+                                        <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                        @* <input type="text" name="" placeholder="599.00" required />*@
+                                        <input type="number" class="newnumbertype" readonly style="width:70%;" onkeypress="return isNumber(event)" id="ElectricityAmount" placeholder="Amount">
+
+                                    </div>
+                                    <div id="divdetail" class="form-area home-frm" style="display:none;height:80px;">
+                                        <h6 class="text-center">Customer Details</h6>
+
+                                        <label id="lblname" style="font-size:12px;"> </label>
+                                        @*<br />
+                                            <label id="lblbilldate" style="font-size:12px;"> </label>
+                                            <br />
+                                            <label id="lblduedate" style="font-size:12px;"> </label>*@
+                                    </div>
+                                    <div id="diverrormessage" style="display:none">
+                                        <label id="lblerror" style="color:darkred;font-size:12px;"> </label>
+                                    </div>
+
+
+
+                                    <div class="form-area-btn">
+                                        @*<button type="submit">Proceed</button>*@
+                                        <input type="button" class="submitbtn" id="btnrechargefetch" value="Proceed to Pay Bill" onclick="return  validateFastagRechargeFetch();" />
+                                        <input type="button" class="submitbtn" id="btnrecharge" style="display:none;" value="Proceed to Pay Bill" onclick="return  validateFastagRecharge();" />
+
+                                    </div>
+
+
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12">
+                            <div class="banner-slider">
+                                <img src="~/new2/img/small-banner/electricity.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Operators -->
+<section class="operators-sec">
+    <div class="container-fluid">
+        <div class="operators-bx">
+            <div class="title-rw">
+                <h6 class="title">Select Operator</h6>
+                <div class="title-line"></div>
+            </div>
+            <div class="operators-row">
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/cylinder/1.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/cylinder/2.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/cylinder/3.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Operators -->
+<!-- Section Start-->
+<section style="background-color: #f5f5f5;" class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">Book Your Cylinder while sitting at home</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph">
+            <p>
+                Imagine you are going to make your favorite dish and suddenly you know that your Gas Cylinder is empty and you need a new cylinder. What will you do in such times?  Booking gas by going offline to your gas cylinder provider and then fetching the gas or waiting for the gas to arrive for weeks, isn't a very tedious task. But we have a piece of very good news for you.  Now you do not need to go out of the house to book a cylinder in case of exhaustion of the gas cylinder. We have also made available the option of gas booking on the platform. This means now You can easily book your cylinder within a few minutes through rechargeZap sitting at your home.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Section Start-->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">Let's not make cylinder booking more complicated</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph">
+
+            <p>
+                Booking a cylinder by physically going to your gas cylinder provider and standing in a long line is indeed a very complicated and utterly tiring task. To solve this problem of yours, we have made available the option of cylinder booking on rechargeZap.  With the help of this, now you do not have to wait in line to book gas. Whenever you need you can book your gas cylinder just by going on the rechargeZap platform and tapping on the cylinder option. All you need to do is Choose your Gas agency name and put your agency's registered mobile number.
+            </p>
+            <p>Here is the list of gas agency provider names that rechargeZap supports</p>
+            <ul>
+                <li>	BPCL (Bharat gas booking)</li>
+                <li>	HP has booking</li>
+                <li>	Indane gas booking ( Indian Oil)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- why choose -->
+<section class="why-choose-sec m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">
+                Book your cylinder in a more reliable and transparent way
+            </h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph why-choose-para">
+            <p>
+                Now you do not have to depend on anyone for your cylinder booking. You can book your Gas Cylinder through an absolutely reliable and transparent system. You will have every detail and information about your Gas booking. Our cylinder booking system is already used by millions of people to book cylinders in a faster and more reliable way. Your payment and card details/information is also absolutely safe on recharge zap. As soon as you pay for your GAS Cylinder, we send your request to your selected gas agency provider. hence you get your cylinder booked. That's why we say this cylinder booking  process absolutely reliable and transparent
+            </p>
+        </div>
+
+    </div>
+</section>
+<!-- why choose -->
+<!-- Section Start-->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">
+                Frequently Asked Questions
+            </h2>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="faq-box">
+            <div class="accordion" id="accordionExample">
+                <div class="card faq-main">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            What kind of payment options are available on rechargeZap to book a gas cylinder?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                We always ensure that you get all the necessary options of payment on the rechargeZap. This is the reason that we have provided several payment options on our platform. You'll get all the necessary payment options for your cylinder booking such as Debit card, credit card, net banking, UPI ids, etc.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            Will I get the subsidy on my LPG cylinder booking if I book my cylinder through Your platform?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                : If you are eligible for any subsidy given by the government then the subsidy amount will be deposited in your bank account within 2 days after booking the cylinder by recharge zap. If it does not happen then you can immediately contact your distributor and Gas Agency.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree">
+                            Can I cancel my Cylinder booking?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                If you have not yet paid your cylinder booking then you can cancel your booking absolutely. But if you have made a payment for your cylinder, now you can not cancel your cylinder because your booking details are sent to your distributor with money immediately.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Features-Section -->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/shield.png" alt="" />
+                    </div>
+                    <h5>100% Secure Payments</h5>
+                    <p>
+                        Safeguarding personal information.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/trust.png" alt="" />
+                    </div>
+                    <h5>Trust Pay</h5>
+                    <p>
+                        Guaranteed safe and secure checkout.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/technical.png" alt="" />
+                    </div>
+                    <h5>Support</h5>
+                    <p>
+                        Have a query? We’re here to help.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Features-Section -->
+
+@section Scripts{
+    <!-- Features-Section -->
+    <script type="text/javascript">
+
+
+      function validateFastagRechargeFetch() {
+          if (document.getElementById("consumerno").value == "") {
+              toastr.warning('Warning', 'Enter Comsumer Number');
+              document.getElementById("consumerno").focus();
+              return false;
+          }
+          else if ($('#ddoperatorelectricity').find(":selected").val() == "0") {
+              toastr.warning('Warning', 'Select Operator');
+              document.getElementById("ddoperatorelectricity").focus();
+              return false;
+          }
+          else {
+              var consumerno = document.getElementById("consumerno").value;
+              var optional1 = '';
+
+              if (document.getElementById('optional1Type').value == 'textbox') {
+                  optional1 = document.getElementById("optional1").value;
+
+              }
+              else if (document.getElementById('optional1Type').value == 'dropdown') {
+                  optional1 = $('#ddoptional1').find(":selected").text();
+              }
+              else {
+                  optional1 = '';
+              }
+
+
+              var operatorId = $('#ddoperatorelectricity').find(":selected").val();
+              FetchDetails(consumerno, operatorId, optional1);
+          }
+    }
+
+
+    function validateFastagRecharge() {
+        if (document.getElementById("consumerno").value == "") {
+            toastr.warning('Warning', 'Enter Consumer Number');
+            document.getElementById("consumerno").focus();
+            return false;
+        }
+        else if ($('#ddoperatorelectricity').find(":selected").val() == "0") {
+            toastr.warning('Warning', 'Select Operator');
+            document.getElementById("ddoperatorelectricity").focus();
+            return false;
+        }
+        else if (document.getElementById("ElectricityAmount").value == "") {
+            toastr.warning('Warning', 'Enter Amount');
+            document.getElementById("ElectricityAmount").focus();
+            return false;
+        }
+        else {
+            document.getElementById("headerconfirm").innerHTML = "Book LPG Cylinder";
+            document.getElementById("mobilenoheadingconfirm").innerHTML ="<i class='fa-solid fa-mobile-screen'></i> Consumer Number";
+
+            document.getElementById("amountConfirm").value = document.getElementById("ElectricityAmount").value;
+            document.getElementById("operatorConfirm").value = $('#ddoperatorelectricity').find(":selected").text();
+                document.getElementById("mobileConfirm").value = document.getElementById("consumerno").value;
+            document.getElementById("circleConfirm").value = $('#ddcircleelectricity').find(":selected").text();
+            document.getElementById("customermobileConfirm").value = '';
+
+
+            if (document.getElementById('optional1Type').value == 'textbox') {
+                document.getElementById("optional1Confirm").value = document.getElementById("optional1").value;
+
+            }
+            else if (document.getElementById('optional1Type').value == 'dropdown') {
+                document.getElementById("optional1Confirm").value = $('#ddoptional1').find(":selected").text();
+            }
+            else {
+                document.getElementById("optional1Confirm").value = '';
+            }
+
+
+
+            document.getElementById("operatoridConfirm").value = $('#ddoperatorelectricity').find(":selected").val();
+
+            document.getElementById("circleConfirm").style.display = 'none';
+            document.getElementById("liCircledetail").style.display = 'none';
+
+                var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+
+            if (LoginEMail != '') {
+                document.getElementById('divBalance').style.display = 'block';
+                document.getElementById('divUsedBalance').style.display = 'block';
+                showBalance();
+            }
+            else {
+                document.getElementById('divBalance').style.display = 'none';
+                document.getElementById('divUsedBalance').style.display = 'none';
+            }
+
+
+                showModal();
+
+
+        }
+    }
+    function FetchDetails(consumerno, operatorId,optional1) {
+
+        //alert(consumerno);
+        //alert(operatorId);
+        var jsondata = { 'vehiclenumber': consumerno, 'operatorId': operatorId, 'optional1': optional1 };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/fetchDetailsCylinder',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[0]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    //document.getElementById('userbalancetop').innerHTML = result[0];
+                    if (result[0] == '2') {
+                        //alert(result[0]);
+                        document.getElementById('divAmount').style.display = 'block';
+                        //document.getElementById('divminmaxvalue').style.display = 'block';
+                        document.getElementById('btnrechargefetch').style.display = 'none';
+                        document.getElementById('btnrecharge').style.display = 'block';
+                        document.getElementById('diverrormessage').style.display = 'none';
+
+                        document.getElementById('divdetail').style.display = 'block';
+                        //document.getElementById('divdetail2').style.display = 'block';
+                        //document.getElementById('divdetail3').style.display = 'block';
+                        document.getElementById('lblname').innerHTML = 'Name : ' + result[2];
+                        document.getElementById('ElectricityAmount').value = result[3];
+                        //document.getElementById('lblbilldate').innerHTML = 'Bill Date : ' + result[4];
+                        //document.getElementById('lblduedate').innerHTML = 'Due Date : ' + result[5];
+
+
+
+                        //document.getElementById('lblminvalue').innerHTML = result[2];
+                        //document.getElementById('lblmaxvalue').innerHTML = result[3];
+                    }
+                    else {
+
+                        //alert(result[0]);
+                        //alert('error');
+                        document.getElementById('divAmount').style.display = 'none';
+
+                        //document.getElementById('divdetail2').style.display = 'none';
+                        //document.getElementById('divdetail3').style.display = 'none';
+                        //document.getElementById('divminmaxvalue').style.display = 'none';
+                        document.getElementById('diverrormessage').style.display = 'block';
+
+                        document.getElementById('divdetail').style.display = 'none';
+
+
+                        document.getElementById('btnrechargefetch').style.display = 'block';
+                        document.getElementById('btnrecharge').style.display = 'none';
+
+                        document.getElementById('lblerror').innerHTML = result[1];
+                    }
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+
+    $(document).ready(function () {
+        //alert('a');
+        loadfastagoperator();
+
+    });
+
+
+
+    function loadfastagoperator() {
+        $('#ddoperatorelectricity').empty();
+        //alert('a');
+        $.ajax({
+
+            url: '/api/Recharge/getOperatorCylinder',
+            //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+            data: "",
+            dataType: "json",
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+
+            success: function (result) {
+                //alert(result);
+                //console.log(result.d);
+                $('#ddoperatorelectricity').empty();
+                $('#ddoperatorelectricity').append('<option value="0">Select Operator</option>');
+                $.each(result, function (result, value) {
+
+                    $("#ddoperatorelectricity").append($("<option></option>").val(value.id).html(value.operator));
+                })
+                //toastr.success('Success', result.d);
+
+            },
+            beforeSend: function () {
+                                                                                    /*$("#ddoperatorelectricity").html('Loading...')*/;
+                $('#ddoperatorelectricity').empty().append('<option>Loading...</option>');
+            },
+            complete: function () {
+                // Code to hide spinner.
+            }
+        })
+    }
+
+
+    function validateRechargeconfirm() {
+        if (document.getElementById("emailConfirm").value == "") {
+            toastr.warning('Warning', 'Enter Email');
+            document.getElementById("emailConfirm").focus();
+            return false;
+        }
+
+        //else if (ValidateEmail(document.getElementById("emailConfirm"))==false)
+        // {
+        //     toastr.warning('Warning', 'Enter Valid Email');
+        //     document.getElementById("emailConfirm").focus();
+        //     return false;
+        // }
+
+
+
+
+        else if (document.getElementById("nameConfirm").value == "") {
+            toastr.warning('Warning', 'Enter Name');
+            document.getElementById("nameConfirm").focus();
+            return false;
+        }
+
+        else if (document.getElementById("mobileConfirm").value == "") {
+            toastr.warning('Warning', 'Enter Consumer No');
+            document.getElementById("mobileConfirm").focus();
+            return false;
+        }
+        if (document.getElementById("headerconfirm").innerHTML == 'Mobile Recharge') {
+            if (document.getElementById("mobileConfirm").value.length != 10) {
+                toastr.warning('Warning', 'Enter Valid Number');
+                document.getElementById("mobileConfirm").focus();
+                return false;
+            }
+        }
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (document.getElementById("emailConfirm").value.match(validRegex)) {
+            //alert("Valid email address!");
+            //document.form1.text1.focus();
+            document.getElementById("emailConfirm").focus();
+            //return true;
+        } else {
+            //alert("Invalid email address!");
+            //document.form1.text1.focus();
+            toastr.warning('Warning', 'Enter Valid Email');
+            document.getElementById("emailConfirm").focus();
+            return false;
+        }
+
+    }
+    function showModal() {
+        $('#proceedRecharge').modal({ backdrop: 'static', keyboard: false })
+    }
+    function Closepopup() {
+        $('#proceedRecharge').modal('hide');
+        $('body').removeClass('modal-open');
+        $('body').css('padding-right', '0');
+        $('.modal-backdrop').remove();
+    }
+      function showBalance() {
+
+             var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            var jsondata = { 'email': LoginEMail };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getBalance',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    document.getElementById('walletbalanceconfirm').value = result[0];
+                    document.getElementById('emailConfirm').value = result[1];
+                    document.getElementById('nameConfirm').value = result[3];
+                    document.getElementById('customermobileConfirm').value = result[2];
+                    //alert(result[4]);
+                    //document.getElementById('zapcoinsbalanceconfirm').innerHTML = result[4];
+
+
+
+                    var Bal = parseFloat(document.getElementById('walletbalanceconfirm').value);
+                    var RechAmt = parseFloat(document.getElementById('amountConfirm').value);
+                    if (Bal >= RechAmt) {
+                        document.getElementById('usedwalletbalanceconfirm').value = RechAmt;
+                    }
+                    else {
+                        document.getElementById('usedwalletbalanceconfirm').value = Bal;
+                    }
+
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+    }
+
+
+    $("#ddoperatorelectricity").change(function () {
+
+        document.getElementById('divconsumerno').style.display = 'block';
+        document.getElementById('diverrormessage').style.display = 'none';
+        document.getElementById('divdetail').style.display = 'none';
+        document.getElementById('lblname').innerHTML = '';
+        document.getElementById('ElectricityAmount').value = '';
+        //document.getElementById('lblbilldate').innerHTML = '';
+        //document.getElementById('lblduedate').innerHTML = '';
+        document.getElementById("consumerno").value = '';
+
+        document.getElementById('divAmount').style.display = 'none';
+
+        document.getElementById('divoptional1').style.display = 'none';
+        document.getElementById('optional1').placeholder = '';
+        document.getElementById('optional1').value = '';
+
+        document.getElementById('btnrechargefetch').style.display = 'block';
+        document.getElementById('btnrecharge').style.display = 'none';
+
+        $('#ddoptional1').empty();
+        document.getElementById('optional1Type').value = '';
+
+        var cid = $('#ddoperatorelectricity').find(":selected").val();
+        var jsondata = { 'operatorId': cid };
+        //alert(jsondata);
+        $.ajax({
+
+            url: '/api/Recharge/getOperatorDetail',
+            data: JSON.stringify(jsondata),
+
+            dataType: "json",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+
+            success: function (result) {
+                //alert(result);
+                //console.log(result.d);
+
+                //toastr.success('Success', result.d);
+                document.getElementById('consumerno').placeholder = result[0];
+                document.getElementById('lbldisplaynote').innerHTML = result[1];
+
+                if (result[2] != '') {
+
+                    document.getElementById('divoptional1').style.display = 'block';
+                    document.getElementById('optional1').placeholder = result[2];
+
+                    //alert(result[6]);
+                    document.getElementById('optional1Type').value = result[6]
+                    if (result[6] == 'textbox') {
+                        document.getElementById('optional1').style.display = 'block';
+                        document.getElementById('ddoptional1').style.display = 'none';
+                    }
+                    else if (result[6] == 'dropdown') {
+
+                        var str = result[7] ;
+                        var str_array = str.split(',');
+
+                        $('#ddoptional1').empty();
+                        $('#ddoptional1').append('<option value="0">Select ' + result[2]+'</option>');
+
+
+                        for (var i = 0; i < str_array.length; i++) {
+                            // Trim the excess whitespace.
+                            str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+                            //alert(str_array[i]);
+
+                            $("#ddoptional1").append($("<option></option>").val(str_array[i]).html(str_array[i]));
+
+                            // Add additional code here, such as:
+
+                        }
+
+                        document.getElementById('optional1').style.display = 'none';
+                        document.getElementById('ddoptional1').style.display = 'block';
+
+                    }
+                }
+
+
+
+            },
+            beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                $('#AjaxLoader').show();
+            },
+            complete: function () {
+                $('#AjaxLoader').hide();
+            }
+        })
+
+    });
+    </script>
+    }
+    @section MobileHeader{
+        Book Gas Cylinder Online
+    }

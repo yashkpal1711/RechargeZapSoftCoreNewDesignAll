@@ -1,0 +1,758 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "FASTag Recharge Online | Get Offers & Deals on FASTag Recharge on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+<section class="main-banner">
+    <div class="container-fluid">
+        <div class="main-recharge-row">
+            <div class="recharge-options">
+                <div class="recharge-items">
+                    <ul>
+                        <li>
+                            <a href="/home/recharge">
+                                <img src="~/new2/img/icon/mobile-phone.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/1.png" alt="Recharge" class="icon-active" />
+                                <span> Recharge</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/home/dth">
+                                <img src="~/new2/img/icon/television.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/2.png" alt="Recharge" class="icon-active" />
+                                <span> DTH</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/home/Broadband">
+                                <img src="~/new2/img/icon/sim-card.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/3.png" alt="Recharge" class="icon-active" />
+                                <span> Data Card</span>
+                            </a>
+                        </li>
+                        <li>
+
+                            <a href="/Home/Landline">
+                                <img src="~/new2/img/icon/landlinee.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/4.png" alt="Recharge" class="icon-active" />
+                                <span> Landline</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/Broadband">
+                                <img src="~/new2/img/icon/internet.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/5.png" alt="Recharge" class="icon-active" />
+                                <span> Broadband</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Cylinder">
+                                <img src="~/new2/img/icon/gas-tank.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/6.png" alt="Recharge" class="icon-active" />
+                                <span> Cylinder</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/gas">
+                                <img src="~/new2/img/icon/stove.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/7.png" alt="Recharge" class="icon-active" />
+                                <span> Piped Gas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Electricity">
+                                <img src="~/new2/img/icon/light-bulb.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/8.png" alt="Recharge" class="icon-active" />
+                                <span> Electricity</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/water">
+                                <img src="~/new2/img/icon/water-tap.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/9.png" alt="Recharge" class="icon-active" />
+                                <span> Water</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="Fastag">
+                                <img src="~/new2/img/icon/toll.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" />
+                                <span> FASTag</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!" class="d-more-serv">
+                                <img src="~/new2/img/icon/menu.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/11.png" alt="Recharge" class="icon-active" />
+                                <span> More+</span>
+                            </a>
+
+                            <div class="d-more-service">
+                                <div class="d-inner">
+                                    <div class="d-service-col">
+                                        <a href="/Home/Insurance">
+                                            <img src="~/new2/img/icon/insurance.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Insurance</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/credit-card.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Credit Card</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/cable.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Cable</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/loan.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Loan</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/education.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Education Fees</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/housing.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Housing Society</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/hospital.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Hospital</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/muncipal.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Municipal Services</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/challan.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Challan</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/metro.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Metro</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-field-area">
+                <div class="container-fluid" style="padding:0px 30px;">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="form-area-box home-bg-grey">
+                                <form>
+                                    <div class="main-banner-title">
+                                        <h1>FASTag Recharge</h1>
+                                        <img src="~/new2/img/bharat-bill.png">
+                                    </div>
+
+                                    <!-- <div class="form-area radio-input home-frm">
+                                      <div class="div-radio">
+                                        <input type="radio" name="type" id="prepaid" checked />
+                                        <label for="prepaid">Prepaid</label>
+                                      </div>
+                                      <div class="div-radio">
+                                        <input type="radio" name="type" id="postpaid" />
+                                        <label for="postpaid">Postpaid</label>
+                                      </div>
+                                    </div>
+                                    <div class="form-area home-frm">
+                                      <span>+91</span>
+                                      <input type="text" name="" placeholder="000-000-0000" required />
+                                    </div> -->
+
+                                    <div class="form-area home-frm">
+                                        <!-- <label class="label-title">Operator</label> -->
+                                        <select id="ddoperatorfastag"></select>
+                                    </div>
+                                    <div class="form-area home-frm">
+                                        <!-- <label class="label-title">Circle</label> -->
+                                        <input type="text" id="vehicleNumber" style="text-transform:uppercase" autocomplete="off" placeholder="Vehicle Registration Number">
+
+                                        @*<input type="text" name="" placeholder="Vehicle Registration Number" required />*@
+                                    </div>
+
+                                    <div class="form-area home-frm" id="divAmount" style="display:none">
+                                        <!-- <label class="label-title">Mobile Number*</label> -->
+                                        <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                        @* <input type="text" name="" placeholder="599.00" required />*@
+                                        <input type="number" class="newnumbertype" style="width:70%;" onkeypress="return isNumber(event)" id="fastagAmount" placeholder="Amount">
+
+                                    </div>
+                                    <div id="divminmaxvalue" style="display:none">
+                                        <i class="fa fa-indian-rupee-sign" style="font-size:11px;color:green"></i>     <label id="lblminvalue" style="font-size:11px;color:green">  0</label>-<i class="fa fa-indian-rupee-sign" style="font-size:11px;color:green"></i>     <label id="lblmaxvalue" style="font-size:11px;color:green">  0</label>
+                                    </div>
+                                    <div id="diverrormessage" style="display:none">
+                                        <label id="lblerror" style="color:darkred"> </label>
+                                    </div>
+                                    <div class="form-area-btn">
+                                        @*<button type="submit">Proceed</button>*@
+                                        <input type="button" class="submitbtn" id="btnrechargefetch" value="Proceed to Recharge" onclick="return  validateFastagRechargeFetch();" />
+                                        <input type="button" class="submitbtn" id="btnrecharge" style="display:none;" value="Proceed to Recharge" onclick="return  validateFastagRecharge();" />
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12">
+                            <div class="banner-slider">
+                                <img src="~/new2/img/small-banner/fastag.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Operators -->
+<section class="operators-sec">
+    <div class="container-fluid">
+        <div class="operators-bx">
+            <div class="title-rw">
+                <h6 class="title">Select Operators</h6>
+                <div class="title-line"></div>
+            </div>
+            <div class="operators-row">
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/fastag/1.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/fastag/2.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/fastag/3.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/fastag/4.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/fastag/5.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/fastag/6.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Operators -->
+<!-- Section Start-->
+<section style="background-color: #f5f5f5;" class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">Make your journey easy with FASTag</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph">
+            <p>
+                With the rapid transformation of Digitalization, the face of the Indian economy is changing. FASTag is the result of this transformation and digitalization. Remember the days when you had to pay your tax by standing in line between long vehicles to cross a toll booth. The process was very time-consuming and effort-taking. But now you don't need to wait in queues to pay your toll tax. Your toll tax will automatically be deducted whenever you cross the highway toll booths. General fastag is usually attached to the widescreen of your vehicle. Whenever you cross the toll booth it detects your Fastag and deducts your required tax. Fastag is also necessary because the government has made it mandatory for every vehicle user. Without which you may have to pay the double amount of tax at the toll booth.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Section Start-->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">Make your journey more smooth and hassle-free with FASTag Recharge</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph">
+            <p>In order to make your journey more speeder, smooth and hassle-free, RechargeZap introduced users with FASTag Recharge. now you can recharge your fastag account easily with RechargeZap and go on the interstate journey without being stopped at the toll booth.</p>
+            <p>
+                Here is the process of how you can recharge your general FASTag account easily with rechargeZap
+            </p>
+            <ul>
+                <li>	Open the RechargeZap Website and search for FASTag                                 </li>
+                <li>	Navigate to FASTag                                                                 </li>
+                <li>	Click on the FASTag issuing bank and input the registered number on the vehicles.  </li>
+                <li>	Now You need to enter the amount you want to recharge for your FASTag              </li>
+                <li>	Choose your preferred Payment option and done your payment.                        </li>
+
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- why choose -->
+<section class="why-choose-sec m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">
+                Why choose RechargeZap for FASTag Recharge
+            </h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph why-choose-para">
+            <p>
+                Choosing RechargeZap for your FASTag recharge can be very beneficial for you.  It gives you the option to recharge your FASTag with a very easy-to-use and convenient process.
+            </p>
+            <p>
+                Here are some very considerable benefits of using RechargeZap for your FASTag recharge
+            </p>
+            <p>
+                <b>Save Time: </b>You can easily save most of your valuable time with our very fast and reliable FASTag recharge services. Now you do not need to wait for long to pay your toll tax at every toll booth. You can reduce your waiting time just by recharging your FASTag with RechargeZap
+            </p>
+            <p>
+                <b>Save money and fuel:</b> According to the government's hard order, if you do not have FASTag, you can have to give double tax. Therefore by recharging your FASTag account from Rechargezap you can save lots of money and Fuel.
+            </p>
+            <p>
+                <b> Smooth journey: </b> With the help of our easy-to-use and reliable FASTag recharge you can make your journey very smooth and hassle-free as you do not have to wait in a long queue to pay your toll tax.
+            </p>
+            <p>
+                <b>Transactional alerts:</b> You get transaction alerts whenever your money gets deducted from your FASTag account.
+            </p>
+        </div>
+
+    </div>
+</section>
+<!-- why choose -->
+<!-- Section Start-->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">
+                Frequently Asked Questions
+            </h2>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="faq-box">
+            <div class="accordion" id="accordionExample">
+                <div class="card faq-main">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            Is FASTag mandatory for all vehicles in India?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                Yes, as per the latest government rules and regulations, FASTag has been made mandatory for every vehicle on the highway all over India.  With the help of this, you will no longer have to stop at every toll booth to pay toll tax.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            How to recharge my FASTag account through RechargeZap?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                You can recharge your FASTag account easily with RechargeZap just by tapping on FASTag option and choosing the right FASTag issuing bank name on our site. You can also read the above-mentioned Steps to complete your FASTag recharge
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree">
+                            What are the benefits of FASTag while driving on the highways?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                According to the government's statement, you get a 2.5% instant discount on paying toll tax from FASTag, apart from this it also saves a lot of your time by making your journey hassle-free. You don't have to stop at every toll booth to pay your taxes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Features-Section -->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/shield.png" alt="" />
+                    </div>
+                    <h5>100% Secure Payments</h5>
+                    <p>
+                        Safeguarding personal information.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/trust.png" alt="" />
+                    </div>
+                    <h5>Trust Pay</h5>
+                    <p>
+                        Guaranteed safe and secure checkout.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/technical.png" alt="" />
+                    </div>
+                    <h5>Support</h5>
+                    <p>
+                        Have a query? We’re here to help.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <!-- Features-Section -->
+    <script type="text/javascript">
+
+
+      function validateFastagRechargeFetch() {
+          if (document.getElementById("vehicleNumber").value == "") {
+              toastr.warning('Warning', 'Enter Vehicle Registration Number');
+              document.getElementById("vehicleNumber").focus();
+              return false;
+          }
+          else if ($('#ddoperatorfastag').find(":selected").val() == "0") {
+              toastr.warning('Warning', 'Select Operator');
+              document.getElementById("ddoperatorfastag").focus();
+              return false;
+          }
+          
+          else {
+              var vehicleNumber = document.getElementById("vehicleNumber").value;
+              var operatorId = $('#ddoperatorfastag').find(":selected").val();
+               FetchDetails(vehicleNumber, operatorId);
+          }
+    }
+
+
+    function validateFastagRecharge() {
+        if (document.getElementById("vehicleNumber").value == "") {
+            toastr.warning('Warning', 'Enter Vehicle Registration Number');
+            document.getElementById("vehicleNumber").focus();
+            return false;
+        }
+        else if ($('#ddoperatorfastag').find(":selected").val() == "0") {
+            toastr.warning('Warning', 'Select Operator');
+            document.getElementById("ddoperatorfastag").focus();
+            return false;
+        }
+        else if (document.getElementById("fastagAmount").value == "") {
+            toastr.warning('Warning', 'Enter Amount');
+            document.getElementById("fastagAmount").focus();
+            return false;
+        }
+        else if (parseFloat(document.getElementById("fastagAmount").value) > 30000) {
+            toastr.warning('Warning', 'Amount Must Be Less Than Or Equal To 30000');
+            document.getElementById("fastagAmount").focus();
+            return false;
+        }
+        else {
+            document.getElementById("headerconfirm").innerHTML = "Fastag Recharge";
+            document.getElementById("mobilenoheadingconfirm").innerHTML ="<i class='fa-solid fa-mobile-screen'></i> Vehicle Number";
+
+            document.getElementById("amountConfirm").value = document.getElementById("fastagAmount").value;
+            document.getElementById("operatorConfirm").value = $('#ddoperatorfastag').find(":selected").text();
+                document.getElementById("mobileConfirm").value = document.getElementById("vehicleNumber").value;
+                //document.getElementById("circleConfirm").value = $('#ddcircle').find(":selected").text();
+                document.getElementById("customermobileConfirm").value ='';
+
+            document.getElementById("operatoridConfirm").value = $('#ddoperatorfastag').find(":selected").val();
+
+            document.getElementById("circleConfirm").style.display = 'none';
+            document.getElementById("liCircledetail").style.display = 'none';
+
+                var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+
+            if (LoginEMail != '') {
+                document.getElementById('divBalance').style.display = 'block';
+                document.getElementById('divUsedBalance').style.display = 'block';
+                showBalance();
+            }
+            else {
+                document.getElementById('divBalance').style.display = 'none';
+                document.getElementById('divUsedBalance').style.display = 'none';
+            }
+
+
+                showModal();
+
+
+        }
+    }
+    function FetchDetails(vehicleNumber, operatorId) {
+
+        //alert(vehicleNumber);
+        //alert(operatorId);
+          var jsondata = { 'vehicleNumber': vehicleNumber, 'operatorId': operatorId };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/fetchDetailsFastag',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[0]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    //document.getElementById('userbalancetop').innerHTML = result[0];
+                    if (result[0] == '2') {
+                        //alert(result[0]);
+                        document.getElementById('divAmount').style.display = 'block';
+                        document.getElementById('divminmaxvalue').style.display = 'block';
+                        document.getElementById('btnrechargefetch').style.display = 'none';
+                        document.getElementById('btnrecharge').style.display = 'block';
+                        document.getElementById('diverrormessage').style.display = 'none';
+
+
+
+                        document.getElementById('lblminvalue').innerHTML = result[2];
+                        document.getElementById('lblmaxvalue').innerHTML = result[3];
+                    }
+                    else {
+
+                        //alert(result[0]);
+                        //alert('error');
+                        document.getElementById('divAmount').style.display = 'none';
+                        document.getElementById('divminmaxvalue').style.display = 'none';
+                        document.getElementById('diverrormessage').style.display = 'block';
+
+
+                        document.getElementById('btnrechargefetch').style.display = 'block';
+                        document.getElementById('btnrecharge').style.display = 'none';
+
+                        document.getElementById('lblerror').innerHTML = '*Invalid Vehicle Number';
+                    }
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+
+    $(document).ready(function () {
+        //alert('a');
+        loadfastagoperator();
+    });
+    function loadfastagoperator() {
+        $('#ddoperatorfastag').empty();
+
+        $.ajax({
+
+            url: '/api/Recharge/GetOperatorFastag',
+            //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+            data: "",
+            dataType: "json",
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+
+            success: function (result) {
+                //alert(result);
+                //console.log(result.d);
+                $('#ddoperatorfastag').empty();
+                $('#ddoperatorfastag').append('<option value="0">Select Operator</option>');
+                $.each(result, function (result, value) {
+
+                    $("#ddoperatorfastag").append($("<option></option>").val(value.id).html(value.operator));
+                })
+                //toastr.success('Success', result.d);
+
+            },
+            beforeSend: function () {
+                                                                                    /*$("#ddoperatorfastag").html('Loading...')*/;
+                $('#ddoperatorfastag').empty().append('<option>Loading...</option>');
+            },
+            complete: function () {
+                // Code to hide spinner.
+            }
+        })
+    }
+
+
+    function validateRechargeconfirm() {
+        if (document.getElementById("emailConfirm").value == "") {
+            toastr.warning('Warning', 'Enter Email');
+            document.getElementById("emailConfirm").focus();
+            return false;
+        }
+
+        //else if (ValidateEmail(document.getElementById("emailConfirm"))==false)
+        // {
+        //     toastr.warning('Warning', 'Enter Valid Email');
+        //     document.getElementById("emailConfirm").focus();
+        //     return false;
+        // }
+
+
+
+
+        else if (document.getElementById("nameConfirm").value == "") {
+            toastr.warning('Warning', 'Enter Name');
+            document.getElementById("nameConfirm").focus();
+            return false;
+        }
+
+        else if (document.getElementById("mobileConfirm").value == "") {
+            toastr.warning('Warning', 'Enter Mobile');
+            document.getElementById("mobileConfirm").focus();
+            return false;
+        }
+        if (document.getElementById("headerconfirm").innerHTML == 'Mobile Recharge') {
+            if (document.getElementById("mobileConfirm").value.length != 10) {
+                toastr.warning('Warning', 'Enter Valid Number');
+                document.getElementById("mobileConfirm").focus();
+                return false;
+            }
+        }
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (document.getElementById("emailConfirm").value.match(validRegex)) {
+            //alert("Valid email address!");
+            //document.form1.text1.focus();
+            document.getElementById("emailConfirm").focus();
+            //return true;
+        } else {
+            //alert("Invalid email address!");
+            //document.form1.text1.focus();
+            toastr.warning('Warning', 'Enter Valid Email');
+            document.getElementById("emailConfirm").focus();
+            return false;
+        }
+
+    }
+    function showModal() {
+        $('#proceedRecharge').modal({ backdrop: 'static', keyboard: false })
+    }
+    function Closepopup() {
+        $('#proceedRecharge').modal('hide');
+        $('body').removeClass('modal-open');
+        $('body').css('padding-right', '0');
+        $('.modal-backdrop').remove();
+    }
+      function showBalance() {
+
+             var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            var jsondata = { 'email': LoginEMail };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getBalance',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    document.getElementById('walletbalanceconfirm').value = result[0];
+                    document.getElementById('emailConfirm').value = result[1];
+                    document.getElementById('nameConfirm').value = result[3];
+                    document.getElementById('customermobileConfirm').value = result[2];
+                    //alert(result[4]);
+                    //document.getElementById('zapcoinsbalanceconfirm').innerHTML = result[4];
+
+
+
+                    var Bal = parseFloat(document.getElementById('walletbalanceconfirm').value);
+                    var RechAmt = parseFloat(document.getElementById('amountConfirm').value);
+                    if (Bal >= RechAmt) {
+                        document.getElementById('usedwalletbalanceconfirm').value = RechAmt;
+                    }
+                    else {
+                        document.getElementById('usedwalletbalanceconfirm').value = Bal;
+                    }
+
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+    </script>
+    }
+
+    @section MobileHeader{
+        FASTag Recharge
+    }

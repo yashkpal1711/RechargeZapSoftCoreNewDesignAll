@@ -1,0 +1,28 @@
+﻿@model RechargeZapSoftCore.Models.clsRecharge
+@{
+    ViewData["Title"] = "Online Mobile Recharge - Bill Payments & Prepaid Recharge on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+@*payment status : @ViewBag.PaymentStatus
+    gateway response : @ViewBag.PaymentGayewayResponse
+     Action : @ViewBag.ActionName*@
+
+<div class="failedpage pb-5">
+    <div class="san_container">
+        @*<div class="homepagelink">
+            <a href="/"><img src="~/new2/img/home.png" alt="home">Home</a>
+        </div>*@
+   
+
+        <div class="transection_detail mt-4">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h2>Transaction Failed</h2>
+            <p class="failtranpara">If the amount is deducted from your account, it will be added to your wallet within 24 hours.</p>
+        </div>
+    </div>
+</div>

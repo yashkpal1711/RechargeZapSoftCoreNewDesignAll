@@ -1,0 +1,91 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/yash/myComputer/Recharge Zap/Backend/RechargeZapSoftCoreNewDesignAll/RechargeZapSoftCore/RechargeZapSoftCore.csproj": {}
+  },
+  "projects": {
+    "/home/yash/myComputer/Recharge Zap/Backend/RechargeZapSoftCoreNewDesignAll/RechargeZapSoftCore/RechargeZapSoftCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/yash/myComputer/Recharge Zap/Backend/RechargeZapSoftCoreNewDesignAll/RechargeZapSoftCore/RechargeZapSoftCore.csproj",
+        "projectName": "RechargeZapSoftCore",
+        "projectPath": "/home/yash/myComputer/Recharge Zap/Backend/RechargeZapSoftCoreNewDesignAll/RechargeZapSoftCore/RechargeZapSoftCore.csproj",
+        "packagesPath": "/home/yash/.nuget/packages/",
+        "outputPath": "/home/yash/myComputer/Recharge Zap/Backend/RechargeZapSoftCoreNewDesignAll/RechargeZapSoftCore/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/yash/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "targetAlias": "netcoreapp2.2",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "System.Data.DataSetExtensions": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.114/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

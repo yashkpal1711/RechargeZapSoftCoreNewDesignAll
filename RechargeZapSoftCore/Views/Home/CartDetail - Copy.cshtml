@@ -1,0 +1,404 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Gift Card | Get Gift Cards on on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+@*<link href="~/new2/css/sanstyle.css" rel="stylesheet" />
+    <link href="~/new2/css/responsive.css" rel="stylesheet" />*@
+<div class="breadcrumbsection">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="" aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color: transparent !important;padding: 0;margin: 0;">
+                    <li class="breadcrumb-item"><a href="/">Cart Detail</a></li>
+                    <li class="active breadcrumb-item" aria-current="page">Cart Detail</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<section>
+    <div class="productCart_page">
+        <div class="san_container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="productCart_row p-3">
+                        <div class="productCart_img">
+                            <img src="./img/small-banner/pizzahut.webp" alt="logo" />
+                        </div>
+                        <div class="productCart_detail">
+                            <div class="productCart_abouts">
+                                <div class="productCart_acc extraproductcard">
+                                    <span>Deliver to: </span>
+                                    <span>Praveen</span>
+                                </div>
+                                <div class="productCart_acc">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <span>9876543211</span>
+                                </div>
+                                <div class="productCart_acc">
+                                    <span><i class="fa-solid fa-envelope"></i></span>
+                                    <span>praveen@rechargezap.com</span>
+                                </div>
+                            </div>
+                            <div class="productCart_abouts">
+                                <div class="productCart_acc extradeliver">
+                                    <span class="deliverhead">Deliver via: </span>
+                                    <span class="delivercontent">
+                                        <div class="form-check-inline">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" value="">whatsapp + Email
+                                            </label>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="productCart_acc extradeliver2">
+                                    <span></span>
+                                    <span>
+                                        <div class="form-check-inline">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" value="">SMS + Email
+                                            </label>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gifting_product">
+                            <div class="select_gifting">
+                                <div class="form-check form-check-inline" onclick="toggleGiftingForm()">
+                                    <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio9" value="option9">
+                                    <label class="form-check-label" onclick="toggleGiftingForm()" for="inlineRadio9">I am Gifting</label>
+                                </div>
+                                <i class="fa fa-angle-down" id="angleIcon" aria-hidden="true"></i>
+                            </div>
+                            <div class="gifting_form" id="giftingForm">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="gifting_form_img">
+                                            <img src="../img/small-banner/intro_banner1.png" alt="form_banner" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="giftingform_box">
+                                            <form>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="giftingform_Select1">
+                                                        <option>Raksha Bandhan</option>
+                                                        <option>Annivarsary</option>
+                                                        <option>Happy Birthday</option>
+                                                        <option>Wedding</option>
+                                                        <option>Friendship Day</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="giftingform_naame" placeholder="Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="number" class="form-control" id="giftingform_mobilenumber" placeholder="Number">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" id="giftingform_email" placeholder="Email">
+                                                </div>
+                                                <button type="submit" class="btn submitcartbtn">Update</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12" id="divcartlist">
+
+                        </div>
+                    </div>
+
+                    @*<div id="vrdetail1" class="productCart_row_box p-3">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="productCart_imgs">
+                                        <img src="./img/small-banner/pizzahut.webp" alt="logo" />
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="aboutproducts">
+                                        <h2>Pizza Hut</h2>
+                                        <p>E-Gift Card(Instant Vouchers)</p>
+                                        <div class="product_calc">
+                                            <div class="product_value">
+                                                <p>Value</p>
+                                                <h6>₹ 100</h6>
+                                            </div>
+                                            <div class="product_value">
+                                                <p>Quantity</p>
+                                                <div class="product_incdec">
+                                                    <!-- <div class="counter countdec" onclick="decval1(100,'value','discount','saving','remaining','count','vrcount','vrvalue','tvalue', 'svalue', 'pvalue','vrdetail1','hiddenTotalId')" >-</div> -->
+                                                    <div class="counter count"><span id="vrcount1">0</span></div>
+                                                    <!-- <div class="counter countinc" onclick="incval1(100,'value','discount','saving','remaining','count','vrcount','vrvalue','tvalue', 'svalue', 'pvalue','vrdetail1', 'hiddenTotalId')" >+</div> -->
+                                                </div>
+                                            </div>
+                                            <div class="product_value">
+                                                <p>Total Value</p>
+                                                <h6>₹ <span id="vrvalue1">0</span></h6>
+                                            </div>
+                                            <div class="product_value">
+                                                <p>R* (E-Pay)</p>
+                                                <h6>2</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="product_final_col">
+                                        <div class="product_final_start">
+                                            <div class="product_final_start_savepay">
+                                                <span>Saving</span><h6>₹ <span id="cartboxsaving1">120</span></h6>
+                                            </div>
+                                            <div class="product_final_start_savepay">
+                                                <span>You Pay</span><h6>₹ <span id="cartboxremaining1">250</span></h6>
+                                            </div>
+                                        </div>
+                                        <div class="product_final_end">
+                                            <span onclick="removeCard('vrdetail1','vrvalue','hiddenTotalId','count' )"><i class="fa fa-trash m-0" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="cart_box">
+                        <div class="cart_head">
+                            <h5>CART</h5>
+                        </div>
+                        <div class="cartdetail">
+                            <p>Total Value</p>
+                            <p id="tcountpara"></p>
+                            <p>₹ <span id="tvalue">100</span></p>
+                        </div>
+                        <div class="cartdetail">
+                            <p>Total You Save</p>
+                            <p>₹ <span id="svalue">10</span></p>
+                        </div>
+                        <div class="cartdetail">
+                            <p>Total You Pay</p>
+                            <p>₹ <span id="pvalue">90</span></p>
+                        </div>
+                        <div class="cart_btn">
+                            <button type="submit" class="btn submitcartbtn">Pay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+
+    <div class="modal fade" id="myselfpay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="proceed-head">
+                    <span></span>
+                    <button data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-angle-left"></i> Back</button>
+                </div>
+                <div class="modal-body">
+                    <div class="proceed-right giftpaymodal">
+                        <div class="proceed-steps">
+                            <span>Step 1</span>
+                            <span>Step 2</span>
+                            <span>Step 3</span>
+                        </div>
+                        <div class="proceed-logo">
+                            <img src="/new2/img/logo.jpg" alt="rechargezap">
+                        </div>
+                        <div class="procedd-form">
+                            <form method="post" action="/Home/PurchaseGiftCard">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="UserName" id="loginnamegiftcard" required placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="Email" class="form-control" id="loginemailgiftcard" required placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="UserMobile" class="form-control" id="loginmobilegiftcard" required placeholder="Contact Number">
+                                </div>
+                                <div class="form-group" id="divBalanceGiftCard">
+                                    <p style="margin-bottom:0px;"><i class="fa-solid fa-wallet"></i> Wallet Amount</p>
+                                    <!-- <p>₹0.00</p> -->
+                                    <input type="text" id="walletbalanceconfirm" class="form-control" readonly name="BalanceAmount" placeholder="₹0.00">
+                                </div>
+                                <div class="form-group" id="divUsedBalanceGiftCard">
+                                    <p style="margin-bottom:0px;"><i class="fa-solid fa-wallet"></i> Used Wallet Amount</p>
+                                    <!-- <p>₹0.00</p> -->
+                                    <input type="text" id="usedwalletbalanceconfirm" class="form-control" readonly name="UsedBalance" placeholder="₹0.00">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" onclick="return validategiftcard2();"> Pay Now</button>
+                                </div>
+                                <div class="proceed-text">
+                                    <p>It may take a few moments for this transaction to appear in your account</p>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link href="~/js/toastr/toastr.css" rel="stylesheet" />
+    <script src="~/js/toastr/toastr.min.js"></script>
+
+    @*  <link href="~/new2/css/sanstyle.css" rel="stylesheet" />*@
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />*@
+
+    <link href="~/new2/css/cdnjs.cloudflare.com_ajax_libs_OwlCarousel2_2.3.4_assets_owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/new2/css/cdnjs.cloudflare.com_ajax_libs_OwlCarousel2_2.3.4_assets_owl.theme.default.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script src="~/new2/js/sanjs.js"></script>
+    <script type="text/javascript">
+        function confirm_click() {
+            return confirm("Are you sure ?");
+        }
+
+    </script>
+    <script>
+
+
+        $(document).ready(function () {
+            GetCart();
+            //getGiftCardCategory();
+            //loadGiftCardBrand();
+        });
+
+        function GetCart() {
+
+            //alert($('#DenominationOrg').val());
+
+            $.ajax({
+                url: '/Home/GetCart', type: 'post', dataType: 'json',
+                //data: { 'productCode': $('#ProductCode').val(), 'denomination': $('#DenominationOrg').val(), 'qty': document.getElementById("count").innerHTML, 'discount': document.getElementById("discount").innerHTML, 'brandImage': $('#BrandImage').val(), 'brandName': document.getElementById("brandName").innerHTML },
+                success: function (data) {
+                    console.log(data);
+
+
+                    var totalamount2 = parseFloat('0');
+                    var totaldiscount2 = parseFloat('0');
+                    var finalamount2 = parseFloat('0');
+
+                    var giftdata = '';
+                    var items = "";
+                    $.each(data, function (result, value) {
+
+                        totalamount2 += (parseFloat(value.denomnation) * parseFloat(value.quantity));
+                        totaldiscount2 += ((parseFloat(value.denomnation) * parseFloat(value.quantity)) * parseFloat(value.discount)) / 100;
+
+
+                        var totalamount = parseFloat('0');
+                        var totaldiscount = parseFloat('0');
+                        var finalamount = parseFloat('0');
+
+                        totalamount = (parseFloat(value.denomnation) * parseFloat(value.quantity));
+                        totaldiscount = ((parseFloat(value.denomnation) * parseFloat(value.quantity)) * parseFloat(value.discount)) / 100;
+                        finalamount = totalamount - totaldiscount;
+                        giftdata += ' <div id="vrdetail1" class="productCart_row_box p-3"><div class="row"><div class="col-md-3"><div class="productCart_imgs"><img src="' + value.brandImage + '" alt="logo" /></div></div><div class="col-md-5"><div class="aboutproducts"><h2>' + value.brandName + '</h2><p>' + value.voucherType + '</p><div class="product_calc"><div class="product_value"><p>Value</p><h6>₹ ' + value.denomnation + '</h6></div><div class="product_value"><p>Quantity</p><div class="product_incdec"><div class="counter count"><span id="vrcount1">' + value.quantity + '</span></div></div></div><div class="product_value"><p>Total Value</p><h6>₹ <span id="vrvalue1">' + totalamount + '</span></h6></div><div class="product_value"><p>R* (E-Pay)</p><h6>2</h6></div></div></div></div><div class="col-md-4"><div class="product_final_col">                                        <div class="product_final_start">                                            <div class="product_final_start_savepay"><span>Saving</span><h6>₹ <span id="cartboxsaving1">' + totaldiscount + '</span></h6></div><div class="product_final_start_savepay"><span>You Pay</span><h6>₹ <span id="cartboxremaining1">' + finalamount + '</span></h6> </div></div> <div class="product_final_end"><span onclick="DeleteCart(' + value.id + ')"><i class="fa fa-trash m-0" aria-hidden="true"></i></span> </div></div></div></div></div>';
+
+                    });
+                    //console.log(giftdata);
+                    divcartlist.innerHTML = giftdata;
+                    finalamount2 = totalamount2 - totaldiscount2;
+
+
+                    //var totalamount = parseFloat('0');
+                    //var totaldiscount = parseFloat('0');
+                    //var finalamount = parseFloat('0');
+
+                    //data.forEach((element, index, array) => {
+
+
+                    //    totalamount += (parseFloat(element.denomnation) * parseFloat(element.quantity));
+                    //    totaldiscount += ((parseFloat(element.denomnation) * parseFloat(element.quantity)) * parseFloat(element.discount)) / 100;
+                    //});
+                    //finalamount = totalamount - totaldiscount;
+
+                    document.getElementById("tvalue").innerHTML = totalamount2;
+                    document.getElementById("svalue").innerHTML = totaldiscount2;
+                    document.getElementById("pvalue").innerHTML = finalamount2;
+
+
+
+                    //for (var key in data.Object) {
+                    //    var obj = data.messages[key];
+
+                    //}
+
+                },
+                beforeSend: function () {
+                        /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+
+            });
+
+        }
+
+        function DeleteCart(cartid) {
+
+            //alert($('#DenominationOrg').val());
+            //alert(cartid)
+            $.ajax({
+                url: '/Home/DeleteCart', type: 'post', dataType: 'json',
+                data: { 'cartid': cartid },
+                success: function (data) {
+                    console.log(data);
+                    //$("#divload").css({ 'display': 'none' });
+                    //$('#myModal').modal('hide');
+                    //alert('Details Edited SUccessfully');
+                    //window.location.href = '/Admin/DayBook';
+                    toastr.success('Success', 'Gift Card Removed From Cart Successfully');
+
+                    GetCart();
+
+
+                    //for (var key in data.Object) {
+                    //    var obj = data.messages[key];
+
+                    //}
+
+                },
+                beforeSend: function () {
+                        /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+
+            });
+
+        }
+
+    </script>
+
+
+
+}
+
+@section MobileHeader{
+    Cart Detail
+}

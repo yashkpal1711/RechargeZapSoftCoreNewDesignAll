@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "PayUMoneyPayment";
+    Layout = "~/Views/Shared/Sharedlayuout2.cshtml";
+}
+
+<h1>PayUMoneyPayment</h1>
+
+<form id="frm1" method="post" action="/Home/PayUMoneyPayment">
+
+    <input type="text" name="UserName" id="UserName" />
+    <input type="text" name="RechargeAmount" id="RechargeAmount" />
+    <input type="submit" class="fw-600 font-xsss text-grey-700 mt-1 float-right btn btn-success" name="btnPay" style="color:white !important; background-color:#081844;border-color:#081844 ;   padding: 8px 20px;" onclick="return  validateRechargeconfirm();" value="Pay Now" />
+
+
+</form>

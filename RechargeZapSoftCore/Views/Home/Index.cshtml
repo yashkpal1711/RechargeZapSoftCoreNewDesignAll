@@ -1,0 +1,2398 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R21BW298ES"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R21BW298ES');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5BMQ9CB');</script>
+    <!-- End Google Tag Manager -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "byfz90qg00");
+    </script>
+    <link rel="icon" type="image/x-icon" href="" />
+    <link rel="stylesheet" href="~/new2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/new2/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="~/new2/css/style.css" />
+    <link rel="stylesheet" href="~/new2/css/responsive.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/loader.css" />
+    <title>Online Mobile Recharge - Bill Payments, Prepaid Recharge, Buy Gift Cards & Get Exclusive Deals on RechargeZap</title>
+
+    <style>
+        .submitbtn {
+            background: #172c64;
+            /* background: linear-gradient(90deg, #10182b 0%, #172c65 100%); */
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 400;
+            padding: 10px 30px;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            height: 45px;
+            width: 100%;
+        }
+
+        .newnumbertype {
+            border: none;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+        }
+
+        newnumbertype::-webkit-inner-spin-button,
+        newnumbertype::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .submitpanbtn {
+            background-color: #172c64;
+            border: none;
+            outline: none;
+            font-size: 11px;
+            color: #fff !important;
+            padding: 5px 16px;
+            letter-spacing: 1.1px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 9px;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BMQ9CB"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="loader" id="AjaxLoader" style="display:none;">
+        <div class="strip-holder">
+            @*<div class="strip-1"></div>
+                <div class="strip-2"></div>
+                <div class="strip-3"></div>*@
+            <img src="~/images/preloader.svg" />
+        </div>
+    </div>
+    <div class="page-content" id="page-start">
+        <header class="desktop-header">
+            <div class="container-fluid py-2">
+                <div class="d-header">
+                    <div class="ham-menu">
+                        <a href="#!" class="show-mobile-nav"><i class="fa-solid fa-bars"></i></a>
+                    </div>
+                    <div class="head-left">
+                        <a href="/">
+                            <img src="~/new2/img/logo-white.png" alt="rechargezap" class="logo-white">
+                            <img src="~/new2/img/logo.jpg" alt="rechargezap" class="logo-blue">
+                        </a>
+                    </div>
+                    <div class="head-right">
+                        <div class="head-right-option">
+                            <div class="head-gift h-flex">
+                                <a href="/Home/GiftCard">
+                                    <div class="gift-img">
+                                        <img src="~/new2/img/gift-card.png" alt="">
+                                    </div>
+                                    <div class="gift-cont">
+                                        <p>Introducing Gift Card</p>
+                                        <span>Gift your loved ones with gift card</span>
+                                    </div>
+                                </a>
+                            </div>
+                            @*<div class="head-signin h-flex sign-in-main" onclick="showModalLoginEmail();">
+                                    <div class="sign-img">
+                                        <span><i class="fa-solid fa-circle-user"></i></span>
+                                    </div>
+                                    <div class="sign-cont sign-in">
+                                        <p>Sign In <i class="fa-solid fa-chevron-down"></i></p>
+                                    </div>
+                                </div>*@
+                            @Html.Raw(@ViewBag.loginlink)
+                            @*<div class="head-wallet h-flex" data-toggle="modal" data-target="#otpPopup">
+                                    <a href="#!">
+                                        <div class="wallet-img">
+                                            <img src="~/new2/img/wallet-head.png" alt="">
+                                        </div>
+                                        <div class="wallet-cont">
+                                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 2015</p>
+                                            <span>Wallet Balance</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="head-signin h-flex" data-toggle="modal" data-target="#loginPopup">
+                                    <div class="sign-img">
+                                        <img src="~/new2/img/user.png" alt="">
+                                    </div>
+                                    <div class="sign-cont">
+                                        <p>My Account <i class="fa-solid fa-chevron-down"></i></p>
+                                        <div class="sign-menu">
+                                            <div class="sign-menu-inner">
+                                                <a href=""><i class="fa-solid fa-chevron-right"></i> My Profile</a>
+                                                <a href=""><i class="fa-solid fa-chevron-right"></i> Order History</a>
+                                                <a href=""><i class="fa-solid fa-chevron-right"></i> Transaction History</a>
+                                                <a href=""><i class="fa-solid fa-chevron-right"></i> Log Out</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <section class="main-banner mm-bg">
+            <div class="container-fluid desktop-icons">
+                <div class="main-recharge-row">
+                    <div class="recharge-options">
+                        <div class="recharge-items">
+                            <ul>
+                                <li class="active">
+                                    <a href="/home/recharge">
+                                        <img src="~/new2/img/icon/mobile-phone.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/1.png" alt="Recharge" class="icon-active" />
+                                        <span> Recharge</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/home/dth">
+                                        <img src="~/new2/img/icon/television.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/2.png" alt="Recharge" class="icon-active" />
+                                        <span> DTH</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/home/Broadband">
+                                        <img src="~/new2/img/icon/sim-card.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/3.png" alt="Recharge" class="icon-active" />
+                                        <span> Data Card</span>
+                                    </a>
+                                </li>
+                                <li>
+
+                                    <a href="/Home/Landline">
+                                        <img src="~/new2/img/icon/landlinee.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/4.png" alt="Recharge" class="icon-active" />
+                                        <span> Landline</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/Home/Broadband">
+                                        <img src="~/new2/img/icon/internet.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/5.png" alt="Recharge" class="icon-active" />
+                                        <span> Broadband</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Cylinder">
+                                        <img src="~/new2/img/icon/gas-tank.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/6.png" alt="Recharge" class="icon-active" />
+                                        <span> Cylinder</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Home/gas">
+                                        <img src="~/new2/img/icon/stove.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/7.png" alt="Recharge" class="icon-active" />
+                                        <span> Piped Gas</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Electricity">
+                                        <img src="~/new2/img/icon/light-bulb.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/8.png" alt="Recharge" class="icon-active" />
+                                        <span> Electricity</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Home/water">
+                                        <img src="~/new2/img/icon/water-tap.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/9.png" alt="Recharge" class="icon-active" />
+                                        <span> Water</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Fastag">
+                                        <img src="~/new2/img/icon/toll.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" />
+                                        <span> FASTag</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="d-more-serv">
+                                        <img src="~/new2/img/icon/menu.png" alt="Recharge" class="icon-inactive" />
+                                        <img src="~/new2/img/icon/active/11.png" alt="Recharge" class="icon-active" />
+                                        <span> More+</span>
+                                    </a>
+
+                                    <div class="d-more-service">
+                                        <div class="d-inner">
+                                            <div class="d-service-col">
+                                                <a href="/Home/Insurance">
+                                                    <img src="~/new2/img/icon/insurance.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Insurance</span>
+                                                </a>
+                                            </div>
+                                            <div class="d-service-col">
+                                                <a href="#!">
+                                                    <img src="~/new2/img/icon/credit-card.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Credit Card</span>
+                                                </a>
+                                            </div>
+                                            <div class="d-service-col">
+                                                <a href="#!">
+                                                    <img src="~/new2/img/icon/cable.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Cable</span>
+                                                </a>
+                                            </div>
+                                            <div class="d-service-col">
+                                                <a href="#!">
+                                                    <img src="~/new2/img/icon/loan.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Loan</span>
+                                                </a>
+                                            </div>
+                                            <div class="d-service-col">
+                                                <a href="#!">
+                                                    <img src="~/new2/img/icon/education.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Education Fees</span>
+                                                </a>
+                                            </div>
+                                            <div class="d-service-col">
+                                                <a href="#!">
+                                                    <img src="~/new2/img/icon/housing.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Housing Society</span>
+                                                </a>
+                                            </div>
+                                            <div class="d-service-col">
+                                                <a href="#!">
+                                                    <img src="~/new2/img/icon/hospital.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Hospital</span>
+                                                </a>
+                                            </div>
+                                            <div class="d-service-col">
+                                                <a href="#!">
+                                                    <img src="~/new2/img/icon/muncipal.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Municipal Services</span>
+                                                </a>
+                                            </div>
+                                            <div class="d-service-col">
+                                                <a href="#!">
+                                                    <img src="~/new2/img/icon/challan.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Challan</span>
+                                                </a>
+                                            </div>
+                                            <div class="d-service-col">
+                                                <a href="#!">
+                                                    <img src="~/new2/img/icon/metro.png" alt="Recharge" class="icon-inactive" />
+                                                    <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                                    <span> Metro</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-field-area">
+                        <div class="container-fluid" style="padding:0px 30px;">
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                </div>
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <div class="form-area-box home-bg-grey">
+                                        <form>
+                                            <div class="main-banner-title">
+                                                <h1>Mobile Recharge</h1>
+                                            </div>
+                                            <div class="form-area radio-input home-frm">
+                                                <!-- <label class="label-title">Select</label> -->
+                                                <div class="div-radio">
+                                                    <input type="radio" name="type" checked id="customRadioPrepaid" onchange="loadmobileoperator('1');" />
+                                                    @*<input type="radio" name="type" id="prepaid" checked />*@
+                                                    <label for="customRadioPrepaid">Prepaid</label>
+                                                </div>
+                                                <div class="div-radio">
+                                                    <input type="radio" name="type" id="customRadioPostpaid" onchange="loadmobileoperator('6');" />
+                                                    @*<input type="radio" name="type" id="postpaid" />*@
+                                                    <label for="customRadioPostpaid">Postpaid</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-area home-frm">
+                                                <!-- <label class="label-title">Mobile Number*</label> -->
+                                                <span>+91</span>
+                                                @*<input type="text" name="" placeholder="000-000-0000" required />*@
+                                                <input type="number" id="mobileNumber" class="newnumbertype" onkeypress="return isNumber(event)" autocomplete="off" maxlength="10" placeholder="Enter 10 digit Mobile Number">
+                                            </div>
+
+                                            <div class="form-area home-frm">
+                                                <!-- <label class="label-title">Operator</label> -->
+                                                @*<select>
+                                                        <option selected>Select Operator</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                    </select>*@
+                                                <select id="ddoperatormobile"></select>
+                                            </div>
+                                            <div class="form-area home-frm">
+                                                <!-- <label class="label-title">Circle</label> -->
+                                                @*<select required>
+                                                        <option selected>Select Circle</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                    </select>*@
+                                                <select id="ddcircle"></select>
+                                            </div>
+                                            <div class="form-area home-frm">
+                                                <!-- <label class="label-title">Mobile Number*</label> -->
+                                                <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                                @* <input type="text" name="" placeholder="599.00" required />*@
+                                                <input type="number" class="newnumbertype" onkeypress="return isNumber(event)" id="mobileAmount" placeholder="Amount">
+                                                <a href="#!" id="btncheckplan" onclick="checkplannew();" class="check-plan">Check Plan</a>
+                                            </div>
+
+
+                                            <div class="form-area-btn">
+                                                @*     <button type="submit" id="btnrecharge" data-toggle="modal" data-target="#proceedRecharge">Proceed</button>*@
+                                                <input type="button" class="submitbtn" id="btnrecharge" value="Proceed to Recharge" onclick="return  validateMobileRecharge();" />
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-12 col-sm-12">
+                                    <div class="banner-slider">
+                                        <img src="~/new2/img/small-banner/recharge.jpg" alt="" class="bnrimg" id="imgbanner" />
+                                        <div class="plan-box" id="plandiv">
+                                            <div class="plan-box-inner">
+
+                                                <div class="plan-top">
+                                                    <div class="plan-left">
+                                                        <span class="plan-operator" id="spanoperatorplan"></span> : <span class="plan-circle" id="spancircleplan"></span>
+                                                    </div>
+                                                    <div class="plan-right">
+                                                        <span class="plan-close">
+                                                            <i class="fa-solid fa-xmark"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="plan-bottom">
+                                                    <ul class="nav nav-tabs tab-scroll" id="myTab" role="tablist">
+                                                        @*<li class="nav-item">
+                                                                <a class="nav-link active" id="plan-tab-1" data-toggle="tab" href="#plan-tab-desc-1" role="tab" aria-controls="unlimited" aria-selected="true">Unlimited</a>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" id="plan-tab-2" data-toggle="tab" href="#plan-tab-desc-2" role="tab" aria-controls="smart-offers" aria-selected="false">Smart Offers</a>
+                                                            </li>*@
+
+                                                    </ul>
+                                                    <div class="tab-content" id="myTabContent">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mobile section -->
+            <div class="container-fluid mobile-container">
+                <div class="mobile-recharge-view">
+                    <h1>Quick Mobile Recharge</h1>
+                    <div class="quick-rec">
+                        <ul>
+                            <li>
+                                <a href="/Home/Recharge">
+                                    <div class="operator-box">
+                                        <img src="~/new2/img/recharge/airtel.jpg" alt="Airtel">
+                                    </div>
+                                    <p>Airtel</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Home/Recharge">
+                                    <div class="operator-box">
+                                        <img src="~/new2/img/recharge/jio.jpg" alt="Jio">
+                                    </div>
+                                    <p>Jio</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Home/Recharge">
+                                    <div class="operator-box">
+                                        <img src="~/new2/img/recharge/vi.jpg" alt="VodafoneIdea">
+                                    </div>
+                                    <p>VI</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Home/Recharge">
+                                    <div class="operator-box">
+                                        <img src="~/new2/img/recharge/bsnl.jpg" alt="BSNL">
+                                    </div>
+                                    <p>BSNL</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Home/Recharge">
+                                    <div class="operator-box">
+                                        <img src="~/new2/img/recharge/mtnl.jpg" alt="MTNL">
+                                    </div>
+                                    <p>MTNL</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mobile-recharge-icon">
+                    <div class="mobile-recharge-title">
+                        <h2>Our Top Services</h2>
+                        <!-- <img src="~/new2/img/bharat-bill.png" alt="Bharatpay"> -->
+                    </div>
+
+                    <div class="mobile-recharge-inner-icon">
+                        <div class="mobile-recharge-icon-list">
+                            <a href="home/recharge">
+                                <img src="~/new2/img/icon/mobile-phone.png" alt="">
+                                <p>Recharge</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list">
+                            <a href="home/dth">
+                                <img src="~/new2/img/icon/television.png" alt="">
+                                <p>DTH</p>
+                            </a>
+                        </div>
+                        <!-- <div class="mobile-recharge-icon-list">
+                          <a href="">
+                            <img src="~/new2/img/icon/sim-card.png" alt="">
+                            <p>Data Card</p>
+                          </a>
+                        </div> -->
+                        <div class="mobile-recharge-icon-list">
+                            <a href="home/landline">
+                                <img src="~/new2/img/icon/landlinee.png" alt="">
+                                <p>Landline</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list">
+                            <a href="home/broadband">
+                                <img src="~/new2/img/icon/internet.png" alt="">
+                                <p>Broadband</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list">
+                            <a href="home/cylinder">
+                                <img src="~/new2/img/icon/gas-tank.png" alt="">
+                                <p>Cylinder</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list">
+                            <a href="home/gas">
+                                <img src="~/new2/img/icon/stove.png" alt="">
+                                <p>Piped Gas</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list">
+                            <a href="home/electricity">
+                                <img src="~/new2/img/icon/light-bulb.png" alt="">
+                                <p>Electricity</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list">
+                            <a href="home/water">
+                                <img src="~/new2/img/icon/water-tap.png" alt="">
+                                <p>Water</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="home/fastag">
+                                <img src="~/new2/img/icon/toll.png" alt="">
+                                <p>FASTag</p>
+                            </a>
+                        </div>
+
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="/Home/Insurance">
+                                <img src="~/new2/img/icon/insurance.png" alt="">
+                                <p>Insurance</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="#!">
+                                <img src="~/new2/img/icon/credit-card.png" alt="">
+                                <p>Credit Card</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="#!">
+                                <img src="~/new2/img/icon/cable.png" alt="">
+                                <p>Cable</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="#!">
+                                <img src="~/new2/img/icon/loan.png" alt="">
+                                <p>Loan</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="#!">
+                                <img src="~/new2/img/icon/education.png" alt="">
+                                <p>Education Fees</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="#!">
+                                <img src="~/new2/img/icon/housing.png" alt="">
+                                <p>Housing Society</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="#!">
+                                <img src="~/new2/img/icon/hospital.png" alt="">
+                                <p>Hospital</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="#!">
+                                <img src="~/new2/img/icon/muncipal.png" alt="">
+                                <p>Municipal Services</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="#!">
+                                <img src="~/new2/img/icon/challan.png" alt="">
+                                <p>Challan</p>
+                            </a>
+                        </div>
+                        <div class="mobile-recharge-icon-list more-product product-hide">
+                            <a href="#!">
+                                <img src="~/new2/img/icon/metro.png" alt="">
+                                <p>Metro</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mobile-more-icon">
+                        <button class="more-icon">
+                            <p>Show More</p><i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <button class="less-icon">
+                            <p>Show Less</p><i class="fa-solid fa-chevron-up"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="h-small-banner">
+            <div class="container-fluid">
+                <div class="swiper myPromoBanner">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="promo-banner-row">
+                                <div class="promo-banner-col">
+                                    <div class="promo-content">
+                                        <h2>
+                                            Get upto Rs 300 Cashback on Mobile Recharge & DTH
+                                        </h2>
+                                        <a href="#!"> Recharge Now</a>
+                                    </div>
+                                </div>
+                                <div class="promo-banner-col">
+                                    <div class="promo-image">
+                                        <img src="~/new2/img/promo-banner-1.png" al="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="promo-banner-row">
+                                <div class="promo-banner-col">
+                                    <div class="promo-content">
+                                        <h2>
+                                            Get exciting Deals & Offers on Online Bill Payments.
+                                        </h2>
+                                        <a href="#!"> Pay Bill Online</a>
+                                    </div>
+                                </div>
+                                <div class="promo-banner-col">
+                                    <div class="promo-image">
+                                        <img src="~/new2/img/promo-banner-2.png" al="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next promo-next"></div>
+                    <div class="swiper-button-prev promo-prev"></div>
+                </div>
+            </div>
+        </section>
+        <section class="m-hide">
+            <div class="plane-bg"><img src="~/new2/img/plane.png" alt="Plane" /></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12">
+                        <div class="what-we-do abt-bx">
+                            <div class="title-rw">
+                                <h6 class="title">About Us</h6>
+                                <div class="title-line"></div>
+                            </div>
+                            <div class="paragraph">
+                                <p>
+                                    RechargeZap is an online digital platform that ensures a one-stop solution for all your utility needs. We have 1 million+ happy customers to whom we have provided our services.
+                                </p>
+                                <h4>How To Use</h4>
+                                <p>Just select the service you are looking for, fill the form with your details, select the best available plan and start enjoying your plan after a successful payment. If you face any issues, we are there to help you.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="what-we-do-img">
+                            <img src="~/new2/img/about-us.jpg" alt="About Us" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section -->
+        <!-- Wide Banner -->
+        <section class="h-long-banner">
+            <div class="container-fluid">
+                <div class="big-banner">
+                    <div class="big-banner-title">
+                        <h4><span>Special Cashback Deals for Special People!</span>Shop from your favourite brands online and get exclusive cashbacks.</h4>
+                        <a href="#!">Shop Now</a>
+                    </div>
+                    <div class="big-banner-img">
+                        <img src="~/new2/img/big-banner.png" alt="big-banner" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Wide Banner -->
+        <!-- Gift Card -->
+        <section class="hot-deals">
+            <div class="container-fluid">
+                <div class="title-rw">
+                    <h6 class="title">Top Gift Cards</h6>
+                    <div class="title-line"></div>
+                    <a href="/Home/GiftCard" class="btn-custom">View All</a>
+                </div>
+                <div class="row" id="divgiftcardbrand">
+                    @*<div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="gift-card-bx">
+                                <div class="gift-card-img">
+                                    <img src="~/new2/img/gift-1.png" alt="" />
+                                </div>
+                                <h4>Book My SHow</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="gift-card-bx">
+                                <div class="gift-card-img">
+                                    <img src="~/new2/img/gift-2.png" alt="" />
+                                </div>
+                                <h4>Bigbazaar</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="gift-card-bx">
+                                <div class="gift-card-img">
+                                    <img src="~/new2/img/gift-3.png" alt="" />
+                                </div>
+                                <h4>Flipkart</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="gift-card-bx">
+                                <div class="gift-card-img">
+                                    <img src="~/new2/img/gift-1.png" alt="" />
+                                </div>
+                                <h4>Lifestyle</h4>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </section>
+        <!-- Gift Card -->
+        <!-- Section -->
+        <section class="m-hide">
+            <div class="plane-bg"><img src="~/new2/img/plane.png" alt="Plane" /></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12">
+                        <div class="what-we-do">
+                            <div class="title-rw">
+                                <h6 class="title">What We Do</h6>
+                                <div class="title-line"></div>
+                            </div>
+                            <div class="paragraph">
+                                <p>
+                                    We at RechargeZap provide an online digital solution for prepaid mobile recharge and bill payment related queries. Whether it is your prepaid recharge, postpaid bill payment, DTH, electricity, landline, gas, water or broadband, we have a platform which covers everything.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="what-we-do-img">
+                            <img src="~/new2/img/what-we-do.jpg" alt="What We Do" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-lg-6">
+                        <div class="recharge-box">
+                            <div class="recharge-content">
+                                <div class="recharge-title">
+                                    <h5>Mobile Recharge</h5>
+                                    <div class="recharge-line"></div>
+                                </div>
+                                <p>
+                                    We at RechargeZap offer online prepaid mobile recharges and mobile bill payments for all major telecom operators. We try to cover all the talk time and data plans for every operator, to provide an effortless process to select a best suitable plan while saving your time and money. You can now recharge and pay bills online comfortably across all telecom operators using Net Banking, Debit Card, Credit Card, UPI or Wallet at RechargeZap.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="recharge-box">
+                            <div class="recharge-content">
+                                <div class="recharge-title">
+                                    <h5>Online Bill Payment</h5>
+                                    <div class="recharge-line"></div>
+                                </div>
+                                <p>
+                                    RechargeZap offers seamless Online Bill Payments facility for most of your utility services like DTH, landline, electricity, water, gas and data card. At RechargeZap, you can now browse through a list of available plans and select the best plan as per your suitability. RechargeZap saves your effort, time and energy by providing you with the best plan for online bill payments or prepaid mobile recharges.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section -->
+        <!-- Hot Deals -->
+        <!-- <section class="hot-deals">
+          <div class="container-fluid">
+            <div class="title-rw">
+              <h6 class="title">Top Hot Deals</h6>
+              <div class="title-line"></div>
+              <a href="#!" class="btn-custom">View All</a>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <div class="deals-box">
+                  <div class="deals-col">
+                    <div class="deals-content">
+                      <h5>Holidays</h5>
+                      <h3>Book Your Kashmir Holidays Now!</h3>
+                      <h4>Get Upto 25% Off On Packages</h4>
+                      <a href="#!">Explore Now</a>
+                    </div>
+                  </div>
+                  <div class="deals-col">
+                    <div class="deals-img">
+                      <img src="~/new2/img/deals.jpg" alt="Deals Image" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="deals-box">
+                  <div class="deals-col">
+                    <div class="deals-content">
+                      <h5>Holidays</h5>
+                      <h3>Book Your Kashmir Holidays Now!</h3>
+                      <h4>Get Upto 25% Off On Packages</h4>
+                      <a href="#!">Explore Now</a>
+                    </div>
+                  </div>
+                  <div class="deals-col">
+                    <div class="deals-img">
+                      <img src="~/new2/img/deals.jpg" alt="Deals Image" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="deals-box">
+                  <div class="deals-col">
+                    <div class="deals-content">
+                      <h5>Holidays</h5>
+                      <h3>Book Your Kashmir Holidays Now!</h3>
+                      <h4>Get Upto 25% Off On Packages</h4>
+                      <a href="#!">Explore Now</a>
+                    </div>
+                  </div>
+                  <div class="deals-col">
+                    <div class="deals-img">
+                      <img src="~/new2/img/deals.jpg" alt="Deals Image" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="deals-box">
+                  <div class="deals-col">
+                    <div class="deals-content">
+                      <h5>Holidays</h5>
+                      <h3>Book Your Kashmir Holidays Now!</h3>
+                      <h4>Get Upto 25% Off On Packages</h4>
+                      <a href="#!">Explore Now</a>
+                    </div>
+                  </div>
+                  <div class="deals-col">
+                    <div class="deals-img">
+                      <img src="~/new2/img/deals.jpg" alt="Deals Image" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
+        <!-- Hot Deals -->
+        <!-- Why should -->
+        <section class="m-hide">
+            <div class="container-fluid">
+                <div class="title-rw">
+                    <h6 class="title">Why Should You Use RechargeZap ?</h6>
+                    <div class="title-line"></div>
+                </div>
+                <div class="paragraph">
+                    <p>
+                        RechargeZap aims to provide reliable utility services through its digital platform with an easy to use interface and user convenience. We make sure to provide you with a seamless experience for any mobile recharge or bill payment, bringing you back every time for all your utility needs.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Why should -->
+        <!-- Client Association -->
+        <section>
+            <div class="container-fluid">
+                <div class="client-asso-block">
+                    <div class="title-rw">
+                        <h6 class="title">Clients & Association</h6>
+                        <div class="title-line"></div>
+                    </div>
+                    <!-- Swiper -->
+                    <div class="swiper myClient">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="client-logo"><img src="~/new2/img/client/1.jpg" /></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="client-logo"><img src="~/new2/img/client/2.jpg" /></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="client-logo"><img src="~/new2/img/client/3.jpg" /></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="client-logo"><img src="~/new2/img/client/4.jpg" /></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="client-logo"><img src="~/new2/img/client/5.jpg" /></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="client-logo"><img src="~/new2/img/client/6.jpg" /></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="client-logo"><img src="~/new2/img/client/7.jpg" /></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="client-logo"><img src="~/new2/img/client/8.jpg" /></div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Client Association -->
+        <footer>
+            <div class="container-fluid">
+                <div class="footer-widget">
+                    <div class="footer-logo"><img src="~/new2/img/logo-white.png" /></div>
+                    <div class="footer-links">
+                        <ul>
+
+                            <li><a href="~/Home/About">About Us</a></li>
+                            <li><a href="~/Home/Terms">Terms & Conditions</a></li>
+                            <li><a href="~/Home/Privacy">Privacy Policy</a></li>
+                            <li><a href="~/Home/Refund">Refund Policy</a></li>
+                            <li><a href="~/Home/Contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="copyright">
+                        <p>© 2022 Orion Techno Age OPC Pvt Ltd. All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginPopup" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content p-0">
+                <!-- <div class="modal-header">
+
+                </div> -->
+                <div class="modal-body">
+                    <div class="login-area">
+                        <div class="login-col">
+                            <div class="login-banner">
+                                <img src="~/new2/img/login-bg.png" alt="">
+                            </div>
+                        </div>
+                        <div class="login-col">
+                            <form method="post" action="/Home/LoginEmail">
+                                <div class="form-login-box">
+                                    <div class="form-login-area">
+                                        <h3>Get Started With RechargeZap</h3>
+                                        <p class="text-center" style="padding-left:20px;padding-right:20px;font-weight:bold">Login to your RechargeZap account to access your E-Wallet, Check transaction history and much more.</p>
+
+                                    </div>
+                                    <p style="font-weight: 500;
+font-size: 11px;
+line-height: 30px;
+letter-spacing: 0.5px;">Enter your email address to receive OTP for login</p>
+                                    <div class="form-area modal-log">
+
+                                        @*<input type="email" name="" placeholder="Enter Email ID" required />*@
+                                        <input type="text" id="emaillogin" name="Email" placeholder="Enter Email">
+                                    </div>
+                                    <div class="form-area-btn">
+                                        @*<button type="submit" onclick="return  validateLoginEmail();" id="btnsendotp">Proceed</button>*@
+                                        <button onclick="return  validateLoginEmail();">Proceed</button>
+                                        @*<input type="submit"  name="btnPay" class="submitbtn" value="Submit" />*@
+                                        @* <button class="bg-current border-0 w-100 form-bttn fw-500 rounded-lg text-white">Send OTP</button>*@
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Understood</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP Modal -->
+    <div class="modal fade" id="otpPopup" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content p-0">
+                <!-- <div class="modal-header">
+
+                </div> -->
+                <div class="modal-body">
+                    <div class="login-area">
+                        <div class="login-col">
+                            <div class="login-banner">
+                                <img src="~/new2/img/otp-bg.png" alt="">
+                            </div>
+                        </div>
+                        <div class="login-col">
+                            <form method="post" action="/Home/LoginOTP">
+                                <div class="form-login-box">
+                                    <div class="form-login-area otp-area">
+                                        <h3>Enter OTP</h3>
+                                        <p>
+                                            A one time password has been sent to your email address <a href="#!" data-toggle="modal"
+                                                                                                       data-target="#loginPopup">Change</a>
+                                        </p>
+                                    </div>
+                                    <div class="otp-log">
+                                        <div class="otp-fields">
+                                            <input type="text" placeholder="-" id="otp1" onkeyup="movetoNext(this, 'otp2')" required name="OTP1" />
+                                            <input type="text" placeholder="-" id="otp2" onkeyup="movetoNext(this, 'otp3')" required name="OTP2" />
+                                            <input type="text" placeholder="-" id="otp3" onkeyup="movetoNext(this, 'otp4')" required name="OTP3" />
+                                            <input type="text" placeholder="-" id="otp4" onkeyup="movetoNext(this, 'otp5')" required name="OTP4" />
+                                            <input type="text" placeholder="-" id="otp5" required name="OTP5" />
+                                            @*<input type="text" class="form-control mb-2" id="otplogin" name="OTP" placeholder="Enter OTP">*@
+                                        </div>
+                                        <p>Didn't Received The OTP Yet? <a href="#!">Resend</a></p>
+                                    </div>
+                                    <div class="form-area-btn">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="otpPopupRecharge" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content p-0">
+                <!-- <div class="modal-header">
+
+                </div> -->
+                <div class="modal-body">
+                    <div class="login-area">
+                        <div class="login-col">
+                            <div class="login-banner">
+                                <img src="~/new2/img/otp-bg.png" alt="">
+                            </div>
+                        </div>
+                        <div class="login-col">
+                            <form >
+                                <div class="form-login-box">
+                                    <div class="form-login-area otp-area">
+                                        <h3>Enter OTP</h3>
+                                        <p>
+                                            A one time password has been sent to your email address <a href="#!" data-toggle="modal"
+                                                                                                       data-target="#loginPopup">Change</a>
+                                        </p>
+                                    </div>
+                                    <div class="otp-log">
+                                        <div class="otp-fields">
+                                            <input type="text" placeholder="-" id="otprecharge1" name="otprecharge1" onkeyup="movetoNext(this, 'otprecharge2')" required name="OTP1" />
+                                            <input type="text" placeholder="-" id="otprecharge2" name="otprecharge2" onkeyup="movetoNext(this, 'otprecharge3')" required name="OTP2" />
+                                            <input type="text" placeholder="-" id="otprecharge3" name="otprecharge3" onkeyup="movetoNext(this, 'otprecharge4')" required name="OTP3" />
+                                            <input type="text" placeholder="-" id="otprecharge4" name="otprecharge4" onkeyup="movetoNext(this, 'otprecharge5')" required name="OTP4" />
+                                            <input type="text" placeholder="-" id="otprecharge5" name="otprecharge5" required name="OTP5" />
+                                            @*<input type="text" class="form-control mb-2" id="otplogin" name="OTP" placeholder="Enter OTP">*@
+                                        </div>
+                                        <p>Didn't Received The OTP Yet? <a href="#!">Resend</a></p>
+                                    </div>
+                                    <div class="form-area-btn">
+                                        @*<button type="submit">Submit</button>*@
+                                        <input type="button" class="submitbtn" id="btnrechargefinal" style="color:white;" value=" Pay Now" onclick="return validateotpsubmit();" />
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Proceed To Recharge Modal -->
+    <div class="modal fade" id="proceedRecharge" data-backdrop="static" data-keyboard="true" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content p-0">
+                <div class="modal-body">
+                    <form method="post" id="frmRecharge" action="/Home/PayUMoneyPayment">
+                        <div class="proceedrchrg-main">
+                            <div class="proceed-row">
+                                <div class="proceed-left">
+                                    <div class="proceed-head">
+                                        <button data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-angle-left"></i> Back</button>
+                                        <button data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                                    </div>
+                                    <div class="proceed-summary">
+                                        <h3 id="headerconfirm">Mobile Recharge</h3>
+                                        <ul>
+                                            <li class="proceed-amt">
+                                                <p><i class="fa-solid fa-indian-rupee-sign"></i> Amount</p>
+                                                <!-- <p> ₹399</p> -->
+                                                <input type="text" readonly id="amountConfirm" name="RechargeAmount" placeholder="">
+                                                <input type="hidden" class="form-control  border-2 bg-color-none text-grey-700" id="operatoridConfirm" value="Amount" name="OperatorCode">
+                                                <input type="hidden" id="optional1Confirm" value="" name="OptionalValue1">
+                                                <input type="hidden" id="RechargeOTP" value="" name="RechargeOTP">
+                                                <input type="hidden" id="optional2Confirm" value="" name="OptionalValue2">
+                                                <input type="hidden" id="optional3Confirm" value="" name="OptionalValue3">
+                                                <input type="hidden" id="optional4Confirm" value="" name="OptionalValue4">
+                                            </li>
+                                            <li class="proceed-amt">
+                                                <p><i class="fa-solid fa-tower-broadcast"></i> Operator</p>
+                                                <!-- <p>Airtel</p> -->
+                                                <input type="text" readonly name="" id="operatorConfirm" placeholder="">
+                                            </li>
+                                            <li class="proceed-amt">
+                                                <p><i class="fa-solid fa-tower-broadcast"></i> Circle</p>
+                                                <!-- <p>Airtel</p> -->
+                                                <input type="text" readonly name="" id="circleConfirm" placeholder="">
+                                            </li>
+                                            <li class="proceed-amt">
+                                                <p><i class="fa-solid fa-mobile-screen"></i> Mobile Number</p>
+                                                <!-- <p>999XXXXXX</p> -->
+                                                <input type="text" id="mobileConfirm" readonly name="RechargeMobile" placeholder="999XXXXXX">
+                                            </li>
+                                            <li class="proceed-amt" id="divBalance">
+                                                <p><i class="fa-solid fa-wallet"></i> Wallet Amount</p>
+                                                <!-- <p>₹0.00</p> -->
+                                                <input type="text" id="walletbalanceconfirm" readonly name="BalanceAmount" placeholder="₹0.00">
+                                            </li>
+                                            <li class="proceed-amt" id="divUsedBalance">
+                                                <p><i class="fa-solid fa-wallet"></i> Used Wallet Amount</p>
+                                                <!-- <p>₹0.00</p> -->
+                                                <input type="text" id="usedwalletbalanceconfirm" readonly name="UsedBalanceAmount" placeholder="₹0.00">
+                                            </li>
+                                            @*<li class="proceed-amt">
+                                                    <p style="padding:0px;font-size: 11px;"><i class="fa-solid fa-wallet"></i><input type="checkbox" checked id="ckzapcoins" style="width:30px;" />Use Zap Coins(<span class="text-white" id="zapcoinsbalanceconfirm"></span>)</p>
+                                                    <p> <input type="checkbox" checked id="ckzapcoins" style="width:30px;" /> Use Zap Coins(<span id="zapcoinsbalanceconfirm"></span>)</p>
+
+
+                                                </li>*@
+                                            @*<li class="proceed-amt" id="divUsedBalance">
+                                                    <p><i class="fa-solid fa-wallet"></i> Used Zap Coins</p>
+
+                                                    <input type="text" id="usedzapcoinsconfirm" name="UsedZapCoins" placeholder="₹0.00">
+                                                </li>*@
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="proceed-right">
+                                    <div class="proceed-steps">
+                                        <span>Step 1</span>
+                                        <span>Step 2</span>
+                                        <span>Step 3</span>
+                                    </div>
+                                    <div class="proceed-logo">
+                                        <img src="~/new2/img/logo.jpg" alt="rechargezap">
+                                    </div>
+                                    <div class="procedd-form">
+
+                                        <div class="form-group">
+                                            <input type="text" id="nameConfirm" name="UserName" class="form-control" required placeholder="Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" id="emailConfirm" name="Email" class="form-control" required placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="customermobileConfirm" name="UserMobile" class="form-control" required placeholder="Contact Number">
+                                        </div>
+                                        <div class="form-group">
+                                            @*<button type="submit" onclick="return validateotp();"> Pay Now</button>*@
+                                            <input type="button" class="submitbtn" id="btnrechargefinal" style="color:white;" value=" Pay Now" onclick="return validateotp();" />
+
+                                        </div>
+                                        <div class="proceed-text">
+                                            <p>It may take a few moments for this transaction to appear in your account</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="responsive-menu">
+        <div class="responsive-menu-inner">
+            <a href="#!" class="close-mobile-nav"><i class="fa-solid fa-xmark"></i></a>
+            <div class="responsive-logo">
+                <div class="logo">
+                    <a href="/"><img src="~/new2/img/logo.jpg" /></a>
+                </div>
+            </div>
+            <div class="mobile-nav">
+                @Html.Raw(@ViewBag.loginlinkmobile)
+            </div>
+        </div>
+    </div>
+    <div class="back-to-top">
+        <a href="#page-start">
+            <i class="fa-solid fa-chevron-up"></i>
+        </a>
+    </div>
+
+    @*<script src="~/new2/js/jquery-3.2.1.slim.min.js"></script>*@
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="~/new2/js/popper.min.js"></script>
+    @*<script src="~/new2/js/bootstrap.min.js"></script>*@
+    <script src="~/new/js/bootstrap.min.js"></script>
+    <script src="~/new2/js/swiper-bundle.min.js"></script>
+    <script src="~/new2/js/main.js"></script>
+    <link href="~/js/toastr/toastr.css" rel="stylesheet" />
+    <script src="~/js/toastr/toastr.min.js"></script>
+
+
+
+
+
+    <div class="modal bottom fade right mobilemodalbg" id="ModalPlan" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-plan" role="document">
+            <div class="modal-content border-0" style="height:100vh;">
+                <button type="button" class="close mobileplanheader" data-dismiss="modal" aria-label="Close"><i class="ti-close text-grey-500"></i></button>
+                <div class="modal-body   bg-none">
+                    <div class="row" style="font-size:12px;  ">
+
+                        <div class="col-md-12" style="padding-top:20px; padding-bottom:20px;  ">
+                            <div class="shadow-none rounded-0  border-0">
+                                <div class="card-body rounded-0 text-left pt-0 pb-2 mobileplanheader bg-white">
+                                    <h5 class="fw-600 display2-size mb-4" style="  font-size: 25px !important">Plan</h5>
+
+                                    @* <a onclick="Closepopupplan();">close</a>*@
+                                    <div class="row">
+                                        <div class="col-md-3" style="padding-right:0px">
+                                            <!-- required for floating -->
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs tabs-left planmodalhead" id="tabheader">
+                                                @*<li ><a href="#home" class="active" data-toggle="tab">Home</a></li>
+                                                    <li><a href="#profile" data-toggle="tab">Profile</a></li>
+                                                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+                                                    <li><a href="#settings" data-toggle="tab">Settings</a></li>*@
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-9" style="padding-left:5px;">
+                                            <!-- Tab panes -->
+                                            <div class="tab-content planmodaldata" id="tabcontent">
+                                                @*<div class="tab-pane active" id="home">Home Tab.</div>
+                                                    <div class="tab-pane" id="profile">Profile Tab.</div>
+                                                    <div class="tab-pane" id="messages">Messages Tab.</div>
+                                                    <div class="tab-pane" id="settings">Settings Tab.</div>*@
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal bottom fade" id="ModalDTHInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content border-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close text-grey-500"></i></button>
+                <div class="modal-body p-3 d-flex align-items-center bg-none">
+                    <div class="shadow-none rounded-0 w-100 p-2 pt-3 border-0">
+                        <div class="card-body rounded-0 text-left pt-0">
+                            <h2 class="fw-600  mb-4">DTH  Customer Info</h2>
+                            <form>
+                                <div class="form-group mb-3">
+                                    Name : <b><span id="dthcustomername"></span></b><br />
+                                    Monthly Recharge : <b><span id="dthmonthlyplan"></span></b><br />
+                                    Balance : <b><span id="dthbalance"></span></b><br />
+                                    Last Recharge Date : <b><span id="dthlastrechargedate"></span></b><br />
+                                </div>
+
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal bottom fade right mobilemodalbg" id="ModalDTHPlan" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-plan" role="document">
+            <div class="modal-content border-0" style="height:100vh;background-color:white">
+                <button type="button" class="close mobileplanheader" data-dismiss="modal" aria-label="Close"><i class="ti-close text-grey-500"></i></button>
+                <div class="modal-body   bg-none">
+                    <div class="row" style="background-color:white;font-size:12px;">
+
+                        <div class="col-md-12" style="padding-top:20px; padding-bottom:20px;  ">
+                            <div class="shadow-none rounded-0  border-0">
+                                <div class="card-body rounded-0 text-left pt-0 pb-2 mobileplanheader bg-white">
+                                    <h5 class="fw-600 display2-size mb-4" style="  font-size: 25px !important">DTH Plan</h5>
+
+                                    @* <a onclick="Closepopupplan();">close</a>*@
+                                    <div class="row">
+                                        <div class="col-md-3" style="padding-right:0px">
+                                            <!-- required for floating -->
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs tabs-left planmodalhead" id="tabheaderdth">
+                                                @*<li ><a href="#home" class="active" data-toggle="tab">Home</a></li>
+                                                    <li><a href="#profile" data-toggle="tab">Profile</a></li>
+                                                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+                                                    <li><a href="#settings" data-toggle="tab">Settings</a></li>*@
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-9" style="padding-left:0px;">
+                                            <!-- Tab panes -->
+                                            <div class="tab-content planmodaldata" id="tabcontentdth">
+                                                @*<div class="tab-pane active" id="home">Home Tab.</div>
+                                                    <div class="tab-pane" id="profile">Profile Tab.</div>
+                                                    <div class="tab-pane" id="messages">Messages Tab.</div>
+                                                    <div class="tab-pane" id="settings">Settings Tab.</div>*@
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        function validateotp() {
+
+
+            if (document.getElementById("nameConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Name');
+                document.getElementById("nameConfirm").focus();
+                return false;
+            }
+            else if (document.getElementById("customermobileConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Mobile');
+                document.getElementById("customermobileConfirm").focus();
+                return false;
+            }
+            else if (document.getElementById("emailConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Email');
+                document.getElementById("emailConfirm").focus();
+                return false;
+            }
+
+            else if (parseFloat(document.getElementById("amountConfirm").value) > 10000) {
+              
+
+                $.ajax({
+                    url: '/Home/SendOTP', type: 'post', dataType: 'json',
+                    data: { 'email': document.getElementById("emailConfirm").value },
+                    success: function (data) {
+                        console.log(data);
+                       
+                        showModalOTPRecharge();
+                        Closepopup2();
+                    },
+                    beforeSend: function () {
+                                        /*$("#ddoperatormobile").html('Loading...')*/;
+                        $('#AjaxLoader').show();
+                    },
+                    complete: function () {
+                        $('#AjaxLoader').hide();
+                    }
+
+                });
+
+
+                return false;
+            }
+            else {
+                $('#frmRecharge').submit();
+            }
+        }
+        function validateotpsubmit() {
+
+            document.getElementById("RechargeOTP").value = document.getElementById("otprecharge1").value + document.getElementById("otprecharge2").value + document.getElementById("otprecharge3").value + document.getElementById("otprecharge4").value + document.getElementById("otprecharge5").value;
+
+                $('#frmRecharge').submit();
+            
+        }
+
+        function validateMobileRecharge() {
+            if (document.getElementById("mobileAmount").value == "") {
+                toastr.warning('Warning', 'Enter Amount');
+                document.getElementById("mobileAmount").focus();
+                return false;
+            }
+            if (parseFloat( document.getElementById("mobileAmount").value) <=0) {
+                toastr.warning('Warning', 'Amount Must Be Greater Than 0');
+                document.getElementById("mobileAmount").focus();
+                return false;
+            }
+
+            var isChecked = $('#customRadioPrepaid').prop('checked');
+            if (isChecked) {
+                if (parseFloat(document.getElementById("mobileAmount").value) > 10000) {
+                    toastr.warning('Warning', 'Amount Must Be Less Than Or Equal To 10000');
+                    document.getElementById("mobileAmount").focus();
+                    return false;
+                }
+            }
+            else {
+                if (parseFloat(document.getElementById("mobileAmount").value) >10000) {
+                    toastr.warning('Warning', 'Amount Must Be Less Than Or Equal To 10000');
+                    document.getElementById("mobileAmount").focus();
+                    return false;
+                }
+            }
+
+
+            if (document.getElementById("mobileNumber").value.length != 10) {
+                toastr.warning('Warning', 'Enter Valid Number');
+                document.getElementById("mobileNumber").focus();
+                return false;
+            }
+            else if (document.getElementById("mobileNumber").value == "") {
+                toastr.warning('Warning', 'Enter Number');
+                document.getElementById("mobileNumber").focus();
+                return false;
+            }
+            else if ($('#ddoperatormobile').find(":selected").val() == "0") {
+                toastr.warning('Warning', 'Select Operator');
+                document.getElementById("ddoperatormobile").focus();
+                return false;
+            }
+            else if ($('#ddcircle').find(":selected").val() == "0") {
+                toastr.warning('Warning', 'Select Circle');
+                document.getElementById("ddcircle").focus();
+                return false;
+            }
+
+
+
+
+            else {
+
+                document.getElementById("headerconfirm").innerHTML ="Mobile Recharge";
+
+                document.getElementById("amountConfirm").value = document.getElementById("mobileAmount").value;
+                document.getElementById("operatorConfirm").value = $('#ddoperatormobile').find(":selected").text();
+                document.getElementById("mobileConfirm").value = document.getElementById("mobileNumber").value;
+                document.getElementById("circleConfirm").value = $('#ddcircle').find(":selected").text();
+                document.getElementById("customermobileConfirm").value = document.getElementById("mobileNumber").value;
+
+                document.getElementById("operatoridConfirm").value = $('#ddoperatormobile').find(":selected").val();
+
+                document.getElementById("circleConfirm").style.display = 'block';
+
+                var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+
+            if (LoginEMail != '') {
+                document.getElementById('divBalance').style.display = 'block';
+                document.getElementById('divUsedBalance').style.display = 'block';
+                showBalance();
+            }
+            else {
+                document.getElementById('divBalance').style.display = 'none';
+                document.getElementById('divUsedBalance').style.display = 'none';
+            }
+
+
+                showModal();
+
+
+
+
+            }
+        }
+        function validateLoginEmail() {
+
+            if (document.getElementById("emaillogin").value == "") {
+                toastr.warning('Warning', 'Enter Email');
+                document.getElementById("emaillogin").focus();
+                return false;
+            }
+
+        }
+
+           function validateDTHRecharge() {
+               if (document.getElementById("amountdth").value == "") {
+                toastr.warning('Warning', 'Enter Amount');
+                   document.getElementById("amountdth").focus();
+                return false;
+            }
+               if (parseFloat(document.getElementById("amountdth").value) <=0) {
+                toastr.warning('Warning', 'Amount Must Be Greater Than 0');
+                   document.getElementById("amountdth").focus();
+                return false;
+            }
+
+            else if (document.getElementById("numberdth").value == "") {
+                toastr.warning('Warning', 'Enter VC Number');
+                document.getElementById("numberdth").focus();
+                return false;
+            }
+            else if ($('#ddoperatordth').find(":selected").val() == "0") {
+                toastr.warning('Warning', 'Select Operator');
+                document.getElementById("ddoperatordth").focus();
+                return false;
+            }
+
+            else {
+
+                   document.getElementById("headerconfirm").innerHTML = "DTH Recharge";
+
+                   document.getElementById("amountConfirm").value = document.getElementById("amountdth").value;
+                document.getElementById("operatorConfirm").value = $('#ddoperatordth').find(":selected").text();
+                   document.getElementById("mobileConfirm").value = document.getElementById("numberdth").value;
+                document.getElementById("circleConfirm").value = $('#ddcircle').find(":selected").text();
+                //document.getElementById("customermobileConfirm").value = document.getElementById("mobileNumber").value;
+
+                document.getElementById("operatoridConfirm").value = $('#ddoperatordth').find(":selected").val();
+
+                   document.getElementById("circleConfirm").style.display = 'none';
+
+                var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+
+            if (LoginEMail != '') {
+                document.getElementById('divBalance').style.display = 'block';
+                document.getElementById('divUsedBalance').style.display = 'block';
+                showBalance();
+            }
+            else {
+                document.getElementById('divBalance').style.display = 'none';
+                document.getElementById('divUsedBalance').style.display = 'none';
+            }
+
+
+                showModal();
+
+
+
+
+            }
+        }
+        function ValidateEmail(input) {
+
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (input.value.match(validRegex)) {
+                alert("Valid email address!");
+                document.form1.text1.focus();
+                return true;
+            } else {
+                alert("Invalid email address!");
+                document.form1.text1.focus();
+                return false;
+            }
+
+        }
+
+        function validateRechargeconfirm() {
+            if (document.getElementById("emailConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Email');
+                document.getElementById("emailConfirm").focus();
+                return false;
+            }
+
+            //else if (ValidateEmail(document.getElementById("emailConfirm"))==false)
+            // {
+            //     toastr.warning('Warning', 'Enter Valid Email');
+            //     document.getElementById("emailConfirm").focus();
+            //     return false;
+            // }
+
+
+
+
+            else if (document.getElementById("nameConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Name');
+                document.getElementById("nameConfirm").focus();
+                return false;
+            }
+
+            else if (document.getElementById("mobileConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Mobile');
+                document.getElementById("mobileConfirm").focus();
+                return false;
+            }
+            if (document.getElementById("headerconfirm").innerHTML=='Mobile Recharge')
+            {
+            if (document.getElementById("mobileConfirm").value.length != 10) {
+                toastr.warning('Warning', 'Enter Valid Number');
+                document.getElementById("mobileConfirm").focus();
+                return false;
+            }
+        }
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (document.getElementById("emailConfirm").value.match(validRegex)) {
+                //alert("Valid email address!");
+                //document.form1.text1.focus();
+                document.getElementById("emailConfirm").focus();
+                //return true;
+            } else {
+                //alert("Invalid email address!");
+                //document.form1.text1.focus();
+                toastr.warning('Warning', 'Enter Valid Email');
+                document.getElementById("emailConfirm").focus();
+                return false;
+            }
+
+        }
+        function showModal() {
+            $('#proceedRecharge').modal({ backdrop: 'static', keyboard: false })
+        }
+        function Closepopup() {
+            $('#proceedRecharge').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+
+        function Closepopup2() {
+            $('#proceedRecharge').modal('hide');
+
+        }
+
+        function showModalplan() {
+            $('#ModalPlan').modal({ backdrop: 'static', keyboard: false })
+        }
+        function Closepopupplan() {
+            $('#ModalPlan').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+        function showModalDTHplan() {
+            $('#ModalDTHPlan').modal({ backdrop: 'static', keyboard: false })
+        }
+        function ClosepopupDTHplan() {
+            $('#ModalDTHPlan').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+        function showModalDTHInfo() {
+            $('#ModalDTHInfo').modal({ backdrop: 'static', keyboard: false })
+        }
+        function ClosepopupDTHInfo() {
+            $('#ModalDTHInfo').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+
+
+
+    </script>
+
+
+
+
+    <script>
+
+        $(document).ready(function () {
+            loadCircle();
+            loadDTHOperator();
+            var isChecked = $('#customRadioPrepaid').prop('checked');
+            if (isChecked) {
+                loadmobileoperator('1');
+            }
+            else {
+                loadmobileoperator('6');
+            }
+
+
+            loadGiftCardBrand();
+
+
+
+        });
+
+        function showBalance() {
+
+             var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            var jsondata = { 'email': LoginEMail };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getBalance',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    document.getElementById('walletbalanceconfirm').value = result[0];
+                    document.getElementById('emailConfirm').value = result[1];
+                    document.getElementById('nameConfirm').value = result[3];
+                    document.getElementById('customermobileConfirm').value = result[2];
+                    //alert(result[4]);
+                    //document.getElementById('zapcoinsbalanceconfirm').innerHTML = result[4];
+
+
+
+                    var Bal = parseFloat(document.getElementById('walletbalanceconfirm').value);
+                    var RechAmt = parseFloat(document.getElementById('amountConfirm').value);
+                    if (Bal >= RechAmt) {
+                        document.getElementById('usedwalletbalanceconfirm').value = RechAmt;
+                    }
+                    else {
+                        document.getElementById('usedwalletbalanceconfirm').value = Bal;
+                    }
+
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+
+           function showBalanceNew() {
+
+             var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            var jsondata = { 'email': LoginEMail };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getBalance',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[0]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    document.getElementById('userbalancetop').innerHTML = result[0];
+
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+
+        function loadmobileoperator(value) {
+            $('#ddoperatormobile').empty();
+
+            if (value == '1') {
+                document.getElementById('btncheckplan').style.display = 'block';
+                document.getElementById('btnrecharge').value = 'Proceed To Recharge';
+                loadPrepaidOperator();
+            }
+            else {
+                document.getElementById('btncheckplan').style.display = 'none';
+                document.getElementById('btnrecharge').value = 'Proceed To Pay Bill';
+                loadPostpaidOperator();
+            }
+        }
+
+        function checkplannew() {
+            //alert('a');
+            document.getElementById("imgbanner").style.display = "none";
+            document.getElementById("plandiv").style.display = "block";
+            loadPlan();
+
+
+        }
+
+
+        function loadPrepaidOperator() {
+            $.ajax({
+
+                url: '/api/Recharge/getOperatorPrepaid',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result.d);
+                    $('#ddoperatormobile').empty();
+                    $('#ddoperatormobile').append('<option value="0">Select Operator</option>');
+                    $.each(result, function (result, value) {
+
+                        $("#ddoperatormobile").append($("<option></option>").val(value.id).html(value.operator));
+                    })
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddoperatormobile').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+        function loadPostpaidOperator() {
+            $.ajax({
+
+                url: '/api/Recharge/getOperatorPostPaid',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result.d);
+                    $('#ddoperatormobile').empty();
+                    $('#ddoperatormobile').append('<option value="0">Select Operator</option>');
+                    $.each(result, function (result, value) {
+
+                        $("#ddoperatormobile").append($("<option></option>").val(value.id).html(value.operator));
+                    })
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddoperatormobile').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+        function loadDTHOperator() {
+            $.ajax({
+
+                url: '/api/Recharge/getOperatorDTH',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result.d);
+                    $('#ddoperatordth').empty();
+                    $('#ddoperatordth').append('<option value="0">Select Operator</option>');
+                    $.each(result, function (result, value) {
+
+                        $("#ddoperatordth").append($("<option></option>").val(value.id).html(value.operator));
+                    })
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddoperatordth').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+        function loadCircle() {
+            $.ajax({
+
+                url: '/api/Recharge/getCircle',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result);
+                    $('#ddcircle').empty();
+                    $('#ddcircle').append('<option value="0">Select Circle</option>');
+                    var items = "";
+                    $.each(result, function (result, value) {
+                        //alert(value);
+                        //console.log(value.circlecode);
+                        $("#ddcircle").append($("<option></option>").val(value.circleCode).html(value.circleName));
+                        //items += "<option>" + value.circleCode + "</option>";
+                    });
+
+                    //$("#ddcircle").append(items);
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddcircle').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+        function selectplanmobile(amount) {
+            //alert(amount);
+            var planamount = parseInt(amount);
+            document.getElementById("mobileAmount").value = planamount;
+            //Closepopupplan();
+        }
+        function selectplandth(amount) {
+            var planamount = parseInt(amount);
+            document.getElementById("amountdth").value = planamount;
+            ClosepopupDTHplan();
+        }
+        function loadPlan() {
+
+
+            document.getElementById("spanoperatorplan").innerHTML = $('#ddoperatormobile').find(":selected").text();
+            document.getElementById("spancircleplan").innerHTML = $('#ddcircle').find(":selected").text();
+            var jsondata = { 'operatorId': $('#ddoperatormobile').find(":selected").val(), 'circleId': $('#ddcircle').find(":selected").val() };
+            //alert(jsondata);
+            $.ajax({
+
+                //url: '/api/Recharge/getPlan',
+                url: '/api/Recharge/getPlanNewDesign',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    //console.log(result[0]);
+                    //console.log(result[1]);
+                    //console.log(result[2]);
+                    //console.log(result[3]);
+
+                    document.getElementById("myTab").innerHTML = result[0];
+                    document.getElementById("myTabContent").innerHTML = result[1];
+                    //showModalplan();
+
+                },
+                beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+        function showDTHInfo() {
+            if (document.getElementById("numberdth").value != "") {
+                var jsondata = { 'operatorId': $('#ddoperatordth').find(":selected").val(), 'number': document.getElementById("numberdth").value };
+                //alert(jsondata);
+                $.ajax({
+
+                    url: '/api/Recharge/getDTHCustmerInfo',
+                    data: JSON.stringify(jsondata),
+
+                    dataType: "json",
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+
+                    success: function (result) {
+                        //alert(result);
+                        //console.log(result);
+                        //console.log(result.str_tabheader);
+                        document.getElementById("dthcustomername").innerHTML = result[0];
+                        document.getElementById("dthmonthlyplan").innerHTML = result[1];
+                        document.getElementById("dthbalance").innerHTML = result[2];
+                        document.getElementById("dthlastrechargedate").innerHTML = result[3];
+                        //document.getElementById("tabcontent").innerHTML = result[1];
+                        showModalDTHInfo();
+
+                    },
+                    beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                        $('#AjaxLoader').show();
+                    },
+                    complete: function () {
+                        $('#AjaxLoader').hide();
+                    }
+                })
+            }
+        }
+
+
+        const source = document.getElementById('mobileNumber');
+        //const result = document.getElementById('result');
+
+        const inputHandler = function (e) {
+            var number = e.target.value;
+            //alert('a');
+            //console.log(number);
+            showOperatorcheck();
+        }
+
+        source.addEventListener('input', inputHandler);
+        source.addEventListener('propertychange', inputHandler); // for IE8
+
+        function showOperatorcheck() {
+
+
+            if (document.getElementById("mobileNumber").value != "") {
+                if (document.getElementById("mobileNumber").value.length == 10) {
+                    var jsondata = { 'number': document.getElementById("mobileNumber").value };
+                    //alert(jsondata);
+
+                    var isChecked = $('#customRadioPrepaid').prop('checked');
+                    if (isChecked) {
+                        $.ajax({
+
+                            url: '/api/Recharge/getOperatorcheck',
+                            data: JSON.stringify(jsondata),
+
+                            dataType: "json",
+                            type: 'POST',
+                            contentType: "application/json; charset=utf-8",
+
+                            success: function (result) {
+                                //alert(result);
+                                //console.log(result);
+                                //console.log(result[1]);
+                                //console.log(result[2]);
+                                //console.log(result[3]);
+                                //console.log(result.str_tabheader);
+                                $("#ddoperatormobile").val(result[0]);
+                                $("#ddcircle").val(result[1]);
+                                //document.getElementById("dthcustomername").innerHTML = result[0];
+                                //document.getElementById("dthmonthlyplan").innerHTML = result[1];
+
+                                //showModalDTHInfo();
+
+                            },
+                            beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                                $('#AjaxLoader').show();
+                            },
+                            complete: function () {
+                                $('#AjaxLoader').hide();
+                            }
+                        })
+                    }
+                    else {
+                        $.ajax({
+
+                            url: '/api/Recharge/getOperatorcheckPostpaid',
+                            data: JSON.stringify(jsondata),
+
+                            dataType: "json",
+                            type: 'POST',
+                            contentType: "application/json; charset=utf-8",
+
+                            success: function (result) {
+                                //alert(result);
+                                //console.log(result[0]);
+                                //console.log(result[1]);
+                                //console.log(result[2]);
+                                //console.log(result[3]);
+                                //console.log(result.str_tabheader);
+                                $("#ddoperatormobile").val(result[0]);
+                                $("#ddcircle").val(result[1]);
+                                //document.getElementById("dthcustomername").innerHTML = result[0];
+                                //document.getElementById("dthmonthlyplan").innerHTML = result[1];
+
+                                //showModalDTHInfo();
+
+                            },
+                            beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                                $('#AjaxLoader').show();
+                            },
+                            complete: function () {
+                                $('#AjaxLoader').hide();
+                            }
+                        })
+                    }
+
+
+
+                }
+            }
+        }
+
+        function loadDTHPlan() {
+
+            var jsondata = { 'operatorId': $('#ddoperatordth').find(":selected").val() };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getDTHPlan',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    //console.log(result[0]);
+                    //console.log(result[1]);
+                    //console.log(result[2]);
+                    //console.log(result.str_tabheader);
+                    //alert(result[0]);
+                    document.getElementById("tabheaderdth").innerHTML = result[0];
+                    document.getElementById("tabcontentdth").innerHTML = result[1];
+                    showModalDTHplan();
+
+                },
+                beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+
+
+        function loadGiftCardBrand() {
+            $.ajax({
+
+                url: '/api/Recharge/getGiftCardBrand',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result);
+
+
+                    var giftdata = '';
+                    var items = "";
+                    $.each(result, function (result, value) {
+                        //alert(value);
+                        //console.log(value.circlecode);
+                        //$("#ddcircle").append($("<option></option>").val(value.circleCode).html(value.circleName));
+
+                        giftdata += '<div class="col-lg-3 col-md-6 col-sm-12"><a href="/Home/GiftCardDetail?bid=' + value.brandProductCode + '" class="brands_card"><div class="gift-card-bx"><div class="gift-card-img"><img src="' + value.brandImage+'" alt="" /></div><h4>' + value.brandName+'</h4></div></a></div>';
+
+
+                    });
+                    //console.log(giftdata);
+                    divgiftcardbrand.innerHTML = giftdata;
+                    //$("#ddcircle").append(items);
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                    //$('#ddcircle').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+
+    </script>
+    <script>
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 45 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+        function showModalLoginEmail() {
+            $('#loginPopup').modal({ backdrop: 'static', keyboard: false });
+            $(".responsive-menu").removeClass("show-nav");
+        }
+        function ClosepopupLoginEmail() {
+            $('#loginPopup').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+        function showModalOTP() {
+            $('#otpPopup').modal({ backdrop: 'static', keyboard: false })
+            document.getElementById("OTP1").focus();
+        }
+        function ClosepopupOTP() {
+            $('#otpPopup').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+
+        function showModalOTPRecharge() {
+            $('#otpPopupRecharge').modal({ backdrop: 'static', keyboard: false })
+            document.getElementById("otprecharge1").focus();
+        }
+        function ClosepopupOTPRecharge() {
+            $('#otpPopupRecharge').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+
+        $(document).ready(function () {
+            //alert('a');
+            var myJsVariable = '@ViewBag.OTPPopup'
+            //alert(myJsVariable);
+            if (myJsVariable == 'IsOTP') {
+                @*alert(@ViewBag.OTPText);
+                console.log(@ViewBag.OTPText);*@
+                ClosepopupLoginEmail();
+                showModalOTP();
+            }
+
+            var VarOTPError = '@ViewBag.OTPError'
+
+             @*console.log(@ViewBag.OTPold);
+        console.log(@ViewBag.OTPnew);*@
+            if (VarOTPError == '1') {
+
+                toastr.error('Error', 'Invalid OTP');
+                showModalOTP();
+            }
+            var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            //alert(LoginEMail);
+                if (LoginEMail != '') {
+                    showBalanceNew();
+
+                }
+
+        });
+
+         $(document).ready(function () {
+
+
+                 var varRechargeError = '@ViewBag.RechargeError';
+                 var RechargeErrorText = '@ViewBag.RechargeErrorText';
+             @*console.log(@ViewBag.OTPold);
+        console.log(@ViewBag.OTPnew);*@
+                 if (varRechargeError == '1') {
+
+                     toastr.error('Error', RechargeErrorText);
+
+            }
+
+
+        });
+    </script>
+    <script type="text/javascript">
+        function movetoNext(current, nextFieldID) {
+            if (current.value.length >= current.maxLength) {
+                document.getElementById(nextFieldID).focus();
+            }
+        }
+        function operatorchange(opid) {
+            $("#ddoperatormobile").val(opid);
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+

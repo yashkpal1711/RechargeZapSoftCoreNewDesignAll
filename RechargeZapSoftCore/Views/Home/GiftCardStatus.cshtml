@@ -1,0 +1,181 @@
+﻿@model RechargeZapSoftCore.Models.clsRecharge
+@{
+    ViewData["Title"] = "Online Mobile Recharge - Bill Payments & Prepaid Recharge on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+@*<h1>Success</h1>
+    payment status : @ViewBag.PaymentStatus
+    gateway response : @ViewBag.PaymentGayewayResponse
+
+
+     Action : @ViewBag.ActionName
+    <br />Email : @ViewBag.Email
+    <br />VourherCount : @ViewBag.VoucherCount
+    <br />Message : @ViewBag.MailMessage
+    <br />Message : @ViewBag.VoucherResponse*@
+
+<div class="succes_failed pb-5">
+    <div class="san_container">
+        <div class="succes_container">
+            @*<div class="homepagelink">
+                <a href="/"><img src="~/new2/img/home.png" alt="home" />Home</a>
+            </div>*@
+            <div class="succes_top">
+                <div class="succes_img">
+                    <img src="~/new2/img/congratulation.png" alt="Congratulation" />
+                </div>
+                <div class="succes_details">
+                    <div class="succes_text">
+                        <h3>Congratulations!</h3>
+                        <span>Your Voucher has been proceed Successfully.</span>
+                    </div>
+                    <div class="succfail_row">
+                        <div class="succfail_order">
+                            <span>Order No.</span>
+                            <p>@ViewBag.OrderId</p>
+                        </div>
+                        <div class="succfail_date">
+                            <span>GiftCard Voucher has been delivered to your email ID.:-</span>
+                            <p>@ViewBag.Email</p>
+                        </div>
+                        <div class="succfail_date">
+                            <span>Date & Time</span>
+                            <p class="filtertimepara"><i class="fa-solid fa-calendar"></i> &nbsp; @ViewBag.OrderTime </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="succes_bottom">
+                <div class="succfail_head">Your Voucher Details</div>
+                <div class="succfail_cont">
+
+                    @foreach (var dr in ViewBag.VoucherData.Rows)
+                    {
+                    <div class="rows">
+
+                        @if (@dr["Status"] == "SUCCESS")
+                        {
+                            <div class="succfail_box">
+                                <div class="succfail_table succfail_img">
+                                    <span><img src="@dr["BrandImage"]" alt="logo" /></span>
+                                </div>
+
+                                <div class="succfail_table succfail_img">
+                                    <span><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+
+                                    <p>GiftCard Generated</p>
+                                </div>
+
+
+                                <div class="succfail_table">
+                                    <span>Amount</span>
+                                    <p><i class="fa-solid fa-indian-rupee-sign"></i> @dr["amount"]</p>
+                                </div>
+                                <div class="succfail_table">
+                                    <span>Expiry</span>
+                                    <p><i class="fa-solid fa-calendar"></i> &nbsp; @dr["expiry"]</p>
+                                </div>
+                            </div>
+                        }
+                        else if (@dr["Status"] == "FAILED")
+                  {
+                    <div class="succfail_box failed">
+                        <div class="succfail_table succfail_img">
+                            <span><img src="@dr["BrandImage"]" alt="logo" /></span>
+                        </div>
+
+                        <div class="succfail_table succfail_img">
+                            <span><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+
+                            <p>GiftCard Not Generated</p>
+                        </div>
+
+
+                        <div class="succfail_table">
+                            <span>Amount</span>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> @dr["amount"]</p>
+                        </div>
+                        <div class="succfail_table">
+                            <span>Expiry</span>
+                            <p><i class="fa-solid fa-calendar"></i> &nbsp; @dr["expiry"]</p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="succfail_box failed">
+                        <div class="succfail_table succfail_img">
+                            <span><img src="@dr["BrandImage"]" alt="logo" /></span>
+                        </div>
+
+                        <div class="succfail_table succfail_img">
+                            <span><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+
+                            <p>GiftCard Is Being Generated</p>
+                        </div>
+
+
+                        <div class="succfail_table">
+                            <span>Amount</span>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> @dr["amount"]</p>
+                        </div>
+                        <div class="succfail_table">
+                            <span>Expiry</span>
+                            <p><i class="fa-solid fa-calendar"></i> &nbsp; @dr["expiry"]</p>
+                        </div>
+                    </div>
+                }
+
+
+                    </div>
+                    }
+
+
+                    @*<div class="rows">
+            <div class="succfail_box failed">
+                <div class="succfail_table succfail_img">
+                    <span><img src="./img/giftcard/bata.png" alt="logo" /></span>
+                </div>
+                <div class="succfail_table succfail_img">
+                    <span><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                    <p>GiftCard is being Generated</p>
+                </div>
+                <div class="succfail_table">
+                    <span>Amount</span>
+                    <p><i class="fa-solid fa-indian-rupee-sign"></i> 200</p>
+                </div>
+                <div class="succfail_table">
+                    <span>Expiry</span>
+                    <p>---</p>
+                </div>
+            </div>
+            <div class="succfail_note">
+                <p><span>Note:-</span>If GiftCard not Generated in 24 Hours please contact our Support Team</p>
+            </div>
+        </div>
+        <div class="rows">
+            <div class="succfail_box">
+                <div class="succfail_table succfail_img">
+                    <span><img src="./img/giftcard/bata.png" alt="logo" /></span>
+                </div>
+                <div class="succfail_table succfail_img">
+                    <span><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+                    <p>GiftCard Generated</p>
+                </div>
+                <div class="succfail_table">
+                    <span>Amount</span>
+                    <p><i class="fa-solid fa-indian-rupee-sign"></i> 500</p>
+                </div>
+                <div class="succfail_table">
+                    <span>Expiry</span>
+                    <p><i class="fa-solid fa-calendar"></i> &nbsp; 11/09/2024</p>
+                </div>
+            </div>
+        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

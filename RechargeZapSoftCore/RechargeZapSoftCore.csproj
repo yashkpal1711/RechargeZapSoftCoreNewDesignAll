@@ -1,0 +1,382 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="wwwroot\css\fullpage.css" />
+    <None Include="wwwroot\css\jquery.countdown.css" />
+    <None Include="wwwroot\css\owl.carousel.min.css" />
+    <None Include="wwwroot\css\owl.theme.default.min.css" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\css\themify-icons.css" />
+    <None Include="wwwroot\fonts\themify9f24.eot" />
+    <None Include="wwwroot\fonts\themify9f24.svg" />
+    <None Include="wwwroot\fonts\themify9f24.ttf" />
+    <None Include="wwwroot\fonts\themify9f24.woff" />
+    <None Include="wwwroot\fonts\themifyd41d.eot" />
+    <None Include="wwwroot\images\a-1.jpg" />
+    <None Include="wwwroot\images\ad-banner-3.jpg" />
+    <None Include="wwwroot\images\ad-banner-4.png" />
+    <None Include="wwwroot\images\app-image.png" />
+    <None Include="wwwroot\images\apple-store.png" />
+    <None Include="wwwroot\images\b-1.jpg" />
+    <None Include="wwwroot\images\b-1.png" />
+    <None Include="wwwroot\images\b-10.png" />
+    <None Include="wwwroot\images\b-11.png" />
+    <None Include="wwwroot\images\b-14.png" />
+    <None Include="wwwroot\images\b-17.png" />
+    <None Include="wwwroot\images\b-2.jpg" />
+    <None Include="wwwroot\images\b-2.png" />
+    <None Include="wwwroot\images\b-3.png" />
+    <None Include="wwwroot\images\b-4.jpg" />
+    <None Include="wwwroot\images\b-4.png" />
+    <None Include="wwwroot\images\b-5.jpg" />
+    <None Include="wwwroot\images\b-5.png" />
+    <None Include="wwwroot\images\b-6.jpg" />
+    <None Include="wwwroot\images\b-6.png" />
+    <None Include="wwwroot\images\b-9.png" />
+    <None Include="wwwroot\images\banner-illu.jpg" />
+    <None Include="wwwroot\images\banner-sldier-3.jpg" />
+    <None Include="wwwroot\images\banner-sldier-5.jpg" />
+    <None Include="wwwroot\images\banner-slide-1.jpg" />
+    <None Include="wwwroot\images\banner-slide-2.jpg" />
+    <None Include="wwwroot\images\banner-slide-3.jpg" />
+    <None Include="wwwroot\images\banner-slider-2.jpg" />
+    <None Include="wwwroot\images\banner-slider-4.jpg" />
+    <None Include="wwwroot\images\banner-slider-6.jpg" />
+    <None Include="wwwroot\images\bb-3.png" />
+    <None Include="wwwroot\images\bb-43.png" />
+    <None Include="wwwroot\images\bb-44.png" />
+    <None Include="wwwroot\images\bb-5.jpg" />
+    <None Include="wwwroot\images\bg-155.jpg" />
+    <None Include="wwwroot\images\bg-156.jpg" />
+    <None Include="wwwroot\images\bg-157.jpg" />
+    <None Include="wwwroot\images\bg-158.jpg" />
+    <None Include="wwwroot\images\bg-159.jpg" />
+    <None Include="wwwroot\images\bg-160.jpg" />
+    <None Include="wwwroot\images\bg-161.jpg" />
+    <None Include="wwwroot\images\bg-162.jpg" />
+    <None Include="wwwroot\images\bg-41.jpg" />
+    <None Include="wwwroot\images\bg-55.jpg" />
+    <None Include="wwwroot\images\bg-56.jpg" />
+    <None Include="wwwroot\images\bg-57.jpg" />
+    <None Include="wwwroot\images\bg-58.jpg" />
+    <None Include="wwwroot\images\bg-59.jpg" />
+    <None Include="wwwroot\images\bg-6.jpg" />
+    <None Include="wwwroot\images\bg-60.jpg" />
+    <None Include="wwwroot\images\bg-61.jpg" />
+    <None Include="wwwroot\images\bg-7.jpg" />
+    <None Include="wwwroot\images\bg8.jpg" />
+    <None Include="wwwroot\images\blog-1.jpg" />
+    <None Include="wwwroot\images\blog-2.jpg" />
+    <None Include="wwwroot\images\blog-3.jpg" />
+    <None Include="wwwroot\images\blog-4.jpg" />
+    <None Include="wwwroot\images\c-5.jpg" />
+    <None Include="wwwroot\images\c-6.jpg" />
+    <None Include="wwwroot\images\c-7.jpg" />
+    <None Include="wwwroot\images\chip.png" />
+    <None Include="wwwroot\images\clock.png" />
+    <None Include="wwwroot\images\cycle-1.jpg" />
+    <None Include="wwwroot\images\cycle-10.jpg" />
+    <None Include="wwwroot\images\cycle-11.jpg" />
+    <None Include="wwwroot\images\cycle-12.jpg" />
+    <None Include="wwwroot\images\cycle-20.jpg" />
+    <None Include="wwwroot\images\cycle-21.jpg" />
+    <None Include="wwwroot\images\cycle-22.jpg" />
+    <None Include="wwwroot\images\cycle-23.jpg" />
+    <None Include="wwwroot\images\cycle-24.jpg" />
+    <None Include="wwwroot\images\cycle-25.jpg" />
+    <None Include="wwwroot\images\cycle-26.jpg" />
+    <None Include="wwwroot\images\cycle-27.jpg" />
+    <None Include="wwwroot\images\cycle-3.jpg" />
+    <None Include="wwwroot\images\cycle-4.jpg" />
+    <None Include="wwwroot\images\cycle-5.jpg" />
+    <None Include="wwwroot\images\cycle-6.jpg" />
+    <None Include="wwwroot\images\download1.png" />
+    <None Include="wwwroot\images\download2.png" />
+    <None Include="wwwroot\images\download3.png" />
+    <None Include="wwwroot\images\download4.png" />
+    <None Include="wwwroot\images\email.png" />
+    <None Include="wwwroot\images\error--v3.gif" />
+    <None Include="wwwroot\images\f-10.jpg" />
+    <None Include="wwwroot\images\f-11.jpg" />
+    <None Include="wwwroot\images\f-12.jpg" />
+    <None Include="wwwroot\images\f-13.jpg" />
+    <None Include="wwwroot\images\f-14.jpg" />
+    <None Include="wwwroot\images\f-15.jpg" />
+    <None Include="wwwroot\images\f-16.jpg" />
+    <None Include="wwwroot\images\f-2.jpg" />
+    <None Include="wwwroot\images\f-3.jpg" />
+    <None Include="wwwroot\images\f-4.jpg" />
+    <None Include="wwwroot\images\f-6.jpg" />
+    <None Include="wwwroot\images\f-7.jpg" />
+    <None Include="wwwroot\images\f-8.jpg" />
+    <None Include="wwwroot\images\f-9.png" />
+    <None Include="wwwroot\images\favicon.png" />
+    <None Include="wwwroot\images\fs-1.jpg" />
+    <None Include="wwwroot\images\fs-14.png" />
+    <None Include="wwwroot\images\fs-2.jpg" />
+    <None Include="wwwroot\images\fs-3.jpg" />
+    <None Include="wwwroot\images\fs-4.jpg" />
+    <None Include="wwwroot\images\fs-5.jpg" />
+    <None Include="wwwroot\images\fslider-1.jpg" />
+    <None Include="wwwroot\images\fslider-2.jpg" />
+    <None Include="wwwroot\images\fslider-3.jpg" />
+    <None Include="wwwroot\images\g-1.jpg" />
+    <None Include="wwwroot\images\g-10.jpg" />
+    <None Include="wwwroot\images\g-10.png" />
+    <None Include="wwwroot\images\g-11.png" />
+    <None Include="wwwroot\images\g-12.png" />
+    <None Include="wwwroot\images\g-13.png" />
+    <None Include="wwwroot\images\g-15.png" />
+    <None Include="wwwroot\images\g-16.png" />
+    <None Include="wwwroot\images\g-17.png" />
+    <None Include="wwwroot\images\g-18.png" />
+    <None Include="wwwroot\images\g-19.png" />
+    <None Include="wwwroot\images\g-2.jpg" />
+    <None Include="wwwroot\images\g-3.jpg" />
+    <None Include="wwwroot\images\g-4.png" />
+    <None Include="wwwroot\images\g-5.png" />
+    <None Include="wwwroot\images\g-6.png" />
+    <None Include="wwwroot\images\g-7.png" />
+    <None Include="wwwroot\images\g-8.png" />
+    <None Include="wwwroot\images\gf-1.png" />
+    <None Include="wwwroot\images\gf-2.png" />
+    <None Include="wwwroot\images\gf-3.png" />
+    <None Include="wwwroot\images\gf-4.png" />
+    <None Include="wwwroot\images\gf-5.jpg" />
+    <None Include="wwwroot\images\gf-6.jpg" />
+    <None Include="wwwroot\images\gf-7.jpg" />
+    <None Include="wwwroot\images\gf-8.jpg" />
+    <None Include="wwwroot\images\girl-1.jpg" />
+    <None Include="wwwroot\images\girl-10.jpg" />
+    <None Include="wwwroot\images\girl-11.jpg" />
+    <None Include="wwwroot\images\girl-13.jpg" />
+    <None Include="wwwroot\images\girl-14.jpg" />
+    <None Include="wwwroot\images\girl-2.jpg" />
+    <None Include="wwwroot\images\girl-3.jpg" />
+    <None Include="wwwroot\images\girl-4.jpg" />
+    <None Include="wwwroot\images\girl-5.jpg" />
+    <None Include="wwwroot\images\girl-6.jpg" />
+    <None Include="wwwroot\images\girl-7.jpg" />
+    <None Include="wwwroot\images\girl-8.jpg" />
+    <None Include="wwwroot\images\girl-9.jpg" />
+    <None Include="wwwroot\images\google-icon.png" />
+    <None Include="wwwroot\images\gs-3.jpg" />
+    <None Include="wwwroot\images\icon-12.png" />
+    <None Include="wwwroot\images\icon-facebook.png" />
+    <None Include="wwwroot\images\icon2.png" />
+    <None Include="wwwroot\images\icon98.html" />
+    <None Include="wwwroot\images\insta-1.jpg" />
+    <None Include="wwwroot\images\insta-2.jpg" />
+    <None Include="wwwroot\images\insta-3.jpg" />
+    <None Include="wwwroot\images\insta-4.jpg" />
+    <None Include="wwwroot\images\insta-5.jpg" />
+    <None Include="wwwroot\images\insta-6.jpg" />
+    <None Include="wwwroot\images\insta-8.jpg" />
+    <None Include="wwwroot\images\insta-9.jpg" />
+    <None Include="wwwroot\images\landing-banner.png" />
+    <None Include="wwwroot\images\login-bg-2.jpg" />
+    <None Include="wwwroot\images\logo-white.png" />
+    <None Include="wwwroot\images\logo.png" />
+    <None Include="wwwroot\images\map-marker.png" />
+    <None Include="wwwroot\images\menu-bg.png" />
+    <None Include="wwwroot\images\menu-dropdown-background-2.jpg" />
+    <None Include="wwwroot\images\o.png" />
+    <None Include="wwwroot\images\o1.jpg" />
+    <None Include="wwwroot\images\o2.jpg" />
+    <None Include="wwwroot\images\o3.jpg" />
+    <None Include="wwwroot\images\organic-1.jpg" />
+    <None Include="wwwroot\images\organic-10.png" />
+    <None Include="wwwroot\images\organic-11.png" />
+    <None Include="wwwroot\images\organic-12.jpg" />
+    <None Include="wwwroot\images\organic-17.jpg" />
+    <None Include="wwwroot\images\organic-2.jpg" />
+    <None Include="wwwroot\images\organic-3.jpg" />
+    <None Include="wwwroot\images\organic-4.png" />
+    <None Include="wwwroot\images\organic-5.png" />
+    <None Include="wwwroot\images\organic-6.png" />
+    <None Include="wwwroot\images\organic-7.png" />
+    <None Include="wwwroot\images\organic-8.png" />
+    <None Include="wwwroot\images\organic-9.png" />
+    <None Include="wwwroot\images\owl.video.play.html" />
+    <None Include="wwwroot\images\p-1-1.jpg" />
+    <None Include="wwwroot\images\p-2-1.jpg" />
+    <None Include="wwwroot\images\p-3-1.jpg" />
+    <None Include="wwwroot\images\p-32.png" />
+    <None Include="wwwroot\images\p-4-1.jpg" />
+    <None Include="wwwroot\images\p-5.jpg" />
+    <None Include="wwwroot\images\p-6.jpg" />
+    <None Include="wwwroot\images\p-7.jpg" />
+    <None Include="wwwroot\images\p-8.jpg" />
+    <None Include="wwwroot\images\parallax.jpg" />
+    <None Include="wwwroot\images\payment-logo.png" />
+    <None Include="wwwroot\images\phone-3.png" />
+    <None Include="wwwroot\images\phone.png" />
+    <None Include="wwwroot\images\play-store.png" />
+    <None Include="wwwroot\images\pp-1.png" />
+    <None Include="wwwroot\images\pp-10.png" />
+    <None Include="wwwroot\images\pp-11.png" />
+    <None Include="wwwroot\images\pp-12.png" />
+    <None Include="wwwroot\images\pp-13.png" />
+    <None Include="wwwroot\images\pp-14.png" />
+    <None Include="wwwroot\images\pp-15.png" />
+    <None Include="wwwroot\images\pp-16.png" />
+    <None Include="wwwroot\images\pp-17.png" />
+    <None Include="wwwroot\images\pp-18.png" />
+    <None Include="wwwroot\images\pp-20.png" />
+    <None Include="wwwroot\images\pp-21.png" />
+    <None Include="wwwroot\images\pp-22.png" />
+    <None Include="wwwroot\images\pp-23.png" />
+    <None Include="wwwroot\images\pp-24.png" />
+    <None Include="wwwroot\images\pp-5.png" />
+    <None Include="wwwroot\images\pp-55.png" />
+    <None Include="wwwroot\images\pp-59.png" />
+    <None Include="wwwroot\images\pp-6.png" />
+    <None Include="wwwroot\images\pp-7.png" />
+    <None Include="wwwroot\images\pp-8.png" />
+    <None Include="wwwroot\images\pp-9.png" />
+    <None Include="wwwroot\images\pp-bg-1.jpg" />
+    <None Include="wwwroot\images\pp-bg-2.jpg" />
+    <None Include="wwwroot\images\preloader.svg" />
+    <None Include="wwwroot\images\ps-1.jpg" />
+    <None Include="wwwroot\images\ps-2.jpg" />
+    <None Include="wwwroot\images\ps-3.jpg" />
+    <None Include="wwwroot\images\ps-4.jpg" />
+    <None Include="wwwroot\images\r-2.png" />
+    <None Include="wwwroot\images\r-4.png" />
+    <None Include="wwwroot\images\r-5.png" />
+    <None Include="wwwroot\images\s-1.jpg" />
+    <None Include="wwwroot\images\s-10.jpg" />
+    <None Include="wwwroot\images\s-11.jpg" />
+    <None Include="wwwroot\images\s-12.jpg" />
+    <None Include="wwwroot\images\s-13.jpg" />
+    <None Include="wwwroot\images\s-14.jpg" />
+    <None Include="wwwroot\images\s-15.jpg" />
+    <None Include="wwwroot\images\s-16.jpg" />
+    <None Include="wwwroot\images\s-2.jpg" />
+    <None Include="wwwroot\images\s-20.jpg" />
+    <None Include="wwwroot\images\s-25.jpg" />
+    <None Include="wwwroot\images\s-26.jpg" />
+    <None Include="wwwroot\images\s-27.jpg" />
+    <None Include="wwwroot\images\s-28.jpg" />
+    <None Include="wwwroot\images\s-29.jpg" />
+    <None Include="wwwroot\images\s-3.jpg" />
+    <None Include="wwwroot\images\s-30.jpg" />
+    <None Include="wwwroot\images\s-31.jpg" />
+    <None Include="wwwroot\images\s-32.jpg" />
+    <None Include="wwwroot\images\s-33.jpg" />
+    <None Include="wwwroot\images\s-4.jpg" />
+    <None Include="wwwroot\images\s-40.jpg" />
+    <None Include="wwwroot\images\s-41.jpg" />
+    <None Include="wwwroot\images\s-42.jpg" />
+    <None Include="wwwroot\images\s-43.jpg" />
+    <None Include="wwwroot\images\s-44.jpg" />
+    <None Include="wwwroot\images\s-5.jpg" />
+    <None Include="wwwroot\images\s-50.jpg" />
+    <None Include="wwwroot\images\s-51.jpg" />
+    <None Include="wwwroot\images\s-52.jpg" />
+    <None Include="wwwroot\images\s-53.jpg" />
+    <None Include="wwwroot\images\s-54.jpg" />
+    <None Include="wwwroot\images\s-55.jpg" />
+    <None Include="wwwroot\images\s-6.jpg" />
+    <None Include="wwwroot\images\s-60.jpg" />
+    <None Include="wwwroot\images\s-61.jpg" />
+    <None Include="wwwroot\images\s-62.jpg" />
+    <None Include="wwwroot\images\s-63.jpg" />
+    <None Include="wwwroot\images\s-64.jpg" />
+    <None Include="wwwroot\images\s-65.jpg" />
+    <None Include="wwwroot\images\s-66.jpg" />
+    <None Include="wwwroot\images\s-67.jpg" />
+    <None Include="wwwroot\images\s-7.jpg" />
+    <None Include="wwwroot\images\s-8.jpg" />
+    <None Include="wwwroot\images\s-9.jpg" />
+    <None Include="wwwroot\images\settings.png" />
+    <None Include="wwwroot\images\slider-1.jpg" />
+    <None Include="wwwroot\images\slider-2.jpg" />
+    <None Include="wwwroot\images\sp-1-thum.png" />
+    <None Include="wwwroot\images\sp-10.jpg" />
+    <None Include="wwwroot\images\sp-11.jpg" />
+    <None Include="wwwroot\images\sp-2.png" />
+    <None Include="wwwroot\images\sp-3.png" />
+    <None Include="wwwroot\images\sp-4.png" />
+    <None Include="wwwroot\images\sp-5.png" />
+    <None Include="wwwroot\images\sp-6.jpg" />
+    <None Include="wwwroot\images\sp-8.jpg" />
+    <None Include="wwwroot\images\star-disable.png" />
+    <None Include="wwwroot\images\star.png" />
+    <None Include="wwwroot\images\subscribe-1.jpg" />
+    <None Include="wwwroot\images\sunglass-1.png" />
+    <None Include="wwwroot\images\sunglass-2.png" />
+    <None Include="wwwroot\images\sunglass-3.png" />
+    <None Include="wwwroot\images\sunglass-4.png" />
+    <None Include="wwwroot\images\sunglass-5.png" />
+    <None Include="wwwroot\images\sunglass-6.png" />
+    <None Include="wwwroot\images\sunglass-7.png" />
+    <None Include="wwwroot\images\t-1.jpg" />
+    <None Include="wwwroot\images\t-2.jpg" />
+    <None Include="wwwroot\images\t-3.jpg" />
+    <None Include="wwwroot\images\user-1.png" />
+    <None Include="wwwroot\images\user-11.png" />
+    <None Include="wwwroot\images\user-12.png" />
+    <None Include="wwwroot\images\user-2.png" />
+    <None Include="wwwroot\images\user-3.png" />
+    <None Include="wwwroot\images\user-4.png" />
+    <None Include="wwwroot\images\user-5.png" />
+    <None Include="wwwroot\images\user-6.png" />
+    <None Include="wwwroot\images\user-7.png" />
+    <None Include="wwwroot\images\user-8.png" />
+    <None Include="wwwroot\images\user-9.png" />
+    <None Include="wwwroot\images\user_1.png" />
+    <None Include="wwwroot\images\user_2.png" />
+    <None Include="wwwroot\js\apexcharts.min.js" />
+    <None Include="wwwroot\js\chart.js" />
+    <None Include="wwwroot\js\countdown.js" />
+    <None Include="wwwroot\js\fullpage.js" />
+    <None Include="wwwroot\js\plugin.js" />
+    <None Include="wwwroot\js\scripts.js" />
+    <None Include="wwwroot\vendor\owl-carousel\css\owl.carousel.min.css" />
+    <None Include="wwwroot\vendor\owl-carousel\css\owl.theme.default.css" />
+    <None Include="wwwroot\vendor\owl-carousel\css\owl.video.play.html" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="ARA_StringHunt">
+      <HintPath>..\..\..\Ramnarayan\RamNarayanSoft\BusinessLogicTier\bin\Debug\ARA_StringHunt.dll</HintPath>
+    </Reference>
+    <Reference Include="paytm">
+      <HintPath>..\..\..\MoneyMoney\data\paytm gateway\Paytm_App_Checksum_Kit_DotNet-master\Paytm_App_Checksum_Kit_DotNet-master\Checksumcsharp\Bin\paytm.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\..\RechCare\RechcareSoft\RechcareSoft\Bin\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>E:\software\System.Data.DataSetExtensions\System.Data.DataSetExtensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\fonts\font-awesome\" />
+  </ItemGroup>
+
+</Project>

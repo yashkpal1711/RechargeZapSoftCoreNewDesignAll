@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewData["Title"] = "Contact Us | RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+
+<section class="sec-breadcrumb">
+    <div class="page-title text-center">
+        <h1>Contact Us</h1>
+    </div>
+</section>
+<section style="background-color: #f8f9fa;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+
+            </div>
+            <div class="col-lg-6 col-md-12 mb-4 ">
+                <div class="contact-form">
+                    <h4>Drop Your Query</h4>
+                    <div class="form-area-box">
+                        <form method="post" action="/Home/Contact">
+                            <div class="form-group">
+                                <input type="text" id="txtname" name="UserName" placeholder="Name" required class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="txtemail" name="Email" placeholder="Email Id" required
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="txtmobile" name="Mobile" placeholder="Phone No." required
+                                       class="form-control" />
+                            </div>
+                            <textarea class="form-control" name="Message" placeholder="Message" id="txtmessage" style="min-height: 150px;"></textarea>
+                            <div class="form-area-btn">
+                                @* <button type="submit">Submit</button>*@
+                                <input type="submit" class="submitbtm" name="btnPay" style="background: #172c64;
+    /* background: linear-gradient(90deg, #10182b 0%, #172c65 100%); */
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 10px 30px;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+    height: 45px;
+    width: 100%;
+" onclick="return  validateContact();" value="Submit" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-4 ">
+                <div class="contact-form">
+                    <h4>Reach Us</h4>
+                    <ul>
+                        <li>
+                            <a href="#!">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p>
+                                    <span>
+                                        Orion Techno Age
+                                        Private Limited
+                                    </span> <br>H213, Ground Floor, Sector 63,
+                                    Noida, Uttar Pradesh, India.
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:9354827769">
+                                <i class="fa-solid fa-phone"></i>
+                                <p>
+                                    +91-9354827769 <span>
+                                        (Mon
+                                        - Fri , 10AM - 6PM)
+                                    </span>
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:care@rechargezap.in">
+                                <i class="fa-solid fa-envelope"></i>
+                                <p>care@rechargezap.in <span>(24X7)</span></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts
+    {
+    <script>
+    function validateContact() {
+
+        if (document.getElementById("txtemail").value == "") {
+            toastr.warning('Warning', 'Enter Email');
+            document.getElementById("txtemail").focus();
+            return false;
+        }
+
+        else if (document.getElementById("txtname").value == "") {
+            toastr.warning('Warning', 'Enter Name');
+            document.getElementById("txtname").focus();
+            return false;
+        }
+
+        else if (document.getElementById("txtmessage").value == "") {
+            toastr.warning('Warning', 'Enter Message');
+            document.getElementById("txtmessage").focus();
+            return false;
+        }
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (document.getElementById("txtemail").value.match(validRegex)) {
+            //alert("Valid email address!");
+            //document.form1.text1.focus();
+            document.getElementById("txtemail").focus();
+            //return true;
+        } else {
+            //alert("Invalid email address!");
+            //document.form1.text1.focus();
+            toastr.warning('Warning', 'Enter Valid Email');
+            document.getElementById("txtemail").focus();
+            return false;
+        }
+
+    }
+         $(document).ready(function () {
+
+               var VarContactFormError = '@ViewBag.ContactFormError'
+               var VarContactFormErrorText = '@ViewBag.ContactFormText'
+             if (VarContactFormError == '1') {
+
+                 toastr.success('Success', VarContactFormErrorText);
+             }
+             else if (VarContactFormError == '0') {
+                 toastr.error('Error', VarContactFormErrorText);
+             }
+        });
+
+    function ContactFormSubmit2() {
+
+        var jsondata = { 'userName': document.getElementById("txtname").value, 'email': document.getElementById("txtemail").value, 'message': document.getElementById("txtmessage").value };
+
+        //alert(jsondata);
+        $.ajax({
+
+            url: '/api/Recharge/ContactForm',
+            data: JSON.stringify(jsondata),
+
+            dataType: "json",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+
+            success: function (result) {
+                //alert(result[2]);
+                //console.log(result[0]);
+                //console.log(result[1]);
+                //console.log(result[2]);
+                //console.log(result.str_tabheader);
+                //alert(result[0]);
+                //document.getElementById("tabheaderdth").innerHTML = result[0];
+                //document.getElementById("tabcontentdth").innerHTML = result[1];
+                //showModalDTHplan();
+                toastr.success('Success', result[0]);
+            },
+            beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                $('#AjaxLoader').show();
+            },
+            complete: function () {
+                $('#AjaxLoader').hide();
+            }
+        })
+    }
+    </script>
+}

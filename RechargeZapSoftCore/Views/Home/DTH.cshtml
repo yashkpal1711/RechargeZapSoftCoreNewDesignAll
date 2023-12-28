@@ -1,0 +1,812 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "DTH Recharge Offers Online | Get Offers & Deals on DTH Recharge on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+<section class="main-banner">
+    <div class="container-fluid">
+        <div class="main-recharge-row">
+            <div class="recharge-options">
+                <div class="recharge-items">
+                    <ul>
+                        <li>
+                            <a href="/home/recharge">
+                                <img src="~/new2/img/icon/mobile-phone.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/1.png" alt="Recharge" class="icon-active" />
+                                <span> Recharge</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="/home/dth">
+                                <img src="~/new2/img/icon/television.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/2.png" alt="Recharge" class="icon-active" />
+                                <span> DTH</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/home/Broadband">
+                                <img src="~/new2/img/icon/sim-card.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/3.png" alt="Recharge" class="icon-active" />
+                                <span> Data Card</span>
+                            </a>
+                        </li>
+                        <li>
+
+                            <a href="/Home/Landline">
+                                <img src="~/new2/img/icon/landlinee.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/4.png" alt="Recharge" class="icon-active" />
+                                <span> Landline</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/Broadband">
+                                <img src="~/new2/img/icon/internet.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/5.png" alt="Recharge" class="icon-active" />
+                                <span> Broadband</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Cylinder">
+                                <img src="~/new2/img/icon/gas-tank.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/6.png" alt="Recharge" class="icon-active" />
+                                <span> Cylinder</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/gas">
+                                <img src="~/new2/img/icon/stove.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/7.png" alt="Recharge" class="icon-active" />
+                                <span> Piped Gas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Electricity">
+                                <img src="~/new2/img/icon/light-bulb.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/8.png" alt="Recharge" class="icon-active" />
+                                <span> Electricity</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/water">
+                                <img src="~/new2/img/icon/water-tap.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/9.png" alt="Recharge" class="icon-active" />
+                                <span> Water</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Fastag">
+                                <img src="~/new2/img/icon/toll.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" />
+                                <span> FASTag</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!" class="d-more-serv">
+                                <img src="~/new2/img/icon/menu.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/11.png" alt="Recharge" class="icon-active" />
+                                <span> More+</span>
+                            </a>
+
+                            <div class="d-more-service">
+                                <div class="d-inner">
+                                    <div class="d-service-col">
+                                        <a href="/Home/Insurance">
+                                            <img src="~/new2/img/icon/insurance.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Insurance</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/credit-card.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Credit Card</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/cable.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Cable</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/loan.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Loan</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/education.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Education Fees</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/housing.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Housing Society</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/hospital.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Hospital</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/muncipal.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Municipal Services</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/challan.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Challan</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/metro.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Metro</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-field-area">
+                <div class="container-fluid" style="padding:0px 30px;">
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="form-area-box home-bg-grey">
+                                <form>
+                                    <div class="main-banner-title">
+                                        <h1>DTH Recharge Online</h1>
+                                    </div>
+                                    <div class="form-area home-frm">
+                                        <!-- <label class="label-title">Operator</label> -->
+                                        <select id="ddoperatordth"></select>
+                                    </div>
+                                    <div class="form-area home-frm">
+                                        <!-- <label class="label-title">Circle</label> -->
+                                        @*<input type="text" name="" placeholder="Subscriber ID" required />*@
+                                        <input type="text" id="numberdth" placeholder="Enter VC Number">
+                                    </div>
+                                    <div class="form-area home-frm">
+                                        <!-- <label class="label-title">Mobile Number*</label> -->
+                                        <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                        @*<input type="text" name="" placeholder="599.00" required />*@
+                                        <input type="text" id="amountdth" placeholder="Amount">
+                                        @*<a onclick="loadDTHPlan();" style="color:white" class="check-plan">Check Plan</a>*@
+                                    </div>
+                                    <div class="form-area-btn">
+                                        <button type="button" class="submitbtn" onclick="return  validateDTHRecharge();">Proceed</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12">
+                            <div class="banner-slider">
+                                <img src="~/new2/img/small-banner/dth.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
+<!-- Operators -->
+<!-- Operators -->
+<section class="operators-sec">
+    <div class="container-fluid">
+        <div class="operators-bx">
+            <div class="title-rw">
+                <h6 class="title">Select Operator</h6>
+                <div class="title-line"></div>
+            </div>
+            <div class="operators-row">
+                <div class="operators-col">
+                    <a onclick="operatorchange('13');">
+                        <div class="operators-data">
+                            <img src="~/new2/img/dth/1.jpg" alt="" />
+                        </div>
+                        <h3>Dish T.v</h3>
+                    </a>
+                </div>
+                <div class="operators-col">
+                    <a href="#">
+                        <div class="operators-data">
+                            <img src="~/new2/img/dth/2.jpg" alt="" />
+                        </div>
+                        <h3>Reliance</h3>
+                    </a>
+                </div>
+                <div class="operators-col">
+                    <a onclick="operatorchange('12');">
+                        <div class="operators-data">
+                            <img src="~/new2/img/dth/3.jpg" alt="" />
+                        </div>
+                        <h3>Airtel Digital</h3>
+                    </a>
+                </div>
+                <div class="operators-col">
+                    <a onclick="operatorchange('16');">
+                        <div class="operators-data">
+                            <img src="~/new2/img/dth/4.jpg" alt="" />
+                        </div>
+                        <h3>Videocon</h3>
+                    </a>
+                </div>
+                <div class="operators-col">
+                    <a onclick="operatorchange('15');">
+                        <div class="operators-data">
+                            <img src="~/new2/img/dth/5.jpg" alt="" />
+                        </div>
+                        <h3>Sun Direct</h3>
+                    </a>
+                </div>
+                <div class="operators-col">
+                    <a onclick="operatorchange('53');">
+                        <div class="operators-data">
+                            <img src="~/new2/img/dth/6.jpg" alt="" />
+                        </div>
+                        <h3>Tataplay</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Section Start-->
+<section style="background-color: #f5f5f5;" class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">DTH Recharge Online - Instant recharge for Tata Play (formerly Tata Sky), Airtel Digital TV, Dish TV, D2H and more at RechargeZap</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph">
+            <p>Now you can recharge your DTH with India’s leading recharging website rechargezap.com. With several users across the country, we're the most reliable site for online DTH recharge. </p>
+            <p>It happens a lot when you're busy and you miss your due date, causing late fees and disruptions to your DTH service. There is no need to worry! It's so easy to recharge with rechargezap.in, as you can conveniently do it from anywhere, at any time, without having to spend too much time & energy searching for a place to recharge. RechargeZap lets you choose your plans before you pay. You can now make instant recharges on Tata Play (formerly Tata Sky), Airtel Digital TV, Dish TV, D2H, Sun Direct and more. No matter what pack you have, recharging is easy on the website.</p>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Section Start-->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">With RechargeZap, you can recharge all DTH operators</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph">
+            <p>Online recharge of your DTH can be made very easy with RechargeZap. It provides you with an easy way to recharge your DTH within just a few clicks, regardless of the service provider you are using. There might be a time crunch and you don't want to go to the store. In spite of the fact that you may not have a local DTH operator, you can recharge your TV for any operator online from anywhere in the world.</p>
+            <p>There is an easy, convenient, and quick way to get your disconnected DTH account up and running again as soon as possible. With their latest DTH offers, you can recharge your DTH at a great price.</p>
+
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Section Start-->
+<section style="background-color:#f5f5f5;" class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">
+                Recharge your DTH and get amazing cashback
+            </h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph">
+            <p>With several amazing DTH recharge offers and promo codes, you'll get a cashback offer. Wouldn't it be nice if you could save time and money for DTH recharge by using this online method? You don't have to worry about hassles when it comes to online DTH recharge.</p>
+            <p><strong>Payments are flexible at RechargeZap</strong></p>
+            <p>There are many payment methods available on RechargeZap, so you can choose the one that suits you best. You can pay with your debit card, credit card, wallet, or UPI.</p>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Section Start-->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">
+                FAQs
+            </h2>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="faq-box">
+            <div class="accordion" id="accordionExample">
+                <div class="card faq-main">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            How to Make DTH Recharge Online At RechargeZap
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>RechargeZap makes it easy to recharge your DTH. It only takes a few simple steps to do so.</p>
+                            <p>On RechargeZap, go to DTH recharge</p>
+                            <ul>
+                                <li>Choose your DTH provider</li>
+                                <li>Type in your Customer ID/Registered Mobile Number/ Smart Card Number/ Subscriber ID</li>
+                                <li>Enter the amount you wish to recharge.</li>
+                                <li>In order to receive cash back, apply a promotional code. </li>
+                                <li>Go ahead and pay</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            How long does it take to recharge DTH?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                Recharging DTH on RechargeZap takes a few seconds. As soon as your transaction is complete, you'll get a message on your number and a message on your registered email address.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree">
+                            Can RechargeZap recharge DTH for every amount?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                There is no limit to the amount that RechargeZap can recharge your DTH. However, we recommend that you check your operator's website to make sure that DTH recharge is compatible with RechargeZap.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" Four">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                            aria-controls="collapseFour">
+                            How can I download an invoice for my DTH recharge?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>RechargeZap.com let you receive invoices. You can receive the invoice for the DTH recharge you have done in your email.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Features-Section -->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/shield.png" alt="" />
+                    </div>
+                    <h5>100% Secure Payments</h5>
+                    <p>
+                        Safeguarding personal information.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/trust.png" alt="" />
+                    </div>
+                    <h5>Trust Pay</h5>
+                    <p>
+                        Guaranteed safe and secure checkout.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/technical.png" alt="" />
+                    </div>
+                    <h5>Support</h5>
+                    <p>
+                        Have a query? We’re here to help.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Features-Section -->
+
+@section Scripts{
+
+
+
+    <script type="text/javascript">
+
+
+         function validateDTHRecharge() {
+               if (document.getElementById("amountdth").value == "") {
+                toastr.warning('Warning', 'Enter Amount');
+                   document.getElementById("amountdth").focus();
+                return false;
+             }
+
+               if (parseFloat(document.getElementById("amountdth").value) <=0) {
+                toastr.warning('Warning', 'Amount Must Be Greater Than 0');
+                   document.getElementById("amountdth").focus();
+                return false;
+            }
+               else if (parseFloat(document.getElementById("amountdth").value) > 10000) {
+                   toastr.warning('Warning', 'Amount Must Be Less Than Or Equal To 10000');
+                   document.getElementById("amountdth").focus();
+                   return false;
+               }
+            else if (document.getElementById("numberdth").value == "") {
+                toastr.warning('Warning', 'Enter VC Number');
+                document.getElementById("numberdth").focus();
+                return false;
+            }
+            else if ($('#ddoperatordth').find(":selected").val() == "0") {
+                toastr.warning('Warning', 'Select Operator');
+                document.getElementById("ddoperatordth").focus();
+                return false;
+            }
+
+            else {
+
+                   document.getElementById("headerconfirm").innerHTML = "DTH Recharge";
+
+                   document.getElementById("amountConfirm").value = document.getElementById("amountdth").value;
+                document.getElementById("operatorConfirm").value = $('#ddoperatordth').find(":selected").text();
+                   document.getElementById("mobileConfirm").value = document.getElementById("numberdth").value;
+                document.getElementById("circleConfirm").value = $('#ddcircle').find(":selected").text();
+                //document.getElementById("customermobileConfirm").value = document.getElementById("mobileNumber").value;
+
+                document.getElementById("operatoridConfirm").value = $('#ddoperatordth').find(":selected").val();
+
+                   document.getElementById("circleConfirm").style.display = 'none';
+
+                var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+
+            if (LoginEMail != '') {
+                document.getElementById('divBalance').style.display = 'block';
+                document.getElementById('divUsedBalance').style.display = 'block';
+                showBalance();
+            }
+            else {
+                document.getElementById('divBalance').style.display = 'none';
+                document.getElementById('divUsedBalance').style.display = 'none';
+            }
+
+
+                showModal();
+
+
+
+
+            }
+        }
+        function validateRechargeconfirm() {
+            if (document.getElementById("emailConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Email');
+                document.getElementById("emailConfirm").focus();
+                return false;
+            }
+
+            //else if (ValidateEmail(document.getElementById("emailConfirm"))==false)
+            // {
+            //     toastr.warning('Warning', 'Enter Valid Email');
+            //     document.getElementById("emailConfirm").focus();
+            //     return false;
+            // }
+
+
+
+
+            else if (document.getElementById("nameConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Name');
+                document.getElementById("nameConfirm").focus();
+                return false;
+            }
+
+            else if (document.getElementById("mobileConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Mobile');
+                document.getElementById("mobileConfirm").focus();
+                return false;
+            }
+            if (document.getElementById("headerconfirm").innerHTML=='Mobile Recharge')
+            {
+            if (document.getElementById("mobileConfirm").value.length != 10) {
+                toastr.warning('Warning', 'Enter Valid Number');
+                document.getElementById("mobileConfirm").focus();
+                return false;
+            }
+        }
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (document.getElementById("emailConfirm").value.match(validRegex)) {
+                //alert("Valid email address!");
+                //document.form1.text1.focus();
+                document.getElementById("emailConfirm").focus();
+                //return true;
+            } else {
+                //alert("Invalid email address!");
+                //document.form1.text1.focus();
+                toastr.warning('Warning', 'Enter Valid Email');
+                document.getElementById("emailConfirm").focus();
+                return false;
+            }
+
+        }
+        function showModal() {
+            $('#proceedRecharge').modal({ backdrop: 'static', keyboard: false })
+        }
+        function Closepopup() {
+            $('#proceedRecharge').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+        function showModalDTHplan() {
+            $('#ModalDTHPlan').modal({ backdrop: 'static', keyboard: false })
+        }
+        function ClosepopupDTHplan() {
+            $('#ModalDTHPlan').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+        function showModalDTHInfo() {
+            $('#ModalDTHInfo').modal({ backdrop: 'static', keyboard: false })
+        }
+        function ClosepopupDTHInfo() {
+            $('#ModalDTHInfo').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+    </script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            loadDTHOperator();
+
+        });
+
+        function showBalance() {
+
+             var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            var jsondata = { 'email': LoginEMail };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getBalance',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    document.getElementById('walletbalanceconfirm').value = result[0];
+                    document.getElementById('emailConfirm').value = result[1];
+                    document.getElementById('nameConfirm').value = result[3];
+                    document.getElementById('customermobileConfirm').value = result[2];
+
+                    var Bal = parseFloat(document.getElementById('walletbalanceconfirm').value);
+                    var RechAmt = parseFloat(document.getElementById('amountConfirm').value);
+                    if (Bal >= RechAmt) {
+                        document.getElementById('usedwalletbalanceconfirm').value = RechAmt;
+                    }
+                    else {
+                        document.getElementById('usedwalletbalanceconfirm').value = Bal;
+                    }
+
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+
+
+
+        function checkplannew() {
+            //alert('a');
+            document.getElementById("~/new2/img/banner").style.display = "none";
+            document.getElementById("plandiv").style.display = "block";
+            //loadPlan();
+
+
+        }
+
+
+
+        function selectplandth(amount) {
+            var planamount = parseInt(amount);
+            document.getElementById("amountdth").value = planamount;
+            //ClosepopupDTHplan();
+        }
+        function loadDTHOperator() {
+            $.ajax({
+
+                url: '/api/Recharge/getOperatorDTH',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result.d);
+                    $('#ddoperatordth').empty();
+                    $('#ddoperatordth').append('<option value="0">Select Operator</option>');
+                    $.each(result, function (result, value) {
+
+                        $("#ddoperatordth").append($("<option></option>").val(value.id).html(value.operator));
+                    })
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddoperatordth').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+        function showDTHInfo() {
+            if (document.getElementById("numberdth").value != "") {
+                var jsondata = { 'operatorId': $('#ddoperatordth').find(":selected").val(), 'number': document.getElementById("numberdth").value };
+                //alert(jsondata);
+                $.ajax({
+
+                    url: '/api/Recharge/getDTHCustmerInfo',
+                    data: JSON.stringify(jsondata),
+
+                    dataType: "json",
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+
+                    success: function (result) {
+                        //alert(result);
+                        console.log(result);
+                        //console.log(result.str_tabheader);
+                        document.getElementById("dthcustomername").innerHTML = result[0];
+                        document.getElementById("dthmonthlyplan").innerHTML = result[1];
+                        document.getElementById("dthbalance").innerHTML = result[2];
+                        document.getElementById("dthlastrechargedate").innerHTML = result[3];
+                        //document.getElementById("tabcontent").innerHTML = result[1];
+                        showModalDTHInfo();
+
+                    },
+                    beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                        $('#AjaxLoader').show();
+                    },
+                    complete: function () {
+                        $('#AjaxLoader').hide();
+                    }
+                })
+            }
+        }
+        function loadDTHPlan() {
+
+            var jsondata = { 'operatorId': $('#ddoperatordth').find(":selected").val() };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getDTHPlan',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    console.log(result[0]);
+                    console.log(result[1]);
+                    console.log(result[2]);
+                    //console.log(result.str_tabheader);
+                    //alert(result[0]);
+                    document.getElementById("tabheaderdth").innerHTML = result[0];
+                    document.getElementById("tabcontentdth").innerHTML = result[1];
+                    showModalDTHplan();
+
+                },
+                beforeSend: function () {
+                                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+
+        function operatorchange(opid) {
+            $("#ddoperatordth").val(opid);
+        }
+
+        $("#ddoperatordth").change(function () {
+            //alert($('#ddoperatordth').find(":selected").val());
+            var oid = $('#ddoperatordth').find(":selected").val();
+            
+            if (oid == 12) {
+                $('#numberdth').attr('placeholder', 'Customer ID');
+                
+            }
+            else if (oid == 13) {
+                $('#numberdth').attr('placeholder', 'Registered Mobile or VC Number');
+            }
+            else if (oid == 15) {
+                $('#numberdth').attr('placeholder', 'Smart Card Number');
+            }
+            else if (oid == 53) {
+                $('#numberdth').attr('placeholder', 'Subscriber ID or Registered Mobile');
+            }
+            else if (oid == 16) {
+                $('#numberdth').attr('placeholder', 'Subscriber ID or Registered Mobile');
+            }
+            else {
+                $('#numberdth').attr('placeholder', 'Subscriber ID or Registered Mobile');
+            }
+            //alert(oid);
+        });
+       
+    </script>
+}
+@section MobileHeader{
+    DTH Recharge Online
+}

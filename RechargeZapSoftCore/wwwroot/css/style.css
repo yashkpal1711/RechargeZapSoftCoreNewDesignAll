@@ -1,0 +1,313 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block; }
+* {
+    scrollbar-width: inherit;
+    scrollbar-color: inherit;
+}
+
+ol, ul {
+    list-style: none; }
+
+blockquote, q {
+    quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none; }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+
+h1 {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+h3 {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+
+h4 {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+
+h5 {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+
+h6 {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+
+p {
+    font-size: 16px;
+    color: #4B4B4B;
+    line-height: 1.5;
+    font-weight:400;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+
+a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none !important;
+    text-decoration: none !important; }
+
+input {
+    outline: none !important; }
+
+button {
+    outline: none !important; }
+.main {
+    overflow: hidden; 
+    background:#FFF;
+}
+.text-decoration a{
+    text-decoration:underline !important;
+}
+img{
+    max-width:100%;
+}
+.section-padding{
+    padding:80px 0;
+}
+
+
+/*========================================================================================
+            Start Step area
+=========================================================================================*/
+.steps-area {
+	background: #F5F5F5;
+	padding: 140px 0 43px 0;
+}
+.step-heading h2 {
+	font-size: 42px;
+	font-family: 'Poppins';
+	font-weight: 600;
+	color: #252B39;
+	padding-bottom: 16px;
+	text-align: center;
+	padding-bottom: 20px;
+}
+.step-single-item {
+	background: #FFF;
+	text-align: center;
+	padding: 75px 20px;
+	border-radius: 15px;
+	box-shadow: 0px 3px 6px 0px rgba(0,0,0,16%);
+	margin-top: 36px;
+    transition: 0.5s;
+}
+.step-single-item:hover {
+	background: #192E6A;
+    transition: 0.5s;
+}
+.step-single-item img {
+	height: 139px;
+	width: auto;
+}
+.step-single-item h3 {
+	color: #505971;
+	font-size: 28px;
+	font-weight: 500;
+	font-family: 'Poppins';
+	padding-top: 28px;
+}
+.step-single-item:hover h3  {
+	color: #FFF;
+}
+/*========================================================================================
+            Start Service area
+=========================================================================================*/
+.service-area {
+	padding: 50px 0 0 0;
+	overflow: hidden;
+}
+.services-content h2 {
+	font-size: 42px;
+	font-family: 'Poppins';
+	font-weight: 600;
+	color: #252B39;
+	padding-bottom: 16px;
+}
+.services-content p {
+	font-size: 18px;
+	color: #464646;
+	font-family: 'Inter';
+	font-weight: 400;
+}
+.services-image {
+	width: 426px;
+	height: 426px;
+	background: #192E6A;
+	border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+}
+.all-service-area .row.service-single-item {
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+    margin-bottom:60px;
+}
+.icon-image img {
+	max-width: 100%;
+	width: auto;
+}
+.all-service-area {
+	padding: 0 40px;
+}
+.all-service-area .row.service-single-item:nth-child(even) .services-content {
+	padding-left: 45px;
+}
+
+.all-service-area .row.service-single-item:nth-child(odd) .services-content p {
+	padding-right: 33px;
+}
+.about-us-area {
+	padding: 30px 0 71px 0;
+}
+.about-us-area .row {
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.about-content h2 {
+	font-size: 42px;
+	font-family: 'Poppins';
+	font-weight: 600;
+	color: #252B39;
+	padding-bottom: 16px;
+}
+.about-content p {
+	font-size: 18px;
+	color: #464646;
+	font-family: 'Inter';
+	font-weight: 400;
+}
+.use-all-content {
+	background: #192E6A;
+	padding: 60px 0;
+	text-align: center;
+	border-radius: 15px;
+}
+.use-content {
+	max-width: 890px;
+	margin: auto;
+}
+.row.about-image-content {
+	padding: 0 81px;
+}
+.use-content h2 {
+	font-size: 42px;
+	font-family: 'Poppins';
+	font-weight: 600;
+	color: #fff;
+	padding-bottom: 16px;
+}
+.use-content p {
+	font-size: 18px;
+	color: #fff;
+	font-family: 'Inter';
+	font-weight: 400;
+}
+.rechargezap-area {
+	padding: 71px 0;
+}
+.rechagezap-content h2 {
+	font-size: 42px;
+	font-family: 'Poppins';
+	font-weight: 600;
+	color: #252B39;
+	padding-bottom: 28px;
+}
+.rechagezap-content p {
+	font-size: 18px;
+	color: #464646;
+	font-family: 'Inter';
+	font-weight: 400;
+}
+.footer-area {
+	background: #192E6A;
+	padding: 61px 0;
+	text-align: center;
+}
+.footer-content img {
+	max-width: 157px;
+}
+.footer-menu ul {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	padding: 20px 0 20px 0;
+}
+.footer-menu ul li {
+	color: #FFF;
+	font-family: 'Inter';
+    border-right:2px solid #FFF;
+    line-height: 1.3;
+}
+.footer-menu ul li:last-child {
+    border-right:0;
+}
+.footer-menu ul li a {
+	color: #FFF;
+	font-size: 18px;
+	padding: 0 10px;
+}
+.footer-content p {
+	color: #FFF;
+	font-family: 'Inter';
+	font-size: 13px;
+}

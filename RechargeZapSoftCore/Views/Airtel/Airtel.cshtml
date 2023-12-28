@@ -1,0 +1,780 @@
+﻿
+@{
+    ViewData["Title"] = "Airtel Mobile Recharge Online - Prepaid Recharge on RechargeZap";
+    Layout = "~/Views/Shared/ShareLayoutNew.cshtml";
+}
+@section header
+    {
+    <style>
+
+
+        .newnumbertype {
+            border: none;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+        }
+
+        newnumbertype::-webkit-inner-spin-button,
+        newnumbertype::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .btnsubmit {
+            background: #172c64;
+            /*background: linear-gradient(90deg, #10182b 0%, #172c65 100%);*/
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 400;
+            padding: 10px 30px;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            height: 45px;
+            width: 100%;
+        }
+
+        .agreeterms {
+            font-size: 13px;
+            color: #757272;
+        }
+    </style>
+}
+
+<div class="loader" id="AjaxLoader" style="display:none;">
+    <div class="strip-holder">
+        @*<div class="strip-1"></div>
+            <div class="strip-2"></div>
+            <div class="strip-3"></div>*@
+        <img src="~/images/preloader.svg" />
+    </div>
+</div>
+
+<section class="main-banner-landing" id="recharge">
+    <div class="container-fluid">
+        <div class="landing-page">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-4 col-md-7 col-sm-12">
+
+                    <div class="form-area-box landing-page-form">
+                        <div class="landing-title text-center">
+                            <h1>Airtel Recharge</h1>
+                        </div>
+                        <form>
+
+
+                            <div class="form-area landing-radio">
+                                <!-- <label class="label-title">Select</label> -->
+                                <div class="div-radio">
+                                    <input type="radio" class="custom-control-input" id="customRadioPrepaid" name="example" value="Postpaid" checked onchange="loadmobileoperator('1');">
+                                    <label class="custom-control-label small-size fw-500 text-grey-900 font-xsss" for="customRadioPrepaid">Prepaid</label>
+
+                                </div>
+                                <div class="div-radio">
+                                    <input type="radio" class="custom-control-input" id="customRadioPostpaid" name="example" value="Prepaid" onchange="loadmobileoperator('6');">
+                                    <label class="custom-control-label small-size fw-500 text-grey-900 font-xsss" for="customRadioPostpaid">Postpaid</label>
+
+                                </div>
+                            </div>
+
+                            <div class="form-area">
+                                <!-- <label class="label-title">Mobile Number*</label> -->
+                                <span>+91</span>
+                                <input type="number" id="mobileNumber" maxlength="10" onkeypress="return isNumber(event)" class="newnumbertype" name="" placeholder="Enter 10 Digit Mobile No" />
+                            </div>
+
+                            <div class="form-area">
+                                <!-- <label class="label-title">Operator</label> -->
+                                @*<select>
+                                        <option selected>Select Operator</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                    </select>*@
+                                <select id="ddoperatormobile"></select>
+                            </div>
+                            <div class="form-area">
+                                <!-- <label class="label-title">Circle</label> -->
+                                @*<select>
+                                        <option selected>Select Circle</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                    </select>*@
+                                <select id="ddcircle"></select>
+                            </div>
+                            <div class="form-area">
+                                <!-- <label class="label-title">Mobile Number*</label> -->
+                                <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                <input type="number" id="mobileAmount" onkeypress="return isNumber(event)" class="newnumbertype" name="" placeholder="Amount" />
+                                <a onclick="loadPlan();" class="check-plan" id="btncheckplan" style="color:white">Check Plan</a>
+                            </div>
+
+                            <div class="form-area-btn">
+                                @*<button type="submit" onclick="return  validateMobileRecharge2();" id="btnrecharge">Proceed To Recharge</button>*@
+                                <input type="button" value="Proceed to Recharge" id="btnrecharge" class="btnsubmit" onclick="return  validateMobileRecharge2();" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="main-banner-landing" id="userdetail" style="display:none;">
+    <div class="container-fluid">
+        <div class="landing-page">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-4 col-md-7 col-sm-12">
+
+                    <div class="form-area-box landing-page-form">
+                        <!-- <div class="landing-login">
+                            <h1>0000000000</h1>
+                            <span><i class="fa-solid fa-indian-rupee-sign"></i> 2000</span>
+                        </div> -->
+
+                        <div class="head-change-area landing-login">
+                            <ul>
+                                <li>
+                                    <a onclick="backuserdetail();" style="color:white" class="back-plan"><i class="fa-solid fa-chevron-left"></i></a>
+                                </li>
+                                <li><span class="plan-num" id="headeruserdetail"></span></li>
+                                <li>
+                                    <span class="landing-price">
+                                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                                        <span id="headeruserdetailamount"></span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <form action="/Home/PayUMoneyPayment" method="post">
+
+                            <div class="form-area">
+                                <input type="text" name="UserName" placeholder="Name" id="nameuserdetail" class="w-100" />
+                            </div>
+                            <div class="form-area">
+                                <input type="email" name="Email" placeholder="Email" id="emailuserdetail" />
+                                <input type="hidden" class="form-control mb-3" id="mobileuserdetail" placeholder="Name" name="UserMobile">
+                                <input type="hidden" class="form-control  border-2 bg-color-none text-grey-700" id="operatoridConfirmuserdetail" value="Amount" name="OperatorCode">
+
+                                <input type="hidden" class="form-control  inputconfirm" id="amountConfirmuserdetail" name="RechargeAmount">
+                                <input type="hidden" class="form-control  inputconfirm" id="mobileConfirmuserdetail" name="RechargeMobile">
+                            </div>
+                            <div class="form-agree">
+                                @*<input type="checkbox" id="agreement">
+                                    <label for="agreement">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Optio,
+                                        rerum?
+                                    </label>*@
+                                <input type="checkbox" checked id="agreecheck" />
+                                @Html.ActionLink("I Agree all Terms & Conditions and processing fees applicable on recharge.", "Terms", "Home", null, new { @class = "agreeterms" })
+                            </div>
+                            <div class="form-area-btn landing-btn-login">
+                                @*<button>Pay Now</button>*@
+                                <input type="submit" class="btnsubmit" name="btnPay" style="color:white !important; background-color:#081844;border-color:#081844 ;   padding: 8px 20px;" onclick="return  validateRechargeconfirm2();" value="Pay Now" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="main-banner-landing" id="plan" style="display:none;">
+    <div class="container">
+        <div class="landing-page">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="check-plan-box">
+                        <div class="head-change-area">
+                            <ul>
+                                <li>
+                                    <a onclick="backuserdetail();" style="color:white;" class="back-plan"><i class="fa-solid fa-chevron-left"></i></a>
+                                </li>
+                                <li><span class="plan-num" id="headerplan"></span></li>
+                                <li><a onclick="backuserdetail();" style="color:white;" class="change-plan">Change</a></li>
+                            </ul>
+                        </div>
+                        <ul class="nav nav-tabs plan-tabs" role="tablist" id="tabheader">
+                            @*<li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="tab-1" data-toggle="tab" href="#tab-des-1"
+                                       role="tab" aria-controls="unlimited" aria-selected="true">Unlimited</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tab-2" data-toggle="tab" href="#tab-des-2" role="tab"
+                                       aria-controls="smart-offers" aria-selected="false">Smart Offers</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tab-3" data-toggle="tab" href="#tab-des-3" role="tab"
+                                       aria-controls="data-addon" aria-selected="false">Data AddOn</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tab-3" data-toggle="tab" href="#tab-des-4" role="tab"
+                                       aria-controls="top-up" aria-selected="false">Top Up</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tab-3" data-toggle="tab" href="#tab-des-5" role="tab"
+                                       aria-controls="jio-phone" aria-selected="false">Jio Phone</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tab-3" data-toggle="tab" href="#tab-des-6" role="tab"
+                                       aria-controls="international-roaming" aria-selected="false">
+                                        International
+                                        Roaming
+                                    </a>
+                                </li>*@
+                        </ul>
+                        <div class="tab-content plan-content" id="tabcontent">
+                            @*<div class="tab-pane fade show active" id="tab-des-1" role="tabpanel"
+                                     aria-labelledby="home-tab">
+                                    <div class="check-plan-main">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="plan-inner-bx">
+                                                    <div class="plan-inner-top">
+                                                        <div class="plan-inner-left">
+                                                            <div class="main-plans">
+                                                                <p class="pricing">
+                                                                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                                                                    <span>599</span>
+                                                                </p>
+                                                                <p class="plan-validity">
+                                                                    <i class="fa-solid fa-clock"></i>
+                                                                    <span>Validity: 56 Days</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="main-bottom">
+                                                                <ul>
+                                                                    <li>
+                                                                        <p>
+                                                                            <i class="fa-solid fa-phone"></i><span>Unlimited</span>
+                                                                        </p>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>
+                                                                            <i class="fa-solid fa-wifi"></i><span>1.5 GB/Day</span>
+                                                                        </p>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>
+                                                                            <i class="fa-solid fa-message"></i><span>100 SMS/Day</span>
+                                                                        </p>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="plan-inner-right">
+                                                            <button>Select</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="plan-inner-bottom">
+                                                        <p>
+                                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                                            Excepturi similique vel blanditiis dicta distinctio
+                                                            odio.
+                                                        </p>
+
+                                                        <div class="mobile-plan-row">
+                                                            <div class="mobile-plan-col">
+                                                                <p class="plan-validity">
+                                                                    <i class="fa-solid fa-clock"></i>
+                                                                    <span>Validity: 56 Days</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="plan-inner-right">
+                                                                <button>Select</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-des-2" role="tabpanel"
+                                     aria-labelledby="profile-tab">
+
+                                </div>
+                                <div class="tab-pane fade" id="tab-des-3" role="tabpanel"
+                                     aria-labelledby="contact-tab">
+
+                                </div>
+                                <div class="tab-pane fade" id="tab-des-4" role="tabpanel"
+                                     aria-labelledby="contact-tab">
+
+                                </div>
+                                <div class="tab-pane fade" id="tab-des-5" role="tabpanel"
+                                     aria-labelledby="contact-tab">
+
+                                </div>
+                                <div class="tab-pane fade" id="tab-des-6" role="tabpanel"
+                                     aria-labelledby="contact-tab">
+
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts
+    {
+    <div class="modal bottom fade" id="ModalConfirm2" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content border-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ti-close text-grey-500"></i></button>
+                <div class="modal-body   bg-none">
+                    <div class="row">
+                        <div class="col-md-6" style="background-color:#192E6A;padding-top:20px; padding-bottom:20px;">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <img src="~/images/logo-white.png" style="height:40px; " />
+                                </div>
+                                <div class="col-md-12 ">
+                                    <label style="color:white;">Email</label>
+                                    <input type="text" class="form-control   inputconfirm" id="emailConfirm">
+                                </div>
+                                <div class="col-md-12 ">
+                                    <label style="color:white;">Name</label>
+                                    <input type="text" class="form-control  inputconfirm" id="nameConfirm">
+                                </div>
+                                <div class="col-md-12 ">
+                                    <label style="color:white;">Mobile</label>
+                                    <input type="text" class="form-control  inputconfirm" id="customermobileConfirm">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="padding-top:20px; padding-bottom:20px;  ">
+                            <div class="card shadow-none rounded-0  border-0">
+                                <div class="card-body rounded-0 text-left pt-0 pb-2">
+                                    <h5 class="fw-600 display2-size mb-4" style="  font-size: 25px !important">Mobile Recharge</h5>
+                                    <form method="post" action="">
+
+                                        <div class="form-group icon-tab  mb-1">
+                                            <input type="text" class="form-control  border-2 bg-color-none text-grey-700" id="amountConfirm" value="Amount">
+                                            <i class="ti-money text-grey-700 pr-0"></i>
+                                        </div>
+                                        <div class="form-group icon-tab mb-1">
+                                            <input type="text" class="form-control  border-2 bg-color-none text-grey-700" id="operatorConfirm" value="Operator">
+                                            <i class="ti-map text-grey-700 pr-0"></i>
+                                        </div>
+                                        <div class="form-group icon-tab mb-1">
+                                            <input type="text" class="form-control  border-2 bg-color-none text-grey-700" id="circleConfirm" value="Circle">
+                                            <i class="fa fa-map-marker text-grey-700 pr-0"></i>
+                                        </div>
+                                        <div class="form-group icon-tab mb-1">
+                                            <input type="text" class="form-control  border-2 bg-color-none text-grey-700" id="mobileConfirm" value="Mobile">
+                                            <i class="ti-mobile text-grey-700 pr-0"></i>
+                                        </div>
+                                        <div class="form-check text-left mb-3">
+
+                                            <a href="#" class="fw-600 font-xsss text-grey-700 mt-1 float-right btn btn-success" style="color:white !important;">Pay Now</a>
+                                        </div>
+                                    </form>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function validateMobileRecharge2() {
+
+            if (document.getElementById("mobileNumber").value == "") {
+                toastr.warning('Warning', 'Enter Number');
+                document.getElementById("mobileNumber").focus();
+                return false;
+            }
+            else if (document.getElementById("mobileNumber").value.length != 10) {
+                toastr.warning('Warning', 'Enter Valid Number');
+                document.getElementById("mobileNumber").focus();
+                return false;
+            }
+            else if ($('#ddoperatormobile').find(":selected").val() == "0") {
+                toastr.warning('Warning', 'Select Operator');
+                document.getElementById("ddoperatormobile").focus();
+                return false;
+            }
+            else if ($('#ddcircle').find(":selected").val() == "0") {
+                toastr.warning('Warning', 'Select Circle');
+                document.getElementById("ddcircle").focus();
+                return false;
+            }
+            else if (document.getElementById("mobileAmount").value == "") {
+                //toastr.warning('Warning', 'Enter Amount');
+                //document.getElementById("mobileAmount").focus();
+                loadPlan();
+            }
+            else {
+
+
+
+                document.getElementById("amountConfirm").value = document.getElementById("mobileAmount").value;
+                document.getElementById("operatorConfirm").value = $('#ddoperatormobile').find(":selected").text();
+                document.getElementById("mobileConfirm").value = document.getElementById("mobileNumber").value;
+                document.getElementById("circleConfirm").value = $('#ddcircle').find(":selected").text();
+                document.getElementById("customermobileConfirm").value = document.getElementById("mobileNumber").value;
+
+
+                document.getElementById("amountConfirmuserdetail").value = document.getElementById("mobileAmount").value;
+                document.getElementById("operatoridConfirmuserdetail").value = $('#ddoperatormobile').find(":selected").val();
+                document.getElementById("mobileConfirmuserdetail").value = document.getElementById("mobileNumber").value;
+
+                document.getElementById("mobileuserdetail").value = document.getElementById("mobileNumber").value;
+                document.getElementById("headeruserdetail").innerHTML = document.getElementById("mobileNumber").value + ' - <i class="fa fa-inr"></i>' + document.getElementById("mobileAmount").value
+
+                document.getElementById('recharge').style.display = 'none';
+                document.getElementById('userdetail').style.display = 'block';
+                document.getElementById('plan').style.display = 'none';
+                //showModal2();
+            }
+        }
+        function validateRechargeconfirm2() {
+            if (document.getElementById("emailuserdetail").value == "") {
+                toastr.warning('Warning', 'Enter Email');
+                document.getElementById("emailuserdetail").focus();
+                return false;
+            }
+            else if (document.getElementById("nameuserdetail").value == "") {
+                toastr.warning('Warning', 'Enter Name');
+                document.getElementById("nameuserdetail").focus();
+                return false;
+            }
+            if (document.getElementById('agreecheck').checked) {
+                //alert("checked");
+            } else {
+                toastr.warning('Warning', 'Please Accept Terms and Conditions');
+                return false;
+                //document.getElementById("nameuserdetail").focus();
+            }
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (document.getElementById("emailuserdetail").value.match(validRegex)) {
+                //alert("Valid email address!");
+                //document.form1.text1.focus();
+                //document.getElementById("emailuserdetail").focus();
+                //return true;
+            } else {
+                //alert("Invalid email address!");
+                //document.form1.text1.focus();
+                toastr.warning('Warning', 'Enter Valid Email');
+                document.getElementById("emailuserdetail").focus();
+                return false;
+            }
+        }
+        function backuserdetail() {
+            document.getElementById('recharge').style.display = 'block';
+            document.getElementById('userdetail').style.display = 'none';
+            document.getElementById('plan').style.display = 'none';
+        }
+        function showModal2() {
+            $('#ModalConfirm2').modal({ backdrop: 'static', keyboard: false })
+        }
+        function Closepopup2() {
+            $('#ModalConfirm2').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+    </script>
+    <script>
+
+        $(document).ready(function () {
+
+            var isChecked = $('#customRadioPrepaid').prop('checked');
+            if (isChecked) {
+                loadmobileoperator('1');
+            }
+            else {
+                loadmobileoperator('6');
+            }
+
+            loadCircle();
+        });
+
+        function loadmobileoperator(value) {
+            $('#ddoperatormobile').empty();
+            if (value == '1') {
+                document.getElementById('btncheckplan').style.display = 'block';
+                document.getElementById('btnrecharge').value = 'Proceed To Recharge';
+
+                loadPrepaidOperator();
+            }
+            else {
+                document.getElementById('btncheckplan').style.display = 'none';
+                document.getElementById('btnrecharge').value = 'Proceed To Pay Bill';
+                loadPostpaidOperator();
+            }
+        }
+
+        function loadPrepaidOperator() {
+            $.ajax({
+
+                url: '/api/Recharge/getOperatorPrepaid',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result.d);
+                    $('#ddoperatormobile').empty();
+
+                    $('#ddoperatormobile').append('<option value="0">Select Operator</option>');
+                    $.each(result, function (result, value) {
+
+                        $("#ddoperatormobile").append($("<option></option>").val(value.id).html(value.operator));
+                    })
+                    $("#ddoperatormobile").val('10');
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddoperatormobile').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+
+        function loadPostpaidOperator() {
+            $.ajax({
+
+                url: '/api/Recharge/getOperatorPostPaid',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result.d);
+                    $('#ddoperatormobile').empty();
+
+                    $('#ddoperatormobile').append('<option value="0">Select Operator</option>');
+                    $.each(result, function (result, value) {
+
+                        $("#ddoperatormobile").append($("<option></option>").val(value.id).html(value.operator));
+                    })
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddoperatormobile').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+
+        function loadCircle() {
+            $.ajax({
+
+                url: '/api/Recharge/getCircle',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result);
+                    $('#ddcircle').empty();
+
+                    $('#ddcircle').append('<option value="0">Select Circle</option>');
+                    var items = "";
+                    $.each(result, function (result, value) {
+                        //alert(value);
+                        //console.log(value.circlecode);
+                        $("#ddcircle").append($("<option></option>").val(value.circleCode).html(value.circleName));
+                        //items += "<option>" + value.circleCode + "</option>";
+                    });
+
+                    //$("#ddcircle").append(items);
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddcircle').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+
+        function loadPlan() {
+
+            if (document.getElementById("mobileNumber").value == "") {
+                toastr.warning('Warning', 'Enter Number');
+                document.getElementById("mobileNumber").focus();
+                return false;
+            }
+            else {
+
+                var jsondata = { 'operatorId': $('#ddoperatormobile').find(":selected").val(), 'circleId': $('#ddcircle').find(":selected").val() };
+                //alert(jsondata);
+                $.ajax({
+
+                    url: '/api/Recharge/getPlan2',
+                    data: JSON.stringify(jsondata),
+
+                    dataType: "json",
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+
+                    success: function (result) {
+                        //alert(result[2]);
+                        console.log(result[0]);
+                        console.log(result[1]);
+                        console.log(result[2]);
+                        console.log(result[3]);
+
+                        document.getElementById("tabheader").innerHTML = result[0];
+                        document.getElementById("tabcontent").innerHTML = result[1];
+                        //showModalplan();
+                        document.getElementById('recharge').style.display = 'none';
+                        document.getElementById('userdetail').style.display = 'none';
+                        document.getElementById('plan').style.display = 'block';
+                        document.getElementById("headerplan").innerHTML = document.getElementById("mobileNumber").value;
+                        document.getElementById('headerplan').focus();
+                        $('#headerplan')[0].scrollIntoView();
+                    },
+                    beforeSend: function () {
+                                                                                                                /*$("#ddoperatormobile").html('Loading...')*/;
+                        $('#AjaxLoader').show();
+                    },
+                    complete: function () {
+                        $('#AjaxLoader').hide();
+                    }
+                })
+
+            }
+        }
+        const source = document.getElementById('mobileNumber');
+        //const result = document.getElementById('result');
+
+        const inputHandler = function (e) {
+            var number = e.target.value;
+            //alert('a');
+            //console.log(number);
+            showOperatorcheck();
+        }
+
+        source.addEventListener('input', inputHandler);
+        source.addEventListener('propertychange', inputHandler); // for IE8
+
+        function showOperatorcheck() {
+
+
+            if (document.getElementById("mobileNumber").value != "") {
+                if (document.getElementById("mobileNumber").value.length == 10) {
+                    var jsondata = { 'number': document.getElementById("mobileNumber").value };
+                    //alert(jsondata);
+                    $.ajax({
+
+                        url: '/api/Recharge/getOperatorcheck',
+                        data: JSON.stringify(jsondata),
+
+                        dataType: "json",
+                        type: 'POST',
+                        contentType: "application/json; charset=utf-8",
+
+                        success: function (result) {
+                            //alert(result);
+                            //console.log(result[0]);
+                            //console.log(result[1]);
+                            console.log(result[2]);
+                            console.log(result[3]);
+                            //console.log(result.str_tabheader);
+                            $("#ddoperatormobile").val(result[0]);
+                            $("#ddcircle").val(result[1]);
+                            //document.getElementById("dthcustomername").innerHTML = result[0];
+                            //document.getElementById("dthmonthlyplan").innerHTML = result[1];
+
+                            //showModalDTHInfo();
+
+                        },
+                        beforeSend: function () {
+                                                                                                        /*$("#ddoperatormobile").html('Loading...')*/;
+                            $('#AjaxLoader').show();
+                        },
+                        complete: function () {
+                            $('#AjaxLoader').hide();
+                        }
+                    })
+                }
+            }
+        }
+        function selectplanmobile(amount) {
+            var planamount = parseInt(amount);
+            document.getElementById("mobileAmount").value = planamount;
+            document.getElementById('recharge').style.display = 'none';
+            document.getElementById('userdetail').style.display = 'block';
+            document.getElementById('plan').style.display = 'none';
+
+            document.getElementById("headeruserdetail").innerHTML = document.getElementById("mobileNumber").value + ' - <i class="fa fa-inr"></i>' + document.getElementById("mobileAmount").value
+
+
+            document.getElementById("amountConfirm").value = document.getElementById("mobileAmount").value;
+            document.getElementById("operatorConfirm").value = $('#ddoperatormobile').find(":selected").text();
+            document.getElementById("mobileConfirm").value = document.getElementById("mobileNumber").value;
+            document.getElementById("circleConfirm").value = $('#ddcircle').find(":selected").text();
+            document.getElementById("customermobileConfirm").value = document.getElementById("mobileNumber").value;
+
+
+            document.getElementById("amountConfirmuserdetail").value = document.getElementById("mobileAmount").value;
+            document.getElementById("operatoridConfirmuserdetail").value = $('#ddoperatormobile').find(":selected").val();
+            document.getElementById("mobileConfirmuserdetail").value = document.getElementById("mobileNumber").value;
+
+            document.getElementById("mobileuserdetail").value = document.getElementById("mobileNumber").value;
+        }
+    </script>
+}

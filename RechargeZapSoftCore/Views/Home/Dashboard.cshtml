@@ -1,0 +1,225 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "My Dashboard | RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+<!-- Dashboard Start -->
+<section class="dash-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+
+                <div class="dasboard-nav">
+                    <ul class="dahboard-link">
+                        <li class="dasboard-item active">
+                            <a href="/Home/Dashboard">
+                                <span>
+                                    <img src="~/new2/img/dashboard/home.png" alt="Home" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/home.png" alt="Home" class="dash-active">
+                                </span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="/Home/Profile">
+                                <span>
+                                    <img src="~/new2/img/dashboard/profile.png" alt="Profile" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/profile.png" alt="Profile"
+                                         class="dash-active">
+                                </span>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="#!" class="mobile-item-dropdown">
+                                <span>
+                                    <img src="~/new2/img/dashboard/services.png" alt="Services" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/services.png" alt="Services" class="dash-active">
+                                </span>
+                                <span>My Services</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </a>
+                            <div class="item-dropdown">
+                                <a href="/Home/Recharge"><img src="~/new2/img/icon/mobile-phone.png" alt="Recharge" /> <span>Recharge</span></a>
+                                <a href="/Home/dth"><img src="~/new2/img/icon/television.png" alt="DTH" /> <span>DTH</span></a>
+                                <a href="/Home/landline"><img src="~/new2/img/icon/landlinee.png" alt="Landline" /> <span>landline</span></a>
+                                <a href="/Home/broadband"><img src="~/new2/img/icon/internet.png" alt="Broadband" /> <span>Broadband</span></a>
+                                <a href="/Home/cylinder"><img src="~/new2/img/icon/gas-tank.png" alt="Cylinder" /> <span>Cylinder</span></a>
+                                <a href="/Home/gas"><img src="~/new2/img/icon/stove.png" alt="Piped Gas" /> <span>Piped Gas</span></a>
+                                <a href="/Home/electricity"><img src="~/new2/img/icon/light-bulb.png" alt="Electricity" /> <span>Electricity</span></a>
+                                <a href="/Home/water"><img src="~/new2/img/icon/water-tap.png" alt="Water" /> <span>Water</span></a>
+                                <a href="/Home/fastag"><img src="~/new2/img/icon/toll.png" alt="Fastag" /> <span>Fastag</span></a>
+                            </div>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="/Home/RechargeHistory">
+                                <span>
+                                    <img src="~/new2/img/dashboard/order.png" alt="Order" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/order.png" alt="Order" class="dash-active">
+                                </span>
+                                <span>Order History</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="/Home/TransactionHistory">
+                                <span>
+                                    <img src="~/new2/img/dashboard/transaction.png" alt="Transaction"
+                                         class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/transaction.png" alt="Transaction"
+                                         class="dash-active">
+                                </span>
+                                <span>Transaction History</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="#">
+                                <span>
+                                    <img src="~/new2/img/dashboard/gift-card.png" alt="Gift" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/gift-card.png" alt="Gift"
+                                         class="dash-active">
+                                </span>
+                                <span>Gift Cards</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="#">
+                                <span>
+                                    <img src="~/new2/img/dashboard/offers.png" alt="Offers" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/offers.png" alt="Offers" class="dash-active">
+                                </span>
+                                <span>Offers & Deals</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="/Home/Test">
+                                <span>
+                                    <img src="~/new2/img/dashboard/logout.png" alt="Logout" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/logout.png" alt="Logout" class="dash-active">
+                                </span>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12">
+                <div class="dashboard-content">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="dash-title">
+                                <h1>Dashboard</h1>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                            <div class="wallet-bal">
+                                <div class="wallet-val">
+                                    <i class="fa-solid fa-indian-rupee-sign"></i> <span id="userbalance"></span>
+                                    <img src="~/new2/img/wallet.png" alt="">
+                                </div>
+                                <p>Wallet Balance</p>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                            <div class="wallet-bal">
+                                <div class="wallet-val">
+                                   <span id="zapcoins"></span>
+                                    <img src="~/new2/img/coins.png" alt="">
+                                </div>
+                                <p>Zap Coins</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                            <div class="swiper dashboardPromoBanner">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="dashboard-promo">
+                                            <img src="~/new2/img/dashboard/off-3.jpg" alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="dashboard-promo">
+                                            <img src="~/new2/img/dashboard/off-4.jpg" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next promo-next"></div>
+                                <div class="swiper-button-prev promo-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Dashboard End -->
+
+@section Scripts
+    {
+    <script>
+     $(document).ready(function () {
+
+
+            var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+
+                if (LoginEMail != '') {
+                    //alert(LoginEMail);
+                    loadDashboard();
+                }
+
+
+        });
+
+
+        function loadDashboard() {
+
+            var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            var jsondata = { 'email': LoginEMail };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getDashboard',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    //console.log(result.username);
+                    console.log(result.dtdata);
+                    //console.log(result[2]);
+                    ////console.log(result.str_tabheader);
+                    ////alert(result[0]);
+                  
+                    document.getElementById("userbalance").innerHTML = result.balanceAmount;
+                    document.getElementById("zapcoins").innerHTML = "0";
+                    //document.getElementById("zapcoins").innerHTML = result.rewardPointBalance;
+
+
+
+                    //showModalDTHplan();
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+    </script>
+}
+@section MobileHeader{
+    Dashboard
+}

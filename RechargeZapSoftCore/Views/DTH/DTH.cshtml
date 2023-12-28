@@ -1,0 +1,367 @@
+﻿
+@{
+    ViewData["Title"] = "DTH";
+    Layout = "~/Views/Shared/ShareLayoutNew.cshtml";
+}
+@section header
+    {
+    <style>
+
+
+        .newnumbertype {
+            border: none;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+        }
+
+        newnumbertype::-webkit-inner-spin-button,
+        newnumbertype::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .btnsubmit {
+            background: #172c64;
+            /*background: linear-gradient(90deg, #10182b 0%, #172c65 100%);*/
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 400;
+            padding: 10px 30px;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            height: 45px;
+            width: 100%;
+        }
+
+        .agreeterms {
+            font-size: 13px;
+            color: #757272;
+        }
+    </style>
+}
+
+<div class="loader" id="AjaxLoader" style="display:none;">
+    <div class="strip-holder">
+        @*<div class="strip-1"></div>
+            <div class="strip-2"></div>
+            <div class="strip-3"></div>*@
+        <img src="~/images/preloader.svg" />
+    </div>
+</div>
+
+<section class="main-banner-landing" id="recharge">
+    <div class="container-fluid">
+        <div class="landing-page">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-4 col-md-7 col-sm-12">
+
+                    <div class="form-area-box landing-page-form">
+                        <div class="landing-title text-center">
+                            <h1>DTH Recharge Online</h1>
+                        </div>
+                        <form>
+                            <div class="form-dth">
+                                <p>Select Operator</p>
+                                @*<select class="form-control" onchange="getval(this);" id="ddoperatordth"></select>*@
+                                <select class="form-control" id="ddoperatordth"></select>
+                            </div>
+                            <div class="form-dth">
+                                <p id="dthtext">Subscriber ID</p>
+                                <input type="text" name="" id="numberdth" placeholder="" class="form-control" />
+                                <small id="dthdesc"></small>
+                            </div>
+
+                            <p style="  margin-bottom: 8px;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  color: #5b5b5b;
+  line-height: 1.1;
+">Enter Amount</p>
+                            <div class="form-area">
+                                <!-- <label class="label-title">Mobile Number*</label> -->
+                                <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                <input type="number" name="" class="newnumbertype" id="amountdth" placeholder="Amount" />
+                                @*<a href="check-plan.html" class="check-plan">Check Plan</a>*@
+                            </div>
+
+                            <div class="form-area-btn">
+                                @*<button type="submit" onclick="return  validateDTHRecharge();">Proceed To Recharge</button>*@
+                                <input type="button" value="Proceed to Recharge" id="btnrecharge" class="btnsubmit" onclick="return  validateDTHRecharge();" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="main-banner-landing" id="userdetail" style="display:none;">
+    <div class="container-fluid">
+        <div class="landing-page">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-4 col-md-7 col-sm-12">
+
+                    <div class="form-area-box landing-page-form">
+                        <!-- <div class="landing-login">
+                            <h1>0000000000</h1>
+                            <span><i class="fa-solid fa-indian-rupee-sign"></i> 2000</span>
+                        </div> -->
+
+                        <div class="head-change-area landing-login">
+                            <ul>
+                                <li>
+                                    <a onclick="backuserdetail();" style="color:white" class="back-plan"><i class="fa-solid fa-chevron-left"></i></a>
+                                </li>
+                                <li><span class="plan-num" id="headeruserdetail"></span></li>
+                                <li>
+                                    <span class="landing-price">
+                                       @* <i class="fa-solid fa-indian-rupee-sign"></i>*@
+                                        <span id="headeruserdetailamount"></span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <form action="/Home/PayUMoneyPayment" method="post">
+
+                            <div class="form-area">
+                                <input type="text" name="UserName" placeholder="Name" id="nameuserdetail" class="w-100" />
+                            </div>
+                            <div class="form-area">
+                                <input type="email" name="Email" placeholder="Email" id="emailuserdetail" />
+                               @* <input type="hidden" class="form-control mb-3" id="mobileuserdetail" placeholder="Name" name="UserMobile">*@
+                                <input type="hidden" class="form-control  border-2 bg-color-none text-grey-700" id="operatoridConfirmuserdetail" value="Amount" name="OperatorCode">
+
+                                <input type="hidden" class="form-control  inputconfirm" id="amountConfirmuserdetail" name="RechargeAmount">
+                                <input type="hidden" class="form-control  inputconfirm" id="mobileConfirmuserdetail" name="RechargeMobile">
+                            </div>
+                            <div class="form-area">
+                                <input type="number"  placeholder="Mobile" class="newnumbertype"  id="mobileuserdetail" name="UserMobile" />
+                              @*  <input type="hidden" class="form-control mb-3" id="mobileuserdetail" placeholder="Name" name="UserMobile">*@
+                                </div>
+                            <div class="form-agree">
+                                @*<input type="checkbox" id="agreement">
+            <label for="agreement">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Optio,
+                rerum?
+            </label>*@
+                                <input type="checkbox" checked id="agreecheck" />
+                                @Html.ActionLink("I Agree all Terms & Conditions and processing fees applicable on recharge.", "Terms", "Home", null, new { @class = "agreeterms" })
+                            </div>
+                            <div class="form-area-btn landing-btn-login">
+                                @*<button>Pay Now</button>*@
+                                <input type="submit" class="btnsubmit" name="btnPay" style="color:white !important; background-color:#081844;border-color:#081844 ;   padding: 8px 20px;" onclick="return  validateRechargeconfirm2();" value="Pay Now" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts
+    {
+
+    <script>
+        $(document).ready(function () {
+            loadDTHOperator();
+
+        });
+
+
+        function validateDTHRecharge() {
+            if (document.getElementById("amountdth").value == "") {
+                toastr.warning('Warning', 'Enter Amount');
+                document.getElementById("amountdth").focus();
+                return false;
+            }
+            if (parseFloat(document.getElementById("amountdth").value) <= 0) {
+                toastr.warning('Warning', 'Amount Must Be Greater Than 0');
+                document.getElementById("amountdth").focus();
+                return false;
+            }
+            else if (parseFloat(document.getElementById("amountdth").value) > 10000) {
+                toastr.warning('Warning', 'Amount Must Be Less Than Or Equal To 10000');
+                document.getElementById("amountdth").focus();
+                return false;
+            }
+            else if (document.getElementById("numberdth").value == "") {
+                toastr.warning('Warning', 'Enter VC Number');
+                document.getElementById("numberdth").focus();
+                return false;
+            }
+            else if ($('#ddoperatordth').find(":selected").val() == "0") {
+                toastr.warning('Warning', 'Select Operator');
+                document.getElementById("ddoperatordth").focus();
+                return false;
+            }
+
+            else {
+
+                //document.getElementById("amountConfirm").value = document.getElementById("amountdth").value;
+                //document.getElementById("operatorConfirm").value = $('#ddoperatordth').find(":selected").text();
+                //document.getElementById("mobileConfirm").value = document.getElementById("numberdth").value;
+                //document.getElementById("customermobileConfirm").value = document.getElementById("mobileNumber").value;
+
+
+                document.getElementById("amountConfirmuserdetail").value = document.getElementById("amountdth").value;
+                document.getElementById("operatoridConfirmuserdetail").value = $('#ddoperatordth').find(":selected").val();
+                document.getElementById("mobileConfirmuserdetail").value = document.getElementById("numberdth").value;
+
+                //document.getElementById("mobileuserdetail").value = document.getElementById("mobileNumber").value;
+                document.getElementById("headeruserdetail").innerHTML = document.getElementById("numberdth").value + ' - <i class="fa fa-inr"></i>' + document.getElementById("amountdth").value
+
+                document.getElementById('recharge').style.display = 'none';
+                document.getElementById('userdetail').style.display = 'block';
+            }
+        }
+        function validateRechargeconfirm2() {
+            if (document.getElementById("emailuserdetail").value == "") {
+                toastr.warning('Warning', 'Enter Email');
+                document.getElementById("emailuserdetail").focus();
+                return false;
+            }
+            else if (document.getElementById("nameuserdetail").value == "") {
+                toastr.warning('Warning', 'Enter Name');
+                document.getElementById("nameuserdetail").focus();
+                return false;
+            }
+            else if (document.getElementById("mobileuserdetail").value == "") {
+                toastr.warning('Warning', 'Enter Mobile');
+                document.getElementById("mobileuserdetail").focus();
+                return false;
+            }
+            if (document.getElementById('agreecheck').checked) {
+                //alert("checked");
+            } else {
+                toastr.warning('Warning', 'Please Accept Terms and Conditions');
+                return false;
+                //document.getElementById("nameuserdetail").focus();
+            }
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (document.getElementById("emailuserdetail").value.match(validRegex)) {
+                //alert("Valid email address!");
+                //document.form1.text1.focus();
+                //document.getElementById("emailuserdetail").focus();
+                //return true;
+            } else {
+                //alert("Invalid email address!");
+                //document.form1.text1.focus();
+                toastr.warning('Warning', 'Enter Valid Email');
+                document.getElementById("emailuserdetail").focus();
+                return false;
+            }
+        }
+        $("#ddoperatordth").change(function () {
+            //alert($('#ddoperatordth').find(":selected").val());
+            var oid = $('#ddoperatordth').find(":selected").val();
+
+            if (oid == 12) {
+
+                document.getElementById("dthdesc").innerHTML = "Customer ID starts with 3 and is 10 digit long. Click the 'Menu' button on the remote, choose ‘My Account’ from the main menu to see your ID";
+                document.getElementById("dthtext").innerHTML = "Customer ID";
+            }
+            else if (oid == 13) {
+                //alert('a');
+                document.getElementById("dthdesc").innerHTML = "Viewing card number is 11 digit long and starts with 0. You can find this on the back side of the card inserted into your set-top box";
+                document.getElementById("dthtext").innerHTML = "Registered Mobile or VC Number";
+            }
+            else if (oid == 15) {
+                document.getElementById("dthdesc").innerHTML = "Find the smart card number on the back side of the card inserted into your set-top box";
+                document.getElementById("dthtext").innerHTML = "Smart Card Number";
+            }
+            else if (oid == 53) {
+                document.getElementById("dthdesc").innerHTML = "Subscriber ID or Registered Mobile Hint - Subscriber id starts with 1 and is 10 digit long. Find the Subscriber id by clicking on the Home button on your remote";
+                document.getElementById("dthtext").innerHTML = "Subscriber ID or Registered Mobile";
+            }
+            else if (oid == 16) {
+                document.getElementById("dthdesc").innerHTML = "Subscriber Id can be found by sending an SMS ‘ID’ to 566777 from your registered mobile number";
+                document.getElementById("dthtext").innerHTML = "Subscriber ID or Registered Mobile";
+            }
+            else {
+                document.getElementById("dthdesc").innerHTML = "";
+
+                document.getElementById("dthtext").innerHTML = "Subscriber ID or Registered Mobile";
+            }
+        });
+        //function getval(sel) {
+        //    //alert(sel.value);
+        //    if (sel.value = 12) {
+        //        document.getElementById("dthdesc").innerHTML = "Customer ID starts with 3 and is 10 digit long. Click the 'Menu' button on the remote, choose ‘My Account’ from the main menu to see your ID";
+        //    }
+        //    else if (sel.value = 13) {
+        //        document.getElementById("dthdesc").innerHTML = "Viewing card number is 11 digit long and starts with 0. You can find this on the back side of the card inserted into your set-top box";
+        //    }
+        //    else if (sel.value = 15) {
+        //        document.getElementById("dthdesc").innerHTML = "Find the smart card number on the back side of the card inserted into your set-top box";
+        //    }
+        //    else if (sel.value = 53) {
+        //        document.getElementById("dthdesc").innerHTML = "Find the smart card number on the back side of the card inserted into your set-top box";
+        //    }
+
+        //}
+        function loadDTHOperator() {
+            $.ajax({
+
+                url: '/api/Recharge/getOperatorDTH',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result.d);
+                    $('#ddoperatordth').empty();
+                    $('#ddoperatordth').append('<option value="0">Select Operator</option>');
+                    $.each(result, function (result, value) {
+
+                        $("#ddoperatordth").append($("<option></option>").val(value.id).html(value.operator));
+                    })
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                            /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#ddoperatordth').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+        function backuserdetail() {
+            document.getElementById('recharge').style.display = 'block';
+            document.getElementById('userdetail').style.display = 'none';
+            document.getElementById('plan').style.display = 'none';
+        }
+    </script>
+}

@@ -1,0 +1,1038 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Online Landline Bill Payment | Get Offers & Deals on Landline Bill Payment on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+<section class="main-banner">
+    <div class="container-fluid">
+        <div class="main-recharge-row">
+            <div class="recharge-options">
+                <div class="recharge-items">
+                    <ul>
+                        <li>
+                            <a href="/home/recharge">
+                                <img src="~/new2/img/icon/mobile-phone.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/1.png" alt="Recharge" class="icon-active" />
+                                <span> Recharge</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/home/dth">
+                                <img src="~/new2/img/icon/television.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/2.png" alt="Recharge" class="icon-active" />
+                                <span> DTH</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/home/Broadband">
+                                <img src="~/new2/img/icon/sim-card.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/3.png" alt="Recharge" class="icon-active" />
+                                <span> Data Card</span>
+                            </a>
+                        </li>
+                        <li class="active">
+
+                            <a href="/Home/Landline">
+                                <img src="~/new2/img/icon/landlinee.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/4.png" alt="Recharge" class="icon-active" />
+                                <span> Landline</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/Broadband">
+                                <img src="~/new2/img/icon/internet.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/5.png" alt="Recharge" class="icon-active" />
+                                <span> Broadband</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Cylinder">
+                                <img src="~/new2/img/icon/gas-tank.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/6.png" alt="Recharge" class="icon-active" />
+                                <span> Cylinder</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/gas">
+                                <img src="~/new2/img/icon/stove.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/7.png" alt="Recharge" class="icon-active" />
+                                <span> Piped Gas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Electricity">
+                                <img src="~/new2/img/icon/light-bulb.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/8.png" alt="Recharge" class="icon-active" />
+                                <span> Electricity</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/water">
+                                <img src="~/new2/img/icon/water-tap.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/9.png" alt="Recharge" class="icon-active" />
+                                <span> Water</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Fastag">
+                                <img src="~/new2/img/icon/toll.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" />
+                                <span> FASTag</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!" class="d-more-serv">
+                                <img src="~/new2/img/icon/menu.png" alt="Recharge" class="icon-inactive" />
+                                <img src="~/new2/img/icon/active/11.png" alt="Recharge" class="icon-active" />
+                                <span> More+</span>
+                            </a>
+
+                            <div class="d-more-service">
+                                <div class="d-inner">
+                                    <div class="d-service-col">
+                                        <a href="/Home/Insurance">
+                                            <img src="~/new2/img/icon/insurance.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Insurance</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/credit-card.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Credit Card</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/cable.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Cable</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/loan.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Loan</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/education.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Education Fees</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/housing.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Housing Society</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/hospital.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Hospital</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/muncipal.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Municipal Services</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/challan.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Challan</span>
+                                        </a>
+                                    </div>
+                                    <div class="d-service-col">
+                                        <a href="#!">
+                                            <img src="~/new2/img/icon/metro.png" alt="Recharge" class="icon-inactive" />
+                                            <!-- <img src="~/new2/img/icon/active/10.png" alt="Recharge" class="icon-active" /> -->
+                                            <span> Metro</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-field-area">
+                <div class="container-fluid" style="padding:0px 30px;">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="form-area-box home-bg-grey">
+                                <form>
+                                    <div class="main-banner-title">
+                                        <h1>Landline Bill Payment Online</h1>
+                                        <img src="~/new2/img/bharat-bill.png">
+                                    </div>
+
+                                    <div class="form-area home-frm" id="divoperator">
+                                        <!-- <label class="label-title">Operator</label> -->
+                                        <select id="ddoperatorelectricity"></select>
+                                    </div>
+                                    <div class="form-area home-frm" id="divconsumerno" style="display:none;margin-bottom:3px;">
+                                        <!-- <label class="label-title">Circle</label> -->
+                                        <input type="text" id="consumerno" style="text-transform:uppercase" autocomplete="off" placeholder="Consumer No">
+
+                                        @*<input type="text" name="" placeholder="Vehicle Registration Number" required />*@
+                                    </div>
+                                    <div>
+                                        <label id="lbldisplaynote" style="font-size:11px;color:#086b3b;margin-bottom:10px;">  </label>
+                                    </div>
+                                    <input type="hidden" id="optional1Type" value="">
+                                    <input type="hidden" id="optional2Type" value="">
+                                    <input type="hidden" id="optional3Type" value="">
+                                    <input type="hidden" id="optional4Type" value="">
+
+                                    <div class="form-area home-frm" id="divoptional1" style="display:none">
+                                        <!-- <label class="label-title">Circle</label> -->
+                                        <input type="text" id="optional1" style="text-transform:uppercase;display:none" autocomplete="off" placeholder="">
+                                        <select id="ddoptional1"></select>
+                                    </div>
+                                    <div class="form-area home-frm" id="divoptional2" style="display:none">
+                                        <!-- <label class="label-title">Circle</label> -->
+                                        <input type="text" id="optional2" style="text-transform:uppercase;display:none" autocomplete="off" placeholder="">
+                                        <select id="ddoptional2"></select>
+                                    </div>
+                                    <div class="form-area home-frm" id="divoptional3" style="display:none">
+                                        <!-- <label class="label-title">Circle</label> -->
+                                        <input type="text" id="optional3" style="text-transform:uppercase;display:none" autocomplete="off" placeholder="">
+                                        <select id="ddoptional3"></select>
+                                    </div>
+                                    <div class="form-area home-frm" id="divoptional4" style="display:none">
+                                        <!-- <label class="label-title">Circle</label> -->
+                                        <input type="text" id="optional4" style="text-transform:uppercase;display:none" autocomplete="off" placeholder="">
+                                        <select id="ddoptional4"></select>
+                                    </div>
+
+                                    <div class="form-area home-frm" id="divAmount" style="display:none">
+                                        <!-- <label class="label-title">Mobile Number*</label> -->
+                                        <span><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                        @* <input type="text" name="" placeholder="599.00" required />*@
+                                        <input type="number" class="newnumbertype" readonly style="width:70%;" onkeypress="return isNumber(event)" id="ElectricityAmount" placeholder="Amount">
+
+                                    </div>
+                                    <div id="divdetail" class="form-area home-frm" style="display:none;height:150px;">
+                                        <h6 class="text-center">Bill Details</h6>
+
+                                        <label id="lblname" style="font-size:12px;"> </label>
+                                        <br />
+                                        <label id="lblbilldate" style="font-size:12px;"> </label>
+                                        <br />
+                                        <label id="lblduedate" style="font-size:12px;"> </label>
+                                    </div>
+                                    <div id="diverrormessage" style="display:none">
+                                        <label id="lblerror" style="color:darkred;font-size:12px;"> </label>
+                                    </div>
+
+
+
+                                    <div class="form-area-btn">
+                                        @*<button type="submit">Proceed</button>*@
+                                        <input type="button" class="submitbtn" id="btnrechargefetch" value="Proceed to Pay Bill" onclick="return  validateFastagRechargeFetch();" />
+                                        <input type="button" class="submitbtn" id="btnrecharge" style="display:none;" value="Proceed to Pay Bill" onclick="return  validateFastagRecharge();" />
+
+                                    </div>
+
+
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12">
+                            <div class="banner-slider">
+                                <img src="~/new2/img/small-banner/landline.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Operators -->
+<section class="operators-sec">
+    <div class="container-fluid">
+        <div class="operators-bx">
+            <div class="title-rw">
+                <h6 class="title">Select Operator</h6>
+                <div class="title-line"></div>
+            </div>
+            <div class="operators-row">
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/recharge/1.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/recharge/2.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/recharge/3.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/dth/4.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/recharge/5.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="operators-col">
+                    <div class="operators-data">
+                        <img src="~/new2/img/recharge/6.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Operators -->
+<!-- Section Start-->
+<section style="background-color: #f5f5f5;" class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">Experience the easiest and most reliable Landline recharge systeme</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph">
+            <p>
+                You can easily make all your landline bill payments through RechargeZap. Now you don't not need to spend hours in line for your landline recharge. We have made landline recharge very easy for our customers. You just have to click some important information and the recharge of your landline number will be completed sitting at home. All you need is a good internet connection and small details of your landline number. After that, we'll take care of everything. So what is the problem now, just press your landline number and settle the hourly work sitting at home in a few minutes.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Section Start-->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">Go for the safe and secure landline recharge deals</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph">
+            <p>RechargeZap provides you with an absolutely safe and secure platform to recharge your landline numbers.  There is no need to compromise with your personal card and number details anymore.  We do not store any information provided by you without your permission. Go for the very safe and secure landline payment option. There is no risk of your money getting stuck on recharge by us. Recharge Zap is a very reliable and strong platform that offers a 24/7 uptime server. This clearly means that now you can easily recharge your landline number whenever you want without any downtime and money stuck.</p>
+
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- why choose -->
+<section class="why-choose-sec m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">
+                Get your landline number recharged within a minute
+            </h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="paragraph why-choose-para">
+            <p>
+                Do you also feel that it is necessary to stand in an offline shop for hours to recharge your landline number? Don't worry, we have solved your problem. We at rechargeZap have made it easier than you ever imagined to recharge your landline number.  As soon as you select a valid plan by inputting your landline number, we process your recharge immediately. It means now you will be able to recharge your landline number quickly through RechargeZap in minutes. We have reduced the processing time of our recharge to almost zero to save both your time and effort. Now you can recharge your landline number whenever and wherever you want without compromising on other things. So what are you waiting for, recharge any of your landline numbers now and take full advantage of our recharge Zap platform.
+
+
+            </p>
+        </div>
+
+    </div>
+</section>
+<!-- why choose -->
+<!-- Section End-->
+<!-- Section Start-->
+<!-- Section End-->
+<!-- Section Start-->
+<section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="title-rw">
+            <h2 class="title">
+                Frequently Asked Question
+            </h2>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="faq-box">
+            <div class="accordion" id="accordionExample">
+                <div class="card faq-main">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            Why should I choose RechargeZap for my landline recharge?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                There is no single reason to use rechargeZap to recharge your landline number.  You can easily recharge any of your landline numbers from anywhere without wasting much time through this platform.  Plus we provide you with a completely secure and secure platform without paying any kind of extra fee.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            Why should I trust your RechargeZap platform?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                You can absolutely trust Recharge Zap as we keep your recharge absolutely transparent.  You can easily recharge any of your landline numbers whenever you want through a completely secure method.  Also, RechargeZap provides a 24/7 Uptime Server. This means there is no chance to get your money stuck.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree">
+                            What is my use in recharging my landline number from your platform?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                : With RechargeZap you can recharge your landline number in a jiffy without any extra effort.  This platform is accessible anytime and from anywhere i.e. you do not have to go anywhere to recharge your number.  You can enjoy it anytime by recharging your landline number sitting at home.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card faq-main">
+                    <div class="card-header" id="heading4">
+                        <h2 class="mb-0 faq-title" data-toggle="collapse" data-target="#collapse4" aria-expanded="false"
+                            aria-controls="collapse4">
+                            Can I recharge the landline number of any provider through rechargeZap?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </h2>
+                    </div>
+                    <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+                        <div class="card-body faq-desc">
+                            <p>
+                                Yes absolutely.  It does not matter which provider's landline number you use.  You can easily recharge the landline number of any provider through RechargeZap.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section End-->
+<!-- Features-Section --><section class="m-inner-sec">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/shield.png" alt="" />
+                    </div>
+                    <h5>100% Secure Payments</h5>
+                    <p>
+                        Safeguarding personal information.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/trust.png" alt="" />
+                    </div>
+                    <h5>Trust Pay</h5>
+                    <p>
+                        Guaranteed safe and secure checkout.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="key-feature-col">
+                    <div class="key-feature-img">
+                        <img src="~/new2/img/technical.png" alt="" />
+                    </div>
+                    <h5>Support</h5>
+                    <p>
+                        Have a query? We’re here to help.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <!-- Features-Section -->
+    @*<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="~/new2/js/popper.min.js"></script>
+        <script src="~/new/js/bootstrap.min.js"></script>
+        <script src="~/new2/js/swiper-bundle.min.js"></script>
+        <script src="~/new2/js/main.js"></script>
+        <link href="~/js/toastr/toastr.css" rel="stylesheet" />
+        <script src="~/js/toastr/toastr.min.js"></script>*@
+    <!-- Features-Section -->
+    <script type="text/javascript">
+
+
+      function validateFastagRechargeFetch() {
+         
+          if ($('#ddoperatorelectricity').find(":selected").val() == "0") {
+              toastr.warning('Warning', 'Select Operator');
+              document.getElementById("ddoperatorelectricity").focus();
+              return false;
+          }
+         else if (document.getElementById("consumerno").value == "") {
+              toastr.warning('Warning', 'Enter Consumer Number');
+              document.getElementById("consumerno").focus();
+              return false;
+          }
+          else {
+              var consumerno = document.getElementById("consumerno").value;
+              var optional1 = '';
+
+              if (document.getElementById('optional1Type').value == 'textbox') {
+                  optional1 = document.getElementById("optional1").value;
+
+              }
+              else if (document.getElementById('optional1Type').value == 'dropdown') {
+                  optional1 = $('#ddoptional1').find(":selected").text();
+              }
+              else {
+                  optional1 = '';
+              }
+
+
+              var operatorId = $('#ddoperatorelectricity').find(":selected").val();
+              FetchDetails(consumerno, operatorId, optional1);
+          }
+    }
+
+
+    function validateFastagRecharge() {
+        if (document.getElementById("consumerno").value == "") {
+            toastr.warning('Warning', 'Enter Consumer Number');
+            document.getElementById("consumerno").focus();
+            return false;
+        }
+        else if ($('#ddoperatorelectricity').find(":selected").val() == "0") {
+            toastr.warning('Warning', 'Select Operator');
+            document.getElementById("ddoperatorelectricity").focus();
+            return false;
+        }
+        else if (document.getElementById("ElectricityAmount").value == "") {
+            toastr.warning('Warning', 'Enter Amount');
+            document.getElementById("ElectricityAmount").focus();
+            return false;
+        }
+        else {
+            document.getElementById("headerconfirm").innerHTML = "Landline";
+            document.getElementById("mobilenoheadingconfirm").innerHTML ="<i class='fa-solid fa-mobile-screen'></i> Consumer Number";
+
+            document.getElementById("amountConfirm").value = document.getElementById("ElectricityAmount").value;
+            document.getElementById("operatorConfirm").value = $('#ddoperatorelectricity').find(":selected").text();
+                document.getElementById("mobileConfirm").value = document.getElementById("consumerno").value;
+            document.getElementById("circleConfirm").value = $('#ddcircleelectricity').find(":selected").text();
+            document.getElementById("customermobileConfirm").value = '';
+
+            document.getElementById("circleConfirm").style.display = 'none';
+            document.getElementById("liCircledetail").style.display = 'none';
+
+            if (document.getElementById('optional1Type').value == 'textbox') {
+                document.getElementById("optional1Confirm").value = document.getElementById("optional1").value;
+
+            }
+            else if (document.getElementById('optional1Type').value == 'dropdown') {
+                document.getElementById("optional1Confirm").value = $('#ddoptional1').find(":selected").text();
+            }
+            else {
+                document.getElementById("optional1Confirm").value = '';
+            }
+
+            if (document.getElementById('optional2Type').value == 'textbox') {
+                document.getElementById("optional2Confirm").value = document.getElementById("optional2").value;
+
+            }
+            else if (document.getElementById('optional2Type').value == 'dropdown') {
+                document.getElementById("optional2Confirm").value = $('#ddoptional2').find(":selected").text();
+            }
+            else {
+                document.getElementById("optional2Confirm").value = '';
+            }
+
+
+            if (document.getElementById('optional3Type').value == 'textbox') {
+                document.getElementById("optional3Confirm").value = document.getElementById("optional3").value;
+
+            }
+            else if (document.getElementById('optional3Type').value == 'dropdown') {
+                document.getElementById("optional3Confirm").value = $('#ddoptional3').find(":selected").text();
+            }
+            else {
+                document.getElementById("optional3Confirm").value = '';
+            }
+
+
+            document.getElementById("operatoridConfirm").value = $('#ddoperatorelectricity').find(":selected").val();
+
+            //document.getElementById("circleConfirm").style.display = 'none';
+            //document.getElementById("liCircledetail").style.display = 'none';
+
+                var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+
+            if (LoginEMail != '') {
+                document.getElementById('divBalance').style.display = 'block';
+                document.getElementById('divUsedBalance').style.display = 'block';
+                showBalance();
+            }
+            else {
+                document.getElementById('divBalance').style.display = 'none';
+                document.getElementById('divUsedBalance').style.display = 'none';
+            }
+
+
+                showModal();
+
+
+        }
+    }
+    function FetchDetails(consumerno, operatorId,optional1) {
+
+        //alert(consumerno);
+        //alert(operatorId);
+        var jsondata = { 'vehiclenumber': consumerno, 'operatorId': operatorId, 'optional1': optional1 };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/fetchDetailsElectricity',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[0]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    //document.getElementById('userbalancetop').innerHTML = result[0];
+                    if (result[0] == '2') {
+                        //alert(result[0]);
+                        document.getElementById('divAmount').style.display = 'block';
+                        //document.getElementById('divminmaxvalue').style.display = 'block';
+                        document.getElementById('btnrechargefetch').style.display = 'none';
+                        document.getElementById('btnrecharge').style.display = 'block';
+                        document.getElementById('diverrormessage').style.display = 'none';
+
+                        document.getElementById('divdetail').style.display = 'block';
+                        //document.getElementById('divdetail2').style.display = 'block';
+                        //document.getElementById('divdetail3').style.display = 'block';
+                        document.getElementById('lblname').innerHTML = 'Name : ' + result[2];
+                        document.getElementById('ElectricityAmount').value = result[3];
+                        document.getElementById('lblbilldate').innerHTML = 'Bill Date : ' + result[4];
+                        document.getElementById('lblduedate').innerHTML = 'Due Date : ' + result[5];
+
+
+
+                        //document.getElementById('lblminvalue').innerHTML = result[2];
+                        //document.getElementById('lblmaxvalue').innerHTML = result[3];
+                    }
+                    else {
+
+                        //alert(result[0]);
+                        //alert('error');
+                        document.getElementById('divAmount').style.display = 'none';
+
+                        //document.getElementById('divdetail2').style.display = 'none';
+                        //document.getElementById('divdetail3').style.display = 'none';
+                        //document.getElementById('divminmaxvalue').style.display = 'none';
+                        document.getElementById('diverrormessage').style.display = 'block';
+
+                        document.getElementById('divdetail').style.display = 'none';
+
+
+                        document.getElementById('btnrechargefetch').style.display = 'block';
+                        document.getElementById('btnrecharge').style.display = 'none';
+
+                        document.getElementById('lblerror').innerHTML = result[1];
+                    }
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+
+    $(document).ready(function () {
+        //alert('a');
+        loadfastagoperator();
+        //loadCircle();
+    });
+
+
+
+    function loadfastagoperator() {
+        $('#ddoperatorelectricity').empty();
+
+        $.ajax({
+
+            url: '/api/Recharge/getOperatorLandline',
+            //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+            data: "",
+            dataType: "json",
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+
+            success: function (result) {
+                //alert(result);
+                //console.log(result.d);
+                $('#ddoperatorelectricity').empty();
+                $('#ddoperatorelectricity').append('<option value="0">Select Operator</option>');
+                $.each(result, function (result, value) {
+
+                    $("#ddoperatorelectricity").append($("<option></option>").val(value.id).html(value.operator));
+                })
+                //toastr.success('Success', result.d);
+
+            },
+            beforeSend: function () {
+                                                                                    /*$("#ddoperatorelectricity").html('Loading...')*/;
+                $('#ddoperatorelectricity').empty().append('<option>Loading...</option>');
+            },
+            complete: function () {
+                // Code to hide spinner.
+            }
+        })
+    }
+
+
+    function validateRechargeconfirm() {
+        if (document.getElementById("emailConfirm").value == "") {
+            toastr.warning('Warning', 'Enter Email');
+            document.getElementById("emailConfirm").focus();
+            return false;
+        }
+
+        //else if (ValidateEmail(document.getElementById("emailConfirm"))==false)
+        // {
+        //     toastr.warning('Warning', 'Enter Valid Email');
+        //     document.getElementById("emailConfirm").focus();
+        //     return false;
+        // }
+
+
+
+
+        else if (document.getElementById("nameConfirm").value == "") {
+            toastr.warning('Warning', 'Enter Name');
+            document.getElementById("nameConfirm").focus();
+            return false;
+        }
+
+        else if (document.getElementById("mobileConfirm").value == "") {
+            toastr.warning('Warning', 'Enter Consumer No');
+            document.getElementById("mobileConfirm").focus();
+            return false;
+        }
+        if (document.getElementById("headerconfirm").innerHTML == 'Mobile Recharge') {
+            if (document.getElementById("mobileConfirm").value.length != 10) {
+                toastr.warning('Warning', 'Enter Valid Number');
+                document.getElementById("mobileConfirm").focus();
+                return false;
+            }
+        }
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (document.getElementById("emailConfirm").value.match(validRegex)) {
+            //alert("Valid email address!");
+            //document.form1.text1.focus();
+            document.getElementById("emailConfirm").focus();
+            //return true;
+        } else {
+            //alert("Invalid email address!");
+            //document.form1.text1.focus();
+            toastr.warning('Warning', 'Enter Valid Email');
+            document.getElementById("emailConfirm").focus();
+            return false;
+        }
+
+    }
+    function showModal() {
+        $('#proceedRecharge').modal({ backdrop: 'static', keyboard: false })
+    }
+    function Closepopup() {
+        $('#proceedRecharge').modal('hide');
+        $('body').removeClass('modal-open');
+        $('body').css('padding-right', '0');
+        $('.modal-backdrop').remove();
+    }
+      function showBalance() {
+
+             var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            var jsondata = { 'email': LoginEMail };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getBalance',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    document.getElementById('walletbalanceconfirm').value = result[0];
+                    document.getElementById('emailConfirm').value = result[1];
+                    document.getElementById('nameConfirm').value = result[3];
+                    document.getElementById('customermobileConfirm').value = result[2];
+                    //alert(result[4]);
+                    //document.getElementById('zapcoinsbalanceconfirm').innerHTML = result[4];
+
+
+
+                    var Bal = parseFloat(document.getElementById('walletbalanceconfirm').value);
+                    var RechAmt = parseFloat(document.getElementById('amountConfirm').value);
+                    if (Bal >= RechAmt) {
+                        document.getElementById('usedwalletbalanceconfirm').value = RechAmt;
+                    }
+                    else {
+                        document.getElementById('usedwalletbalanceconfirm').value = Bal;
+                    }
+
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+    }
+
+
+    $("#ddoperatorelectricity").change(function () {
+
+        document.getElementById('divconsumerno').style.display = 'block';
+        document.getElementById('diverrormessage').style.display = 'none';
+        document.getElementById('divdetail').style.display = 'none';
+        document.getElementById('lblname').innerHTML = '';
+        document.getElementById('ElectricityAmount').value = '';
+        document.getElementById('lblbilldate').innerHTML = '';
+        document.getElementById('lblduedate').innerHTML = '';
+
+        document.getElementById('divoptional1').style.display = 'none';
+        document.getElementById('optional1').placeholder = '';
+        document.getElementById('optional1').value = '';
+
+        document.getElementById('btnrechargefetch').style.display = 'block';
+        document.getElementById('btnrecharge').style.display = 'none';
+        document.getElementById('divAmount').style.display = 'none';
+
+
+        $('#ddoptional1').empty();
+        document.getElementById('optional1Type').value = '';
+
+
+        document.getElementById('divoptional2').style.display = 'none';
+        document.getElementById('optional2').placeholder = '';
+        document.getElementById('optional2').value = '';
+        $('#ddoptional2').empty();
+        document.getElementById('optional2Type').value = '';
+
+        document.getElementById('divoptional3').style.display = 'none';
+        document.getElementById('optional3').placeholder = '';
+        document.getElementById('optional3').value = '';
+        $('#ddoptional3').empty();
+        document.getElementById('optional3Type').value = '';
+
+        document.getElementById('divoptional4').style.display = 'none';
+        document.getElementById('optional4').placeholder = '';
+        document.getElementById('optional4').value = '';
+        $('#ddoptional4').empty();
+        document.getElementById('optional4Type').value = '';
+
+
+
+        var cid = $('#ddoperatorelectricity').find(":selected").val();
+        var jsondata = { 'operatorId': cid };
+        //alert(jsondata);
+        $.ajax({
+
+            url: '/api/Recharge/getOperatorDetail',
+            data: JSON.stringify(jsondata),
+
+            dataType: "json",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+
+            success: function (result) {
+                //alert(result);
+                //console.log(result.d);
+
+                //toastr.success('Success', result.d);
+                document.getElementById('consumerno').placeholder = result[0];
+                document.getElementById('lbldisplaynote').innerHTML = result[1];
+
+                if (result[2] != '') {
+
+                    document.getElementById('divoptional1').style.display = 'block';
+                    document.getElementById('optional1').placeholder = result[2];
+
+                    //alert(result[6]);
+                    document.getElementById('optional1Type').value = result[6]
+                    if (result[6] == 'textbox') {
+                        document.getElementById('optional1').style.display = 'block';
+                        document.getElementById('ddoptional1').style.display = 'none';
+                    }
+                    else if (result[6] == 'dropdown') {
+
+                        var str = result[7] ;
+                        var str_array = str.split(',');
+
+                        $('#ddoptional1').empty();
+                        $('#ddoptional1').append('<option value="0">Select ' + result[2]+'</option>');
+
+
+                        for (var i = 0; i < str_array.length; i++) {
+                            // Trim the excess whitespace.
+                            str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+                            //alert(str_array[i]);
+
+                            $("#ddoptional1").append($("<option></option>").val(str_array[i]).html(str_array[i]));
+
+                            // Add additional code here, such as:
+
+                        }
+
+                        document.getElementById('optional1').style.display = 'none';
+                        document.getElementById('ddoptional1').style.display = 'block';
+
+                    }
+                }
+
+
+                if (result[3] != '') {
+
+                    document.getElementById('divoptional2').style.display = 'block';
+                    document.getElementById('optional2').placeholder = result[3];
+
+                    //alert(result[8]);
+                    document.getElementById('optional2Type').value = result[8]
+                    if (result[8] == 'textbox') {
+                        document.getElementById('optional2').style.display = 'block';
+                        document.getElementById('ddoptional2').style.display = 'none';
+                    }
+                    else if (result[8] == 'dropdown') {
+
+                        var str = result[9];
+                        var str_array = str.split(',');
+
+                        $('#ddoptional2').empty();
+                        $('#ddoptional2').append('<option value="0">Select ' + result[3] + '</option>');
+
+
+                        for (var i = 0; i < str_array.length; i++) {
+                            // Trim the excess whitespace.
+                            str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+                            //alert(str_array[i]);
+
+                            $("#ddoptional2").append($("<option></option>").val(str_array[i]).html(str_array[i]));
+
+                            // Add additional code here, such as:
+
+                        }
+
+                        document.getElementById('optional2').style.display = 'none';
+                        document.getElementById('ddoptional2').style.display = 'block';
+
+                    }
+                }
+
+
+
+                if (result[4] != '') {
+
+                    document.getElementById('divoptional3').style.display = 'block';
+                    document.getElementById('optional3').placeholder = result[4];
+
+                    //alert(result[8]);
+                    document.getElementById('optional3Type').value = result[10]
+                    if (result[10] == 'textbox') {
+                        document.getElementById('optional3').style.display = 'block';
+                        document.getElementById('ddoptional3').style.display = 'none';
+                    }
+                    else if (result[10] == 'dropdown') {
+
+                        var str = result[11];
+                        var str_array = str.split(',');
+
+                        $('#ddoptional3').empty();
+                        $('#ddoptional3').append('<option value="0">Select ' + result[4] + '</option>');
+
+
+                        for (var i = 0; i < str_array.length; i++) {
+                            // Trim the excess whitespace.
+                            str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+                            //alert(str_array[i]);
+
+                            $("#ddoptional3").append($("<option></option>").val(str_array[i]).html(str_array[i]));
+
+                            // Add additional code here, such as:
+
+                        }
+
+                        document.getElementById('optional3').style.display = 'none';
+                        document.getElementById('ddoptional3').style.display = 'block';
+
+                    }
+                }
+
+            },
+            beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                $('#AjaxLoader').show();
+            },
+            complete: function () {
+                $('#AjaxLoader').hide();
+            }
+        })
+
+    });
+    </script>
+    }
+    @section MobileHeader{
+        Landline
+    }

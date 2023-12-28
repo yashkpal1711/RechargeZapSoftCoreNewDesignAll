@@ -1,0 +1,83 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Online Mobile Recharge - Bill Payments & Prepaid Recharge on RechargeZap";
+    Layout = "~/Views/Shared/Sharedlayuout2.cshtml";
+}
+
+<div class="dashboard-wrapper bg-greylight">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="dashboard-nav bg-white rounded-lg shadow-xs">
+                    <a href="#" class="dash-menu menushow"><i class="ti-package font-sm mr-2"></i> Menu <i class="ti-angle-down font-xsss float-right "></i></a>
+                    <ul class="dash-menu-ul">
+                        <li class="d-block rounded-lg "><a href="/Home/Dashboard"><i class="ti-package font-sm"></i><span> Dashboard</span></a></li>
+                        <li class="d-block rounded-lg"><a href="/Home/RechargeHistory"><i class="ti-pie-chart font-sm"></i><span> Pevious Recharge</span></a></li>
+                        <li class="d-block rounded-lg active"><a href="/Home/Message"><i class="ti-comments font-sm"></i><span> Message</span></a></li>
+                        <li class="d-block rounded-lg "><a href="/Home/TransactionHistory"><i class="ti-heart font-sm"></i><span> All Transactions</span></a></li>
+                        <li class="d-block rounded-lg"><a href="/Home/Profile"><i class="ti-user font-sm"></i><span> Profile</span></a></li>
+                        @*<li class="d-block rounded-lg "><a href="password.html"><i class="ti-lock font-sm"></i><span> Password</span></a></li>*@
+
+                        <li class="d-block rounded-lg "><a href="/"><i class="ti-mobile font-sm"></i><span>Make Another Recharge</span></a></li>
+                        <li class="d-block rounded-lg"><a href="/Home/Logout"><i class="ti-power-off font-sm"></i><span> Logout</span></a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-lg-9">
+                <div class="dashboard-tab rounded-lg shadow-xs bg-white">
+                    <div class="row">
+
+
+                        <div class="col-lg-12">
+                            <div class="card border-0 w-100 p-0 rounded-xxl bg-white theme-light-bg shadow-none">
+
+                                <div class="card-body pb-4 pl-4 pr-4 pt-0">
+                                    <h4 class="text-grey-800 text-left fw-900 font-xsss ls-lg font-xssss text-uppercase mb-3 mt-1" style="font-size:25px !important;">Message</h4>
+
+
+                                    <h5 class="text-center">No Messages Found ...!!!</h5>
+                                    @*<div class="table-content table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead class="bg-greyblue rounded-lg">
+                                                <tr>
+                                                    <th class="p-3 text-left">Date</th>
+                                                    <th class="p-3 text-left">Txn Id</th>
+                                                    <th class="p-3 text-left" style="width:180px;">Cr Amount</th>
+                                                    <th class="p-3 text-left" style="width:180px;">Dr Amount</th>
+                                                    <th class="p-3 text-left">Type</th>
+                                                    <th class="p-3 text-left">Remark</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbdashboard">
+                                              
+
+                                            </tbody>
+                                        </table>
+                                    </div>*@
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/plugin.js"></script>
+<script src="~/js/apexcharts.min.js"></script>
+<script src="~/js/chart.js"></script>
+
+@section Scripts
+    {
+ 
+}

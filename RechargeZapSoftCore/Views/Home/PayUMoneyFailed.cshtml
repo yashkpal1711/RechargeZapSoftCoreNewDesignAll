@@ -1,0 +1,48 @@
+﻿@model RechargeZapSoftCore.Models.PayUMoneyResponse
+@{
+    ViewData["Title"] = "PayUMoneyFailed";
+    Layout = "~/Views/Shared/Sharedlayuout2.cshtml";
+}
+
+@*<h1>PayUMoneyFailed</h1>*@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center"><h1 class="text-grey-800 fw-700 display3-size">Payment Status <span class="font-xsss text-grey-600 fw-600 d-block mt-2">Home / Payment Status </span></h1></div>
+            </div>
+            <div align="center">
+                <table border="1" width="50%">
+                   
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.txnid)</td>
+                        <td>@Html.DisplayFor(m => m.txnid)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.amount)</td>
+                        <td>@Html.DisplayFor(m => m.amount)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.status)</td>
+                        <td>@Html.DisplayFor(m => m.status)</td>
+                    </tr>
+                   
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.hash)</td>
+                        <td>@Html.DisplayFor(m => m.hash)</td>
+                    </tr>
+                 
+                   
+
+                </table>
+                error : @ViewBag.errortext
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ @*Status : @ViewBag.PayUMoneyMsg<br />
+@ViewBag.response1*@

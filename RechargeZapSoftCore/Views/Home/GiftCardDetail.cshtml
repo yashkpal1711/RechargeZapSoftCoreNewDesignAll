@@ -1,0 +1,634 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Gift Card | Get Gift Cards on on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+<div class="breadcrumbsection">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="" aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color: transparent !important;padding: 0;margin: 0;">
+                    <li class="breadcrumb-item"><a href="/">Gift Voucher</a></li>
+                    <li class="active breadcrumb-item" aria-current="page">Gift Detail</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="product_details">
+        <div class="product_detail_wrap">
+            <div class="row aligncenter">
+                <div class="col-md-3">
+                    <div class="proimg">
+                        @*<img src="./img/small-banner/pizzahut.webp" alt="product_image" />*@
+                        @Html.Raw(ViewBag.str_brandimage)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="prosecbox">
+                        <div class="protext">
+                            <input type="hidden" id="BrandImage" value="@ViewBag.str_brandimage2" />
+                            <input type="hidden" id="DenominationOrg" value="0" />
+                            <input type="hidden" id="ProductCode" value="@ViewBag.str_brandproductcode" />
+                            <h3 id="brandName">@ViewBag.str_brandname</h3>
+                            <h6 id="brandType">@ViewBag.str_brandtype</h6>
+                            <p>
+                                @Html.Raw(ViewBag.str_description)
+                            </p>
+                        </div>
+                        <div class="prowrap">
+                            <div class="prowrap_text">
+                                <p>select your voucher;</p>
+                            </div>
+                            <div class="prowrap_box">
+
+                                @foreach (var dr in ViewBag.DenominationTable.Rows)
+                                {
+                                    <div class="btnprowrap">
+                                        <div class="pricing_sec active" onclick="voucherprice(@dr["denomination"],'value','discount','saving','remaining','count')">
+                                            @*     @Html.Raw(ViewBag.str_brandimage)*@
+                                            <span id="@dr["denomination"]">₹ @dr["denomination"]</span>
+                                        </div>
+                                        <div class="table_sec_col">
+                                            <div class="counter countdec" onclick="DecreaseCart(@dr["denomination"],@dr["denomid"])">-</div>
+                                            <div class="counter count"><span id="@dr["denomid"]">0</span></div>
+                                            <div class="counter countinc" onclick="AddToCart(@dr["denomination"],@dr["denomid"])">+</div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        @*<div class="prowrap">
+                                <div class="prowrap_text">
+
+
+
+                                    <p>select your voucher;</p>
+                                </div>
+                                <div class="prowrap_box">
+
+                                    @foreach (var dr in ViewBag.DenominationTable.Rows)
+                                    {
+
+                                        <div class="pricing_sec active" onclick="voucherprice(@dr["denomination"],'value','discount','saving','remaining','count')">
+                                            @Html.Raw(ViewBag.str_brandimage)
+                                            <span>₹ @dr["denomination"]</span>
+                                        </div>
+
+                                    }
+
+
+
+                                </div>
+                            </div>*@
+                        <div class="price_table" style="display:none;">
+                            <div class="table_row">
+                                <div class="table_first_col">
+                                    <span>Shopable Amount</span>
+                                    <span>₹ <span id="value">100</span></span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <div class="table_first_col">
+                                    <span>Discount(%)</span>
+                                    <span id="discount">@ViewBag.str_Discount</span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <div class="table_first_col">
+                                    <span>Savings</span>
+                                    <span>₹ <span id="saving">10</span></span>
+                                </div>
+                            </div>
+                            <div class="table_row">
+                                <div class="table_first_col">
+                                    <span>What You Pay</span>
+                                    <span>₹ <span id="remaining">90</span></span>
+                                </div>
+                            </div>
+                            <!-- <div class="table_row_seclast">
+                              <div class="table_sec_col">
+                                <div class="counter" onclick="decval1('value','discount','saving','remaining','count')" >-</div>
+                                    <div class="counter count"><span id="count" >1</span></div>
+                                    <div class="counter" onclick="incval1('value','discount','saving','remaining','count')" >+</div>
+                              </div>
+                            </div>
+                            <div class="table_row_last">
+                              <div class="table_third_col">
+                                <span class="resetMoney" onclick="resetValues()">RESET</span>
+                                <span class="addmoney"  onclick="addValues('value','discount','saving','remaining','count','tvalue','svalue','pvalue','tcount','tvoucher')">ADD</span>
+                              </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 cart_box_wrap">
+                    <div class="cart_box">
+                        <div class="cart_head">
+                            <h5>CART</h5>
+                        </div>
+                        <div id="cartdata"></div>
+
+                        @*<div id="vrdetail1" class="vrdetail">
+                                <div class="cartnameicon"><span>Added in cart</span><span onclick="removeCard('vrdetail1','vrvalue','hiddenTotalId','count' )"><i class="fa fa-trash m-0" aria-hidden="true"></i></span></div>
+                                <div class="vrcartprice">
+                                    <p id="tcountpar"><span id="vrcount">1</span> * ₹ <span id="vrvoucher">100</span> </p>
+                                    <p>₹ <span id="vrvalue">100</span> <span id="hiddenTotalId" hidden></span> </p>
+                                </div>
+                            </div>*@
+
+                        <div class="cartdetail">
+                            <p>Total Value</p>
+                            <p id="tcountpara"></p>
+                            <p>₹ <span id="tvalue">0</span></p>
+                        </div>
+                        <div class="cartdetail">
+                            <p>Total You Save</p>
+                            <p>₹ <span id="svalue">0</span></p>
+                        </div>
+                        <div class="cartdetail">
+                            <p>Total You Pay</p>
+                            <p>₹ <span id="pvalue">0</span></p>
+                        </div>
+                        @*<div class="giftinput">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">I am gifting
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="giftinput">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">Share on whatsapp + Email
+                                    </label>
+                                </div>
+                            </div>*@
+                        <div class="cart_btn">
+                            <a href="/Home/CartDetail"> <button type="submit" class="btn submitcartbtn">View / Edit Cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product_detail_wrap">
+            <div class="aboutpro">
+                <div class="aboutprohead">
+                    <h3>How to Use</h3>
+                </div>
+                <div class="aboutprotext">
+                    @*<ol>
+                            <li>Do inform the cashier that you plan to use the GV / GC for making payments before billing.</li>
+                            <li>More than one GV / GC can be used in one bill.</li>
+                            <li>This is a ONE time use GV / GC.</li>
+                            <li>No Credit note / Refund for the unused amount of the GV / GC will be given.</li>
+                            <li>Yum! Restaurants GV / GC CANNOT be revalidated once expired.</li>
+                            <li>Yum! Restaurants GV / GC cannot be redeemed on specific block out dates. Yum! Restaurants may add or delete any date on its sole discretion.</li>
+                        </ol>*@
+                    @Html.Raw(ViewBag.str_RedeemSteps)
+                </div>
+            </div>
+        </div>
+        <div class="product_detail_wrap">
+            <div class="aboutpro">
+                <div class="aboutprohead">
+                    <h3>Important Instructions</h3>
+                </div>
+                <div class="aboutprotext">
+                    <h6>@ViewBag.str_brandname Important Instructions</h6>
+                    @*<ul>
+                            <li>Multiple Gift Vouchers CAN be used in one bill.</li>
+                            <li>One Gift Voucher CANNOT be used multiple times.</li>
+                            <li>Gift Vouchers ACCEPTED at all Listed Outlets.</li>
+                            <li>Gift Vouchers CANNOT be used Online.</li>
+                        </ul>*@
+                    @Html.Raw(ViewBag.str_importantInstruction)
+                </div>
+            </div>
+        </div>
+        <div class="product_detail_wrap">
+            <div class="aboutpro">
+                <div class="aboutprohead">
+                    <h3>Terms & Conditions</h3>
+                </div>
+                <div class="aboutprotext">
+                    <h6>@ViewBag.str_brandname Terms & Conditions</h6>
+                    @*<ol>
+                            <li>This is a Yum! Restaurants Insta Gift Voucher (GV) / Gift Card (GC) and would be accepted at listed outlets only.</li>
+                            <li>The person who has the Yum! Restaurants GV / GC Code is deemed to be the beneficiary.</li>
+                            <li>Do inform the cashier that you plan to use the GV / GC for making payments before billing.</li>
+                            <li>More than one GV / GC can be used in one bill.</li>
+                            <li>This is a ONE time use GV / GC.</li>
+                            <li>No Credit note / Refund for the unused amount of the GV / GC will be given.</li>
+                            <li>Yum! Restaurants GV / GC CANNOT be revalidated once expired.</li>
+                            <li>Yum! Restaurants GV / GC cannot be redeemed on specific block out dates. Yum! Restaurants may add or delete any date on its sole discretion.</li>
+                        </ol>*@
+                    @Html.Raw(ViewBag.str_tnc)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+
+
+    <link href="~/js/toastr/toastr.css" rel="stylesheet" />
+    <script src="~/js/toastr/toastr.min.js"></script>
+
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />*@
+
+    <link href="~/new2/css/cdnjs.cloudflare.com_ajax_libs_OwlCarousel2_2.3.4_assets_owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/new2/css/cdnjs.cloudflare.com_ajax_libs_OwlCarousel2_2.3.4_assets_owl.theme.default.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script src="~/new2/js/sanjs.js"></script>
+    @*<script src="~/new2/js/sanprojs.js"></script>*@
+
+    <script>
+        //$(document).ready(function () {
+        //    //alert(1);
+        //    //var name = GetParameterValues('bid');
+        //    //var id = GetParameterValues('ID');
+        //    //alert("Hello " + name + " your ID is " + id);
+          
+        //});
+    </script>
+    <script>
+        $(document).ready(function () {
+            GetCart();
+            //getGiftCardCategory();
+            //loadGiftCardBrand();
+        });
+
+        function GetParameterValues(param) {
+            var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < url.length; i++) {
+                var urlparam = url[i].split('=');
+                if (urlparam[0] == param) {
+                    return urlparam[1];
+                }
+            }
+        }
+        function getGiftCardCategory() {
+            $.ajax({
+
+                url: '/api/Recharge/getGiftCardCategory',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result);
+
+
+                    var giftdata = '';
+                    var items = "";
+                    $.each(result, function (result, value) {
+                        //alert(value);
+                        //console.log(value.circlecode);
+                        //$("#ddcircle").append($("<option></option>").val(value.circleCode).html(value.circleName));
+
+                        giftdata += '<div class="col-lg-2 col-md-4 col-sm-6"><div class="catgry_card"><div class="catimg"><img src="https://admin.rechargezap.com/admin/SliderImage/' + value.imageName + '" alt="Image" />                        </div>                        <div class="catbox">                            <p class="cardname">' + value.categoryName + '</p>                        </div>                    </div>                </div>';
+
+
+                    });
+                    //console.log(giftdata);
+                    divgiftcardcategory.innerHTML = giftdata;
+                    //$("#ddcircle").append(items);
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                                        /*$("#ddoperatormobile").html('Loading...')*/;
+                    //$('#ddcircle').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+
+        function loadGiftCardBrand() {
+            $.ajax({
+
+                url: '/api/Recharge/getGiftCardBrand',
+                //data: "{ 'Amount': '" + depositeAmt  + "','userid': '" + '<%=Session["UserId"] %>'  + "','FromWalletAddress': '" + wallet_address  + "','ToWalletAddress': '" + contract_addr  + "','ReferenceId': '" + result  + "'}",
+                data: "",
+                dataType: "json",
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result);
+                    //console.log(result);
+
+
+                    var giftdata = '';
+                    var items = "";
+                    $.each(result, function (result, value) {
+                        //alert(value);
+                        //console.log(value.circlecode);
+                        //$("#ddcircle").append($("<option></option>").val(value.circleCode).html(value.circleName));
+
+                        giftdata += ' <div class="col-lg-3 col-md-4 col-sm-6"><a href=/Home/GiftCardDetail?bid="' + value.brandProductCode + '" class="brands_card"><div class="cardimg"><img src="' + value.brandImage + '" alt="card Image" /><div class="brand_Rating"><span class="ratings"></span><span class="ratingsnum">4.6</span></div></div><div class="cardBox"><div class="carddetails"><p class="cardname">' + value.brandName + '</p><p class="carddes">' + value.brandName + '</p></div><div class="cardrewad"><div class="disprice"><span class="descountprice">₹ 2000/-</span><span class="originprice"><del>₹ 2500/-</del></span></div><div class="offpercent">20% OFF</div></div></div></a></div>';
+
+                    });
+                    //console.log(giftdata);
+                    divgiftcardbrand.innerHTML = giftdata;
+                    //$("#ddcircle").append(items);
+                    //toastr.success('Success', result.d);
+
+                },
+                beforeSend: function () {
+                                                                                                                        /*$("#ddoperatormobile").html('Loading...')*/;
+                    //$('#ddcircle').empty().append('<option>Loading...</option>');
+                },
+                complete: function () {
+                    // Code to hide spinner.
+                }
+            })
+        }
+        function GetCart() {
+
+            //alert($('#DenominationOrg').val());
+
+            $.ajax({
+                url: '/Home/GetCart', type: 'post', dataType: 'json',
+                //data: { 'productCode': $('#ProductCode').val(), 'denomination': $('#DenominationOrg').val(), 'qty': document.getElementById("count").innerHTML, 'discount': document.getElementById("discount").innerHTML, 'brandImage': $('#BrandImage').val(), 'brandName': document.getElementById("brandName").innerHTML },
+                success: function (data) {
+                    console.log(data);
+                    //$("#divload").css({ 'display': 'none' });
+                    //$('#myModal').modal('hide');
+                    //alert('Details Edited SUccessfully');
+                    //window.location.href = '/Admin/DayBook';
+                    //toastr.success('Success', 'Gift Card Added To Cart Successfully');
+
+                    var brandcode =GetParameterValues('bid');
+
+
+                    var discount = parseFloat('0');
+                    var totalamount2 = parseFloat('0');
+                    var totaldiscount2 = parseFloat('0');
+                    var finalamount2 = parseFloat('0');
+                    var giftdata = '';
+                    data.forEach((element, index, array) => {
+                        //console.log(element); // 100, 200, 300
+                        //console.log(element.discount); // 100, 200, 300
+                        //console.log(index); // 0, 1, 2
+                        //console.log(array); // same myArray object 3 times
+
+                        discount = element.discount;
+
+                        totalamount2 += (parseFloat(element.denomnation) * parseFloat(element.quantity));
+                        totaldiscount2 += ((parseFloat(element.denomnation) * parseFloat(element.quantity)) * parseFloat(element.discount)) / 100;
+
+                        var totalamount = parseFloat('0');
+                        var totaldiscount = parseFloat('0');
+                        var finalamount = parseFloat('0');
+
+                        totalamount = (parseFloat(element.denomnation) * parseFloat(element.quantity));
+                        totaldiscount = ((parseFloat(element.denomnation) * parseFloat(element.quantity)) * parseFloat(element.discount)) / 100;
+                        finalamount = totalamount - totaldiscount;
+                        giftdata += '<div id="vrdetail1" class="vrdetail"><div class="cartnameicon"><span>Added in cart</span><span onclick="DeleteCart(' + element.id + ')"><i class="fa fa-trash m-0" aria-hidden="true"></i></span></div>                            <div class="vrcartprice">    <img src="' + element.brandImage + '" style="width:85px;"     />                      <p id="tcountpar"><span id="vrcount">' + element.quantity + '</span> * ₹ <span id="vrvoucher">' + element.denomnation + '</span> </p>                                <p>₹ <span id="vrvalue">' + totalamount + '</span>  </p>                            </div>                        </div>';
+
+
+                        if (brandcode == element.brandProductCode) {
+
+                            document.getElementById("spandenom" + element.denomnation).innerHTML = element.quantity;
+
+                        }
+
+
+                    });
+                    finalamount2 = totalamount2 - totaldiscount2;
+
+                    cartdata.innerHTML = giftdata;
+
+
+                    document.getElementById("tvalue").innerHTML = totalamount2;
+                    document.getElementById("svalue").innerHTML = totaldiscount2;
+                    document.getElementById("pvalue").innerHTML = finalamount2;
+
+
+                    document.getElementById("value").innerHTML = totalamount2;
+
+                    document.getElementById("saving").innerHTML = totaldiscount2;
+                    document.getElementById("remaining").innerHTML = finalamount2;
+
+
+
+
+                    //for (var key in data.Object) {
+                    //    var obj = data.messages[key];
+
+                    //}
+
+                },
+                beforeSend: function () {
+                                                                                                        /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+
+            });
+
+        }
+
+        function AddToCart(denom, denomid) {
+
+            //alert($('#DenominationOrg').val());
+
+            //alert(denomid.innerHTML);
+
+            var oldqty = denomid.innerHTML;
+            var newqty = parseInt(oldqty) + 1;
+
+            denomid.innerHTML = newqty.toString();
+
+            var qty = 1;
+
+            $.ajax({
+                url: '/Home/AddToCart', type: 'post', dataType: 'json',
+                data: { 'productCode': $('#ProductCode').val(), 'denomination': denom, 'qty': qty, 'discount': document.getElementById("discount").innerHTML, 'brandImage': $('#BrandImage').val(), 'brandName': document.getElementById("brandName").innerHTML, 'brandType': document.getElementById("brandType").innerHTML },
+                success: function (data) {
+                    console.log(data);
+
+                    toastr.success('Success', 'Gift Card Added To Cart Successfully');
+
+                    //var totalamount = parseFloat('0');
+                    //var totaldiscount = parseFloat('0');
+                    //var finalamount = parseFloat('0');
+
+                    //data.forEach((element, index, array) => {
+                    //    //console.log(element); // 100, 200, 300
+                    //    //console.log(element.discount); // 100, 200, 300
+                    //    //console.log(index); // 0, 1, 2
+                    //    //console.log(array); // same myArray object 3 times
+
+                    //    totalamount += (parseFloat(element.denomnation) * parseFloat(element.quantity));
+                    //    totaldiscount += ((parseFloat(element.denomnation) * parseFloat(element.quantity)) * parseFloat(element.discount)) / 100;
+                    //});
+                    //finalamount = totalamount - totaldiscount;
+
+                    //document.getElementById("tvalue").innerHTML = totalamount;
+                    //document.getElementById("svalue").innerHTML = totaldiscount;
+                    //document.getElementById("pvalue").innerHTML = finalamount;
+
+
+
+                    GetCart();
+
+                    //for (var key in data.Object) {
+                    //    var obj = data.messages[key];
+
+                    //}
+
+                },
+                beforeSend: function () {
+                                                                                                        /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+
+            });
+
+
+
+        }
+
+        function DecreaseCart(denom, denomid) {
+
+            //alert($('#DenominationOrg').val());
+            var oldqty = denomid.innerHTML;
+            var newqty = parseInt(oldqty) - 1;
+
+            if (newqty < 0) {
+                newqty = 0;
+            }
+
+            denomid.innerHTML = newqty.toString();
+
+            if (newqty >= 0) {
+
+                var qty = 1;
+
+                $.ajax({
+                    url: '/Home/DecreaseCart', type: 'post', dataType: 'json',
+                    data: { 'productCode': $('#ProductCode').val(), 'denomination': denom, 'qty': qty, 'discount': document.getElementById("discount").innerHTML, 'brandImage': $('#BrandImage').val(), 'brandName': document.getElementById("brandName").innerHTML, 'brandType': document.getElementById("brandType").innerHTML },
+                    success: function (data) {
+                        console.log(data);
+
+
+                        if (oldqty >= 1) {
+                            toastr.success('Success', 'Gift Card Added To Cart Successfully');
+                        }
+                        //var totalamount = parseFloat('0');
+                        //var totaldiscount = parseFloat('0');
+                        //var finalamount = parseFloat('0');
+
+                        //data.forEach((element, index, array) => {
+                        //    //console.log(element); // 100, 200, 300
+                        //    //console.log(element.discount); // 100, 200, 300
+                        //    //console.log(index); // 0, 1, 2
+                        //    //console.log(array); // same myArray object 3 times
+
+                        //    totalamount += (parseFloat(element.denomnation) * parseFloat(element.quantity));
+                        //    totaldiscount += ((parseFloat(element.denomnation) * parseFloat(element.quantity)) * parseFloat(element.discount)) / 100;
+                        //});
+                        //finalamount = totalamount - totaldiscount;
+
+                        //document.getElementById("tvalue").innerHTML = totalamount;
+                        //document.getElementById("svalue").innerHTML = totaldiscount;
+                        //document.getElementById("pvalue").innerHTML = finalamount;
+
+
+
+                        GetCart();
+
+                        //for (var key in data.Object) {
+                        //    var obj = data.messages[key];
+
+                        //}
+
+                    },
+                    beforeSend: function () {
+                                                                                                        /*$("#ddoperatormobile").html('Loading...')*/;
+                        $('#AjaxLoader').show();
+                    },
+                    complete: function () {
+                        $('#AjaxLoader').hide();
+                    }
+
+                });
+            }
+
+
+
+
+
+
+
+
+
+
+
+        }
+        function DeleteCart(cartid) {
+
+            //alert($('#DenominationOrg').val());
+            //alert(cartid)
+            $.ajax({
+                url: '/Home/DeleteCart', type: 'post', dataType: 'json',
+                data: { 'cartid': cartid },
+                success: function (data) {
+                    console.log(data);
+                    //$("#divload").css({ 'display': 'none' });
+                    //$('#myModal').modal('hide');
+                    //alert('Details Edited SUccessfully');
+                    //window.location.href = '/Admin/DayBook';
+                    toastr.success('Success', 'Gift Card Removed From Cart Successfully');
+
+                    GetCart();
+
+
+                    //for (var key in data.Object) {
+                    //    var obj = data.messages[key];
+
+                    //}
+
+                },
+                beforeSend: function () {
+                        /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+
+            });
+
+        }
+    </script>
+
+
+
+}
+
+@section MobileHeader{
+    Gift Cards
+}

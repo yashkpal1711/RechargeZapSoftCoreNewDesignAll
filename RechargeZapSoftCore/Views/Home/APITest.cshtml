@@ -1,0 +1,197 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "APITest";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R21BW298ES"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R21BW298ES');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5BMQ9CB');</script>
+    <!-- End Google Tag Manager -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "byfz90qg00");
+    </script>
+    <link rel="icon" type="image/x-icon" href="" />
+    <link rel="stylesheet" href="~/new2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/new2/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="~/new2/css/style.css" />
+    <link rel="stylesheet" href="~/new2/css/responsive.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/loader.css" />
+    <title>Online Mobile Recharge - Bill Payments, Prepaid Recharge, Buy Gift Cards & Get Exclusive Deals on RechargeZap</title>
+
+    <style>
+        .submitbtn {
+            background: #172c64;
+            /* background: linear-gradient(90deg, #10182b 0%, #172c65 100%); */
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 400;
+            padding: 10px 30px;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            height: 45px;
+            width: 100%;
+        }
+
+        .newnumbertype {
+            border: none;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+        }
+
+        newnumbertype::-webkit-inner-spin-button,
+        newnumbertype::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .submitpanbtn {
+            background-color: #172c64;
+            border: none;
+            outline: none;
+            font-size: 11px;
+            color: #fff !important;
+            padding: 5px 16px;
+            letter-spacing: 1.1px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 9px;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>APITest</h1>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="~/new2/js/popper.min.js"></script>
+    @*<script src="~/new2/js/bootstrap.min.js"></script>*@
+    <script src="~/new/js/bootstrap.min.js"></script>
+    <script src="~/new2/js/swiper-bundle.min.js"></script>
+    <script src="~/new2/js/main.js"></script>
+    <link href="~/js/toastr/toastr.css" rel="stylesheet" />
+    <script src="~/js/toastr/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            showOperatorcheck();
+
+
+
+        });
+        function showOperatorcheck() {
+
+
+                    var jsondata = { 'number': '7905329740' };
+                    //alert(jsondata);
+
+                  
+                        $.ajax({
+
+                            url: '/api/Recharge/getOperatorcheck',
+                            data: JSON.stringify(jsondata),
+
+                            dataType: "json",
+                            type: 'POST',
+                            contentType: "application/json; charset=utf-8",
+
+                            success: function (result) {
+                                //alert(result);
+                                //console.log(result[0]);
+                                //console.log(result[1]);
+                                //console.log(result[2]);
+                                //console.log(result[3]);
+                                //console.log(result.str_tabheader);
+                                //$("#ddoperatormobile").val(result[0]);
+                                //$("#ddcircle").val(result[1]);
+                                alert(result[2]);
+                                //document.getElementById("dthcustomername").innerHTML = result[0];
+                                //document.getElementById("dthmonthlyplan").innerHTML = result[1];
+
+                                //showModalDTHInfo();
+
+                            },
+                            beforeSend: function () {
+                                                                                                                /*$("#ddoperatormobile").html('Loading...')*/;
+                                $('#AjaxLoader').show();
+                            },
+                            complete: function () {
+                                $('#AjaxLoader').hide();
+                            }
+                        })
+                 
+
+
+
+                
+        }
+
+    </script>
+
+</body>
+
+</html>

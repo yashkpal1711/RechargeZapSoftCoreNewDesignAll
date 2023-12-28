@@ -1,0 +1,687 @@
+﻿
+@{
+    Layout = null;
+}
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R21BW298ES"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R21BW298ES');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5BMQ9CB');</script>
+    <!-- End Google Tag Manager -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "byfz90qg00");
+    </script>
+    <link rel="icon" type="image/x-icon" href="" />
+    <link rel="stylesheet" href="~/new2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/new2/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="~/new2/css/style.css" />
+    <link href="~/new2/css/sanstyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/new2/css/responsive.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="~/css/loader.css" />
+    <title>@ViewData["Title"]</title>
+    @RenderSection("header", required: false)
+    <style>
+        .submitbtn {
+            background: #172c64;
+            /* background: linear-gradient(90deg, #10182b 0%, #172c65 100%); */
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 400;
+            padding: 10px 30px;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            height: 45px;
+            width: 100%;
+        }
+
+        .newnumbertype {
+            border: none;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+        }
+
+        newnumbertype::-webkit-inner-spin-button,
+        newnumbertype::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .submitpanbtn {
+            background-color: #172c64;
+            border: none;
+            outline: none;
+            font-size: 11px;
+            color: #fff !important;
+            padding: 5px 16px;
+            letter-spacing: 1.1px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 9px;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BMQ9CB"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="loader" id="AjaxLoader" style="display:none;">
+        <div class="strip-holder">
+            @*<div class="strip-1"></div>
+                <div class="strip-2"></div>
+                <div class="strip-3"></div>*@
+            <img src="~/images/preloader.svg" />
+        </div>
+    </div>
+    <div class="page-content" id="page-start">
+        <header class="desktop-header mobile-bg">
+            <div class="container-fluid py-2">
+                <div class="d-header d-nav">
+                    <div class="head-left">
+                        <a href="/">
+                            <img src="~/new2/img/logo-white.png" alt="rechargezap" class="logo-white">
+                            <img src="~/new2/img/logo.jpg" alt="rechargezap" class="logo-blue">
+                        </a>
+                    </div>
+                    <div class="head-right">
+                        <div class="head-right-option">
+                            <div class="head-gift h-flex">
+                                <a href="/Home/GiftCard">
+                                    <div class="gift-img">
+                                        <img src="~/new2/img/gift-card.png" alt="">
+                                    </div>
+                                    <div class="gift-cont">
+                                        <p>Introducing Gift Card</p>
+                                        <span>Gift your loved ones with gift card</span>
+                                    </div>
+                                </a>
+                            </div>
+                            @*<div class="head-wallet h-flex">
+                                    <a href="#!">
+                                        <div class="wallet-img">
+                                            <img src="~/new2/img/wallet-head.png" alt="">
+                                        </div>
+                                        <div class="wallet-cont">
+                                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 2015</p>
+                                            <span>Wallet Balance</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="head-signin h-flex">
+                                    <div class="sign-img">
+                                        <img src="~/new2/img/user.png" alt="">
+                                    </div>
+                                    <div class="sign-cont">
+                                        <p>My Account <i class="fa-solid fa-chevron-down"></i></p>
+                                        <div class="sign-menu">
+                                            <div class="sign-menu-inner">
+                                                <a href=""><i class="fa-solid fa-chevron-right"></i> My Profile</a>
+                                                <a href=""><i class="fa-solid fa-chevron-right"></i> Order History</a>
+                                                <a href=""><i class="fa-solid fa-chevron-right"></i> Transaction History</a>
+                                                <a href=""><i class="fa-solid fa-chevron-right"></i> Log Out</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            @Html.Raw(@ViewBag.loginlink)
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-head-box">
+                    <div class="mobile-head-nav">
+                        <div class="mobile-back">
+                            <a href="/" style="color: #fff;"> <i class="fa-solid fa-chevron-left"></i></a>
+                            <a href="#!" style="color: #fff;">    @RenderSection("MobileHeader", required: false)</a>
+                        </div>
+                    </div>
+                    <!-- <div class="mobile-head-logo">
+                      <div class="logo">
+                        <a href="/"><img src="./img/logo-white.png" /></a>
+                      </div>
+                    </div> -->
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+
+        <footer>
+            <div class="container-fluid">
+                <div class="footer-widget">
+                    <div class="footer-logo"><img src="~/new2/img/logo-white.png" /></div>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="~/Home/About">About Us</a></li>
+                            <li><a href="~/Home/Terms">Terms & Conditions</a></li>
+                            <li><a href="~/Home/Privacy">Privacy Policy</a></li>
+                            <li><a href="~/Home/Refund">Refund Policy</a></li>
+                            <li><a href="~/Home/Contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="copyright">
+                        <p>© 2022 Orion Techno Age Pvt Ltd. All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginPopup" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content p-0">
+                <!-- <div class="modal-header">
+
+                </div> -->
+                <div class="modal-body">
+                    <div class="login-area">
+                        <div class="login-col">
+                            <div class="login-banner">
+                                <img src="~/new2/img/login-bg.png" alt="">
+                            </div>
+                        </div>
+                        <div class="login-col">
+                            <form method="post" action="/Home/LoginEmail">
+                                <div class="form-login-box">
+                                    <div class="form-login-area">
+                                        <h3>Get Started With RechargeZap</h3>
+                                        <p class="text-center" style="padding-left:20px;padding-right:20px;font-weight:bold">Login to your RechargeZap account to access your E-Wallet, Check transaction history and much more.</p>
+
+                                    </div>
+                                    <p style="font-weight: 500;
+font-size: 11px;
+line-height: 30px;
+letter-spacing: 0.5px;">Enter your email address to receive OTP for login</p>
+                                    <div class="form-area modal-log">
+
+                                        @*<input type="email" name="" placeholder="Enter Email ID" required />*@
+                                        <input type="text" id="emaillogin" name="Email" placeholder="Enter Email">
+                                    </div>
+                                    <div class="form-area-btn">
+                                        @*<button type="submit">Proceed</button>*@
+                                        <button>Proceed</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Understood</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP Modal -->
+    <div class="modal fade" id="otpPopup" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content p-0">
+                <!-- <div class="modal-header">
+
+                </div> -->
+                <div class="modal-body">
+                    <div class="login-area">
+                        <div class="login-col">
+                            <div class="login-banner">
+                                <img src="~/new2/img/otp-bg.png" alt="">
+                            </div>
+                        </div>
+                        <div class="login-col">
+                            <form method="post" action="/Home/LoginOTP">
+                                <div class="form-login-box">
+                                    <div class="form-login-area otp-area">
+                                        <h3>Enter OTP</h3>
+                                        <p>
+                                            A one time password has been sent to your email address <a href="#!" data-toggle="modal"
+                                                                                                       data-target="#loginPopup">Change</a>
+                                        </p>
+                                    </div>
+                                    <div class="otp-log">
+                                        <div class="otp-fields">
+                                            <input type="text" placeholder="-" id="otp1" onkeyup="movetoNext(this, 'otp2')" required name="OTP1" />
+                                            <input type="text" placeholder="-" id="otp2" onkeyup="movetoNext(this, 'otp3')" required name="OTP2" />
+                                            <input type="text" placeholder="-" id="otp3" onkeyup="movetoNext(this, 'otp4')" required name="OTP3" />
+                                            <input type="text" placeholder="-" id="otp4" onkeyup="movetoNext(this, 'otp5')" required name="OTP4" />
+                                            <input type="text" placeholder="-" id="otp5" required name="OTP5" />
+                                            @*<input type="text" class="form-control mb-2" id="otplogin" name="OTP" placeholder="Enter OTP">*@
+                                        </div>
+                                        <p>Didn't Received The OTP Yet? <a href="#!">Resend</a></p>
+                                    </div>
+                                    <div class="form-area-btn">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="otpPopupRecharge" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content p-0">
+                <!-- <div class="modal-header">
+
+                </div> -->
+                <div class="modal-body">
+                    <div class="login-area">
+                        <div class="login-col">
+                            <div class="login-banner">
+                                <img src="~/new2/img/otp-bg.png" alt="">
+                            </div>
+                        </div>
+                        <div class="login-col">
+                            <form>
+                                <div class="form-login-box">
+                                    <div class="form-login-area otp-area">
+                                        <h3>Enter OTP</h3>
+                                        <p>
+                                            A one time password has been sent to your email address <a href="#!" data-toggle="modal"
+                                                                                                       data-target="#loginPopup">Change</a>
+                                        </p>
+                                    </div>
+                                    <div class="otp-log">
+                                        <div class="otp-fields">
+                                            <input type="text" placeholder="-" id="otprecharge1" name="otprecharge1" onkeyup="movetoNext(this, 'otprecharge2')" required name="OTP1" />
+                                            <input type="text" placeholder="-" id="otprecharge2" name="otprecharge2" onkeyup="movetoNext(this, 'otprecharge3')" required name="OTP2" />
+                                            <input type="text" placeholder="-" id="otprecharge3" name="otprecharge3" onkeyup="movetoNext(this, 'otprecharge4')" required name="OTP3" />
+                                            <input type="text" placeholder="-" id="otprecharge4" name="otprecharge4" onkeyup="movetoNext(this, 'otprecharge5')" required name="OTP4" />
+                                            <input type="text" placeholder="-" id="otprecharge5" name="otprecharge5" required name="OTP5" />
+                                            @*<input type="text" class="form-control mb-2" id="otplogin" name="OTP" placeholder="Enter OTP">*@
+                                        </div>
+                                        <p>Didn't Received The OTP Yet? <a href="#!">Resend</a></p>
+                                    </div>
+                                    <div class="form-area-btn">
+                                        @*<button type="submit">Submit</button>*@
+                                        <input type="button" class="submitbtn" id="btnrechargefinal" style="color:white;" value=" Pay Now" onclick="return validateotpsubmit();" />
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Proceed To Recharge Modal -->
+
+    <div class="modal fade" id="proceedRecharge" data-backdrop="static" data-keyboard="true" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content p-0">
+                <div class="modal-body">
+                    <form method="post" action="/Home/PayUMoneyPayment" id="frmRecharge" >
+                        <div class="proceedrchrg-main">
+                            <div class="proceed-row">
+                                <div class="proceed-left">
+                                    <div class="proceed-head">
+                                        <button data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-angle-left"></i> Back</button>
+                                        <button data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                                    </div>
+                                    <div class="proceed-summary">
+                                        <h3 id="headerconfirm">Mobile Recharge</h3>
+                                        <ul>
+                                            <li class="proceed-amt">
+                                                <p><i class="fa-solid fa-indian-rupee-sign"></i> Amount</p>
+                                                <!-- <p> ₹399</p> -->
+                                                <input type="text" readonly id="amountConfirm" name="RechargeAmount" placeholder="">
+                                                <input type="hidden" class="form-control  border-2 bg-color-none text-grey-700" id="operatoridConfirm" value="Amount" name="OperatorCode">
+                                                <input type="hidden" id="optional1Confirm" value="" name="OptionalValue1">
+                                                <input type="hidden" id="RechargeOTP" value="" name="RechargeOTP">
+
+                                                <input type="hidden" id="optional2Confirm" value="" name="OptionalValue2">
+                                                <input type="hidden" id="optional3Confirm" value="" name="OptionalValue3">
+                                                <input type="hidden" id="optional4Confirm" value="" name="OptionalValue4">
+
+                                            </li>
+                                            <li class="proceed-amt">
+                                                <p><i class="fa-solid fa-tower-broadcast"></i> Operator</p>
+                                                <!-- <p>Airtel</p> -->
+                                                <input type="text" readonly name="" id="operatorConfirm" placeholder="">
+                                            </li>
+                                            <li class="proceed-amt" id="liCircledetail">
+                                                <p><i class="fa-solid fa-tower-broadcast"></i> Circle</p>
+                                                <!-- <p>Airtel</p> -->
+                                                <input type="text" readonly name="" id="circleConfirm" placeholder="">
+                                            </li>
+                                            <li class="proceed-amt">
+                                                <p id="mobilenoheadingconfirm"><i class="fa-solid fa-mobile-screen"></i> Mobile Number</p>
+                                                <!-- <p>999XXXXXX</p> -->
+                                                <input type="text" id="mobileConfirm" readonly name="RechargeMobile" placeholder="999XXXXXX">
+                                            </li>
+                                            <li class="proceed-amt" id="divBalance">
+                                                <p><i class="fa-solid fa-wallet"></i> Wallet Amount</p>
+                                                <!-- <p>₹0.00</p> -->
+                                                <input type="text" id="walletbalanceconfirm" readonly name="BalanceAmount" placeholder="₹0.00">
+                                            </li>
+                                            <li class="proceed-amt" id="divUsedBalance">
+                                                <p><i class="fa-solid fa-wallet"></i> Used Wallet Amount</p>
+                                                <!-- <p>₹0.00</p> -->
+                                                <input type="text" id="usedwalletbalanceconfirm" readonly name="UsedBalanceAmount" placeholder="₹0.00">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="proceed-right">
+                                    <div class="proceed-steps">
+                                        <span>Step 1</span>
+                                        <span>Step 2</span>
+                                        <span>Step 3</span>
+                                    </div>
+                                    <div class="proceed-logo">
+                                        <img src="~/new2/img/logo.jpg" alt="rechargezap">
+                                    </div>
+                                    <div class="procedd-form">
+
+                                        <div class="form-group">
+                                            <input type="text" id="nameConfirm" name="UserName" class="form-control" required placeholder="Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" id="emailConfirm" name="Email" class="form-control" required placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="customermobileConfirm" name="UserMobile" class="form-control" required placeholder="Contact Number">
+                                        </div>
+                                        <div class="form-group">
+                                            @*<button type="submit" onclick="return validateotp();"> Pay Now</button>*@
+                                            <input type="button" class="submitbtn" id="btnrechargefinal" style="color:white;" value=" Pay Now" onclick="return validateotp();" />
+
+                                        </div>
+                                        <div class="proceed-text">
+                                            <p>It may take a few moments for this transaction to appear in your account</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="back-to-top">
+        <a href="#page-start">
+            <i class="fa-solid fa-chevron-up"></i>
+        </a>
+    </div>
+    @*<script src="~/new2/js/jquery-3.2.1.slim.min.js"></script>*@
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    @*<script src="~/new2/js/bootstrap.min.js"></script>*@
+    <script src="~/new/js/bootstrap.min.js"></script>
+    <script src="~/new2/js/popper.min.js"></script>
+    <script src="~/new2/js/swiper-bundle.min.js"></script>
+    <script src="~/new2/js/main.js"></script>
+    <link href="~/js/toastr/toastr.css" rel="stylesheet" />
+    <script src="~/js/toastr/toastr.min.js"></script>
+
+
+    <script>
+        function validateotp() {
+
+
+            if (document.getElementById("nameConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Name');
+                document.getElementById("nameConfirm").focus();
+                return false;
+            }
+            else if (document.getElementById("customermobileConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Mobile');
+                document.getElementById("customermobileConfirm").focus();
+                return false;
+            }
+            else if (document.getElementById("emailConfirm").value == "") {
+                toastr.warning('Warning', 'Enter Email');
+                document.getElementById("emailConfirm").focus();
+                return false;
+            }
+
+            else if (parseFloat(document.getElementById("amountConfirm").value) > 10000) {
+
+
+                $.ajax({
+                    url: '/Home/SendOTP', type: 'post', dataType: 'json',
+                    data: { 'email': document.getElementById("emailConfirm").value },
+                    success: function (data) {
+                        console.log(data);
+
+                        showModalOTPRecharge();
+                        Closepopup2();
+                    },
+                    beforeSend: function () {
+                                        /*$("#ddoperatormobile").html('Loading...')*/;
+                        $('#AjaxLoader').show();
+                    },
+                    complete: function () {
+                        $('#AjaxLoader').hide();
+                    }
+
+                });
+
+
+                return false;
+            }
+            else {
+                $('#frmRecharge').submit();
+            }
+        }
+        function validateotpsubmit() {
+
+            document.getElementById("RechargeOTP").value = document.getElementById("otprecharge1").value + document.getElementById("otprecharge2").value + document.getElementById("otprecharge3").value + document.getElementById("otprecharge4").value + document.getElementById("otprecharge5").value;
+
+            $('#frmRecharge').submit();
+
+        }
+          function showBalanceNew() {
+
+             var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            var jsondata = { 'email': LoginEMail };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getBalance',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[0]);
+                    //console.log(result.username);
+                    //console.log(result[0]);
+                    document.getElementById('userbalancetop').innerHTML = result[0];
+
+
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 45 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+        function ValidateEmail(input) {
+
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (input.value.match(validRegex)) {
+                alert("Valid email address!");
+                document.form1.text1.focus();
+                return true;
+            } else {
+                alert("Invalid email address!");
+                document.form1.text1.focus();
+                return false;
+            }
+
+        }
+        function showModalLoginEmail() {
+            $('#loginPopup').modal({ backdrop: 'static', keyboard: false });
+            $(".responsive-menu").removeClass("show-nav");
+        }
+        function ClosepopupLoginEmail() {
+            $('#loginPopup').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+        function showModalOTP() {
+            $('#otpPopup').modal({ backdrop: 'static', keyboard: false })
+            document.getElementById("OTP1").focus();
+        }
+        function ClosepopupOTP() {
+            $('#otpPopup').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+        function Closepopup2() {
+            $('#proceedRecharge').modal('hide');
+
+        }
+
+
+        $(document).ready(function () {
+            //alert('a');
+            var myJsVariable = '@ViewBag.OTPPopup'
+            //alert(myJsVariable);
+            if (myJsVariable == 'IsOTP') {
+
+                ClosepopupLoginEmail();
+                showModalOTP();
+            }
+
+            var VarOTPError = '@ViewBag.OTPError'
+            if (VarOTPError == '1') {
+
+                toastr.error('Error', 'Invalid OTP');
+                showModalOTP();
+            }
+            var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+
+                if (LoginEMail != '') {
+                    showBalanceNew();
+                }
+
+        });
+        function showModalOTPRecharge() {
+            $('#otpPopupRecharge').modal({ backdrop: 'static', keyboard: false })
+            document.getElementById("otprecharge1").focus();
+        }
+        function ClosepopupOTPRecharge() {
+            $('#otpPopupRecharge').modal('hide');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '0');
+            $('.modal-backdrop').remove();
+        }
+        function movetoNext(current, nextFieldID) {
+            if (current.value.length >= current.maxLength) {
+                document.getElementById(nextFieldID).focus();
+            }
+        }
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

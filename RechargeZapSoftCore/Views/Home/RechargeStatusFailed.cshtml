@@ -1,0 +1,144 @@
+﻿@model RechargeZapSoftCore.Models.clsRecharge
+@{
+    ViewData["Title"] = "Online Mobile Recharge - Bill Payments & Prepaid Recharge on RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+
+@*<h1>RechargeStatus</h1>
+    @Html.DisplayNameFor(m => m.ReferenceId) : @Html.DisplayFor(m => m.ReferenceId)<br />
+    @Html.DisplayNameFor(m => m.RechargeAmount) : @Html.DisplayFor(m => m.RechargeAmount)<br />
+    @Html.DisplayNameFor(m => m.Status) : @Html.DisplayFor(m => m.Status)<br />
+    @Html.DisplayNameFor(m => m.RechargeMobile) : @Html.DisplayFor(m => m.RechargeMobile)<br />
+    @Html.DisplayNameFor(m => m.Message) : @Html.DisplayFor(m => m.Message)<br />*@
+
+@section header
+    {
+
+}
+
+@*<section class="recharge_main">
+    <div class="container container_mobile">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="recharge_main_box">
+
+                    <div class="recharge_top">
+                        <img src="~/images/banner/payment-failed.png" alt="image">
+                        <h2>Payment Failed</h2>
+                        <p>Oops! Your payment is failed. Please try again using a different payment method. </p>
+                        <a href="/" class="btn_all">Make Another Recharge</a>
+                    </div>
+
+                    <div class="recharge_details">
+                        <div class="recharge_details_left">
+                            <h3>Recharge/Bill Payment Details</h3>
+                            <div class="recharge_details_left_text_details">
+                                <h4>Payment Status:</h4>
+                                <p>Payment of Rs  @Html.DisplayFor(m => m.PaymentGatewayAmount) not received by RechargeZap</p>
+                                <p>Payment ID :  @Html.DisplayFor(m => m.PaymentGatewayOrderid)</p>
+                                <p class="text-danger mb-3">Your payment is failed.</p>
+                                <p>Order ID :  @Html.DisplayFor(m => m.ReferenceId)</p>
+                                <p>Recharge/Bill Amount: Rs.  @Html.DisplayFor(m => m.RechargeAmount)</p>
+                                <p>@Html.DisplayFor(m => m.RechargeDate) <img src="~/images/banner/ricon.png" alt="image"></p>
+                            </div>
+                            <div class="recharge_details_left_text_details">
+                                <h4>Recharge Status:</h4>
+                                <p>Recharge/Bill Payment of @Html.DisplayFor(m => m.OperatorName)  @Html.DisplayFor(m => m.RechargeMobile)</p>
+                            </div>
+                        </div>
+                        <div class="recharge_details_left recharge_details_right">
+                            <h3>Payment Summary</h3>
+                            <div class="recharge_details_left_text_details">
+                                <h4>Payment Status:</h4>
+                                <p><span>Order ID :  @Html.DisplayFor(m => m.ReferenceId)</span></p>
+                            </div>
+                            <div class="recharge_details_amount">
+                                <p>Amount</p>
+                                <p>₹ @Html.DisplayFor(m => m.RechargeAmount)</p>
+                            </div>
+                            <div class="recharge_details_amount">
+                                <p>Processing Fees</p>
+                                <p>₹ @Html.DisplayFor(m => m.ProcessingCharge)</p>
+                            </div>
+                            <div class="recharge_details_amount recharge_details_amount2">
+                                <p>Total</p>
+                                <p>₹ @Html.DisplayFor(m => m.PaymentGatewayAmount)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+<section class="recharge_main">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="recharge_main_box">
+                    <div class="recharge_top">
+                        <img src="~/new2/img/failed.png" alt="image">
+                        <h2>Recharge Unsuccessful</h2>
+                        <p>Oops! Your payment is failed. Please try again using a different payment method.</p>
+                        <a href="/" class="btn_all">Make Another Recharge</a>
+                    </div>
+
+                    <div class="recharge_details">
+                        <div class="recharge_details_col">
+                            <h3>Recharge/Bill Payment Details</h3>
+                            <div class="recharge_details_left_text_details">
+                                <h4>Payment Status:</h4>
+                                <p class="text-danger mb-3">Your payment is unsuccessful</p>
+                                <p>Payment of Rs @Html.DisplayFor(m => m.PaymentGatewayAmount) not received by RechargeZap</p>
+                                <p><span>Payment ID</span> : @Html.DisplayFor(m => m.PaymentGatewayOrderid)</p>
+                                <!-- <p><span>Order ID</span> : 202205101217365120281430739</p> -->
+                                <p><span>Recharge/Bill Amount</span> : Rs. @Html.DisplayFor(m => m.RechargeAmount)</p>
+                                <p><i class="fa-solid fa-calendar"></i> @Html.DisplayFor(m => m.RechargeDate) </p>
+                            </div>
+
+                        </div>
+                        <div class="recharge_details_col recharge_details_right">
+                            <h3>Payment Summary</h3>
+                            <div class="recharge_details_left_text_details">
+                                <h4>Recharge Status:</h4>
+                                <p>Recharge/Bill Payment of @Html.DisplayFor(m => m.OperatorName)  @Html.DisplayFor(m => m.RechargeMobile)</p>
+                           @*     <p>All details have been sent to email : @Html.DisplayFor(m => m.Email) </p>*@
+                            </div>
+                            <div class="recharge_details_left_text_details p-order-id">
+                                <h4>Order ID :  @Html.DisplayFor(m => m.ReferenceId)</h4>
+                                <!-- <p><span> </span></p> -->
+                            </div>
+                            <div class="recharge_details_amount">
+                                <p><span>Amount</span></p>
+                                <p>₹@Html.DisplayFor(m => m.RechargeAmount)</p>
+                            </div>
+                            <div class="recharge_details_amount">
+                                <p><span>Processing Fees</span></p>
+                                <p>₹@Html.DisplayFor(m => m.ProcessingCharge)</p>
+                            </div>
+                            <div class="recharge_details_amount recharge_details_amount2">
+                                <p><span>Total</span></p>
+                                <p>₹@Html.DisplayFor(m => m.PaymentGatewayAmount)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    function showError() {
+        var VarError = '@ViewBag.errortext'
+        if (VarError != '') {
+
+            toastr.error('Error', VarError);
+
+            }
+    }
+
+
+
+</script>

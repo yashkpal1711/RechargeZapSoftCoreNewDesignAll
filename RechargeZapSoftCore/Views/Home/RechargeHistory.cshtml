@@ -1,0 +1,256 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Order Status | RechargeZap";
+    Layout = "~/Views/Shared/SharedLayoutNewDesign.cshtml";
+}
+<section class="dash-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+
+                <div class="dasboard-nav">
+                    <ul class="dahboard-link">
+                        <li class="dasboard-item">
+                            <a href="/Home/Dashboard">
+                                <span>
+                                    <img src="~/new2/img/dashboard/home.png" alt="Home" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/home.png" alt="Home" class="dash-active">
+                                </span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="/Home/Profile">
+                                <span>
+                                    <img src="~/new2/img/dashboard/profile.png" alt="Profile" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/profile.png" alt="Profile"
+                                         class="dash-active">
+                                </span>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="#!" class="mobile-item-dropdown">
+                                <span>
+                                    <img src="~/new2/img/dashboard/services.png" alt="Services" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/services.png" alt="Services" class="dash-active">
+                                </span>
+                                <span>My Services</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </a>
+                            <div class="item-dropdown">
+                                <a href="/Home/Recharge"><img src="~/new2/img/icon/mobile-phone.png" alt="Recharge" /> <span>Recharge</span></a>
+                                <a href="/Home/dth"><img src="~/new2/img/icon/television.png" alt="DTH" /> <span>DTH</span></a>
+                                <a href="/Home/landline"><img src="~/new2/img/icon/landlinee.png" alt="Landline" /> <span>landline</span></a>
+                                <a href="/Home/broadband"><img src="~/new2/img/icon/internet.png" alt="Broadband" /> <span>Broadband</span></a>
+                                <a href="/Home/cylinder"><img src="~/new2/img/icon/gas-tank.png" alt="Cylinder" /> <span>Cylinder</span></a>
+                                <a href="/Home/gas"><img src="~/new2/img/icon/stove.png" alt="Piped Gas" /> <span>Piped Gas</span></a>
+                                <a href="/Home/electricity"><img src="~/new2/img/icon/light-bulb.png" alt="Electricity" /> <span>Electricity</span></a>
+                                <a href="/Home/water"><img src="~/new2/img/icon/water-tap.png" alt="Water" /> <span>Water</span></a>
+                                <a href="/Home/fastag"><img src="~/new2/img/icon/toll.png" alt="Fastag" /> <span>Fastag</span></a>
+                            </div>
+                        </li>
+                        <li class="dasboard-item active">
+                            <a href="/Home/RechargeHistory">
+                                <span>
+                                    <img src="~/new2/img/dashboard/order.png" alt="Order" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/order.png" alt="Order" class="dash-active">
+                                </span>
+                                <span>Order History</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="/Home/TransactionHistory">
+                                <span>
+                                    <img src="~/new2/img/dashboard/transaction.png" alt="Transaction"
+                                         class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/transaction.png" alt="Transaction"
+                                         class="dash-active">
+                                </span>
+                                <span>Transaction History</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="#">
+                                <span>
+                                    <img src="~/new2/img/dashboard/gift-card.png" alt="Gift" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/gift-card.png" alt="Gift"
+                                         class="dash-active">
+                                </span>
+                                <span>Gift Cards</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="#">
+                                <span>
+                                    <img src="~/new2/img/dashboard/offers.png" alt="Offers" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/offers.png" alt="Offers" class="dash-active">
+                                </span>
+                                <span>Offers & Deals</span>
+                            </a>
+                        </li>
+                        <li class="dasboard-item">
+                            <a href="/Home/Test">
+                                <span>
+                                    <img src="~/new2/img/dashboard/logout.png" alt="Logout" class="dash-inactive">
+                                    <img src="~/new2/img/dashboard/active/logout.png" alt="Logout" class="dash-active">
+                                </span>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12">
+                <div class="dashboard-content">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+                            <div class="dash-title">
+                                <h1>Order History</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mb-4">
+                            <div class="dash-table">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Mobile No.</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Operator</th>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbdashboard">
+                                        @*<tr>
+                                                <th class="mnumber">999XXXXXXX</th>
+                                                <td class="d-price">₹599</td>
+                                                <td class="d-operator">Jio</td>
+                                                <td class="d-type">Prepaid</td>
+                                                <td class="d-status">
+                                                    <button class="btn-sm btn btn-success">Success</button>
+                                                </td>
+                                            </tr>*@
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            @*<div class="pagination">
+                                    <button class="p-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="btn--icon"
+                                             fill="none"
+                                             viewBox="0 0 24 24"
+                                             stroke="currentColor"
+                                             stroke-width="2">
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                    </button>
+                                    <div class="pages">
+                                        <a class="page">1</a>
+                                        <a class="page">2</a>
+                                        <a class="page active">3</a>
+                                        <a class="page">4</a>
+                                        <a class="page">...</a>
+                                        <a class="page">23</a>
+                                    </div>
+                                    <button class="p-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="btn--icon"
+                                             fill="none"
+                                             viewBox="0 0 24 24"
+                                             stroke="currentColor"
+                                             stroke-width="2">
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+                                </div>*@
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts
+    {
+    <script>
+     $(document).ready(function () {
+
+            var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+
+                if (LoginEMail != '') {
+                    //alert(LoginEMail);
+                    loadRecharge();
+                }
+
+
+        });
+
+
+        function loadRecharge() {
+
+            var LoginEMail = '@HttpContextAccessor.HttpContext.Session.GetString("LoginEmail")';
+
+            var jsondata = { 'email': LoginEMail };
+            //alert(jsondata);
+            $.ajax({
+
+                url: '/api/Recharge/getRechargeHistory',
+                data: JSON.stringify(jsondata),
+
+                dataType: "json",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+
+                success: function (result) {
+                    //alert(result[2]);
+                    //console.log(result.username);
+                    console.log(result.dtdata);
+
+
+                    //var obj = jQuery.parseJSON(result.dtdata);
+                    var obj = result.dtdata;
+                    $.each(obj, function (index, value) {
+                        var TableRow = "<tr>";
+                        $.each(value, function (key, val) {
+                            //alert(key);
+
+                            if (key == 'rechargeAmount') {
+                                TableRow += "<td class='mnumber'><i class='fa fa-inr'></i> " + val + "</td>";
+                            }
+                            else {
+                                TableRow += "<td class='d-price'>" + val + "</td>";
+                            }
+
+                        });
+                        TableRow += "</tr>";
+                        $(TableRow).appendTo("#tbdashboard");
+                    });
+
+                    //showModalDTHplan();
+                },
+                beforeSend: function () {
+                                                                                                    /*$("#ddoperatormobile").html('Loading...')*/;
+                    $('#AjaxLoader').show();
+                },
+                complete: function () {
+                    $('#AjaxLoader').hide();
+                }
+            })
+        }
+    </script>
+}
+
+@section MobileHeader{
+   Order History
+}
